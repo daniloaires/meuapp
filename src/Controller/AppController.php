@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\EventInterface;
 
 /**
  * Application Controller
@@ -41,13 +42,57 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        $this->loadComponent('RequestHandler');
+        $this->loadComponent('RequestHandler', [
+            'enableBeforeRedirect' => false,
+        ]);
         $this->loadComponent('Flash');
 
-        /*
-         * Enable the following component for recommended CakePHP form protection settings.
-         * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
-         */
-        //$this->loadComponent('FormProtection');
+        $this->loadComponent('Acl', [
+            'className' => 'Acl.Acl'
+        ]);
+
+        $this->loadComponent('Auth', [
+            'authorize' => [
+                'Acl.Actions' => [
+                  'actionPath' => 'controllers/', 
+                  'userModel' => 'Users'
+                 ]
+            ],
+            'authenticate' => [
+                'Form' => [
+                    'fields' => ['username' => 'email'],
+                    'userModel' => 'Users'
+                ],
+            ],
+            'loginAction' => [
+                'plugin' => false,
+                'controller' => 'Accounts',
+                'action' => 'login'
+            ],
+            'loginRedirect' => [
+                'plugin' => null,
+                'controller' => 'Users',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'plugin' => null,
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'unauthorizedRedirect' => [
+                'controller' => null,
+                'action' => 'login',
+                'prefix' => false
+            ],
+            'authError' => 'Você não está autorizado a acessar esta página.',
+            'flash' => [
+                'element' => 'error'
+            ]
+        ]);
+    }
+
+    public function beforeRender(EventInterface $event)
+    {
+        $this->set('_serialize', true);
     }
 }

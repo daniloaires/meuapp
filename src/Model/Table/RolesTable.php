@@ -41,6 +41,8 @@ class RolesTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Acl.Acl', ['type' => 'requester']); // Add this
+
         $this->setTable('roles');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
