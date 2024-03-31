@@ -25,7 +25,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', '21206fcb7894745c34836cb95c97faf5807f84c97e68df49b6ce76184c048ea0'),
     ],
 
     /*
@@ -44,10 +44,14 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'my_app',
-            'password' => 'secret',
-
-            'database' => 'my_app',
+            'username' => 'danilo',
+            'password' => '123$Mudar',
+            'database' => 'meuapp',
+            'encoding' => 'utf8',
+            'timezone' => 'UTC',
+            'flags' => [],
+            'cacheMetadata' => true,
+            'log' => false,
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.
@@ -60,9 +64,27 @@ return [
             'url' => env('DATABASE_URL', null),
         ],
 
+        'debug_kit' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'persistent' => false,
+            'port' => '3306',
+            'host' => 'localhost',
+            'username' => 'danilo',
+            'password' => '123$Mudar',
+            'database' => 'debugkit',
+            'encoding' => 'utf8',
+            'timezone' => 'UTC',
+            'cacheMetadata' => true,
+            'quoteIdentifiers' => false,
+            'log' => false,
+            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+            'url' => env('DATABASE_TEST_URL', null),
+        ], 
+
         /*
          * The test connection is used during the test suite.
-         */
+         
         'test' => [
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
@@ -71,7 +93,7 @@ return [
             'database' => 'test_myapp',
             //'schema' => 'myapp',
             'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tmp/tests.sqlite'),
-        ],
+        ], */
     ],
 
     /*
