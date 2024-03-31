@@ -52,17 +52,17 @@ class User extends Entity
         if (!$this->id) {
             return null;
         }
-        if (isset($this->group_id)) {
-            $groupId = $this->group_id;
+        if (isset($this->role_id)) {
+            $roleId = $this->role_id;
         } else {
             $Users = TableRegistry::get('Users');
             $user = $Users->find('all', ['fields' => ['role_id']])->where(['id' => $this->id])->first();
-            $groupId = $user->group_id;
+            $roleId = $user->role_id;
         }
-        if (!$groupId) {
+        if (!$roleId) {
             return null;
         }
-        return ['Roles' => ['id' => $groupId]];
+        return ['Roles' => ['id' => $roleId]];
     }
 
 }

@@ -60,13 +60,14 @@ class AppController extends Controller
             ],
             'authenticate' => [
                 'Form' => [
-                    'fields' => ['username' => 'email'],
+                    //'fields' => ['username' => 'email'],
+                    'fields' => ['username' => 'username'],
                     'userModel' => 'Users'
                 ],
             ],
             'loginAction' => [
                 'plugin' => false,
-                'controller' => 'Accounts',
+                'controller' => 'Users',
                 'action' => 'login'
             ],
             'loginRedirect' => [
