@@ -52,16 +52,16 @@
         },
         {
             "name": "cakephp/acl",
-            "version": "0.10.0",
+            "version": "0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/acl.git",
-                "reference": "7fb3b772126c5c8a95bb8ff062aae7417588c916"
+                "reference": "527bee49285cb6ea84201b903054d292131c3269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/acl/zipball/7fb3b772126c5c8a95bb8ff062aae7417588c916",
-                "reference": "7fb3b772126c5c8a95bb8ff062aae7417588c916",
+                "url": "https://api.github.com/repos/cakephp/acl/zipball/527bee49285cb6ea84201b903054d292131c3269",
+                "reference": "527bee49285cb6ea84201b903054d292131c3269",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/cakephp/acl/issues",
                 "source": "https://github.com/cakephp/acl"
             },
-            "time": "2023-09-01T20:53:49+00:00"
+            "time": "2024-04-01T16:58:29+00:00"
         },
         {
             "name": "cakephp/cakephp",
