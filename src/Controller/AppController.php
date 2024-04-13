@@ -72,7 +72,7 @@ class AppController extends Controller
             ],
             'loginRedirect' => [
                 'plugin' => null,
-                'controller' => 'Users',
+                'controller' => '/',
                 'action' => 'index'
             ],
             'logoutRedirect' => [
