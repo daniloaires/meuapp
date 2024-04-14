@@ -16,8 +16,10 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\View\Helper\SweetFlashHelper;
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
+use Cake\Utility\Hash;
 
 /**
  * Application Controller
@@ -96,4 +98,5 @@ class AppController extends Controller
     {
         $this->set('_serialize', true);
     }
+    
 }

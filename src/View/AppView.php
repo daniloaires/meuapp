@@ -15,6 +15,7 @@ declare(strict_types=1);
  */
 namespace App\View;
 
+use App\View\Helper\SweetFlashHelper;
 use Cake\View\View;
 use CakeLte\View\CakeLteTrait;
 

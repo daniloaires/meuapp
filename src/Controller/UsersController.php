@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\View\Helper\SweetFlashHelper;
+use Cake\Event\EventInterface;
 use CakeLte\View\CakeLteTrait;
 
 /**
