@@ -2,7 +2,7 @@
 
 use Cake\Core\Configure;
 
-$this->disableAutoLayout();
+//$this->disableAutoLayout();
 
 ?>
 
@@ -10,14 +10,12 @@ $this->disableAutoLayout();
 <html>
 <head>
     <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        CakePHP: O melhor framework:
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home']) ?>
+    <?= $this->Html->css(['normalize.min']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -26,31 +24,12 @@ $this->disableAutoLayout();
 <body>
 
     <header>
-        <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
-            <h1>
-                Bem Vindo ao Meu App <?= h(Configure::version()) ?> Danilo Aires (🍓)
-            </h1>
-        </div>
+
     </header>
 
     <main class="main">
         <div class="container">
-            <div class="content">
-                <div class="row">
 
-                    <div class="collumn">
-
-                    </div>    
-
-                    <div class="collumn">
-
-                    </div>                        
-
-                </div>    
-            </div>
         </div>
     </main>
 </body>
