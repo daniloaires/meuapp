@@ -22,7 +22,7 @@ use CakeLte\View\CakeLteTrait;
 class AppView extends View{
   use CakeLteTrait;
 
-  public $layout = 'CakeLte.default';
+  public $layout = 'CakeLte.top-nav';
 
   // 'CakeLte.default'
   // 'CakeLte.login'
