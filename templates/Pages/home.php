@@ -15,7 +15,7 @@ use Cake\Core\Configure;
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min']) ?>
+    <?= $this->Html->css(['normalize.min', 'estilo']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

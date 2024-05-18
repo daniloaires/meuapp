@@ -1,0 +1,6 @@
+.bg-image {
+    background-image: url('../img/background1.jpeg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Define que a imagem de fundo deve cobrir todo o elemento */
+    background-position: center; /* Centraliza a imagem de fundo */
+    min-height: 60vh; /* Garante que a imagem de fundo cubra toda a altura da tela */
+  }
