@@ -10,7 +10,7 @@
 
 <div class="users index content">
     <?= $this->Html->link(__('Novo Usuário'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Cadastro de Usuários') ?></h3>
+    <h3><?= __('Listar Usuários') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -64,6 +64,6 @@
             <?= $this->Paginator->next(__('próximo') . ' >') ?>
             <?= $this->Paginator->last(__('último') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
 </div>

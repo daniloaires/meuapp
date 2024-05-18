@@ -5,19 +5,26 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Cliente'), ['action' => 'edit', $cliente->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Cliente'), ['action' => 'delete', $cliente->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cliente->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Clientes'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Cliente'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Edit Cliente'), ['action' => 'edit', $cliente->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Delete Cliente'),
+                ['action' => 'delete', $cliente->id],
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $cliente->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('List Clientes'), ['action' => 'index'], ['class' => 'btn btn-outline-secondary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('New Cliente'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="clientes view content">
             <h3><?= h($cliente->nome) ?></h3>
-            <table>
+            <table class="table table-striped table-bordered">
                 <tr>
                     <th><?= __('Nome') ?></th>
                     <td><?= h($cliente->nome) ?></td>

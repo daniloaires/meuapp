@@ -30,6 +30,15 @@ use Cake\Core\Configure;
     <main class="main">
         <div class="container">
 
+            <div class="container-fluid bg-image">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                    <h1 class="text-center text-white">Bem vindo!</h1>
+                    <p class="text-center text-white">ERP para Gestão Empresarial.</p>
+                    </div>
+                </div>
+            </div>        
+
         </div>
     </main>
 </body>

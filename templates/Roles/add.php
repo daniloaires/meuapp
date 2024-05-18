@@ -5,22 +5,22 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Roles'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Roles'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="roles form content">
             <?= $this->Form->create($role) ?>
-            <fieldset>
+            <fieldset class="form-group">
                 <legend><?= __('Add Role') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                ?>
+                <div class="form-group">
+                    <?= $this->Form->control('name', ['class' => 'form-control']) ?>
+                </div>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

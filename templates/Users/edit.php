@@ -6,29 +6,33 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
+    <aside class="col-md-3">
+        <div class="bg-light p-3">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'btn btn-danger btn-block side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block side-nav-item']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
+    <div class="col-md-9">
+        <div class="users form">
             <?= $this->Form->create($user) ?>
             <fieldset>
                 <legend><?= __('Edit User') ?></legend>
-                <?php
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('role_id', ['options' => $roles]);
-                ?>
+                <div class="form-group">
+                    <?= $this->Form->control('username', ['class' => 'form-control']) ?>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->control('password', ['class' => 'form-control']) ?>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->control('role_id', ['options' => $roles, 'class' => 'form-control']) ?>
+                </div>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
