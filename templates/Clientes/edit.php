@@ -32,7 +32,6 @@
                     echo $this->Form->control('telefone_fixo');
                     echo $this->Form->control('telefone_celular');
                     echo $this->Form->control('telefone_comercial');
-                    echo $this->Form->control('deleted');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

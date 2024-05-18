@@ -5,18 +5,18 @@
  */
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
+    <?= $this->Html->link(__('Novo Usuário'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Cadastro de Usuários') ?></h3>
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('username') ?></th>
-                    <th><?= $this->Paginator->sort('role_id') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th><?= $this->Paginator->sort('ID') ?></th>
+                    <th><?= $this->Paginator->sort('Usuário') ?></th>
+                    <th><?= $this->Paginator->sort('Grupo ID') ?></th>
+                    <th><?= $this->Paginator->sort('Criado em') ?></th>
+                    <th><?= $this->Paginator->sort('Modificado em') ?></th>
+                    <th class="actions"><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,12 +25,27 @@
                     <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></td>
-                    <td><?= h($user->created) ?></td>
-                    <td><?= h($user->modified) ?></td>
+                    <td><?= h($user->created->format('d/m/Y H:i:s')) ?></td>
+                    <td><?= h($user->modified->format('d/m/Y H:i:s')) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        <?= $this->Html->link(
+                            '<i class="ti-eye"></i> ' . __('Visualizar'), 
+                            ['action' => 'view', $user->id],
+                            ['escape' => false] 
+                        ) ?>
+                    
+                        <?= $this->Html->link(
+                            '<i class="ti-pencil"></i> ' . __('Editar'), 
+                            ['action' => 'edit', $user->id],
+                            ['escape' => false] 
+                        ) ?>
+
+                        <?= $this->Form->postLink(
+                            '<i class="ti-trait"></i> ' . __('Excluir'), // Ícone Themify de trait e o texto 'Delete'
+                            ['action' => 'delete', $user->id],
+                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $user->id), 'escapeTitle' => false, 'escape' => false]
+                        ) ?>
+
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -39,11 +54,11 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
+            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('próximo') . ' >') ?>
+            <?= $this->Paginator->last(__('último') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
