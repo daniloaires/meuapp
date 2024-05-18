@@ -18,19 +18,7 @@ class UsersController extends AppController
     public function initialize() : void 
     {
         parent::initialize();
-        //$this->Auth->allow();
     }
-
-    // public function login() { // Acl
-    //     if ($this->request->is('post')) {
-    //         $user = $this->Auth->identify();
-    //         if ($user) {
-    //             $this->Auth->setUser($user);
-    //             return $this->redirect($this->Auth->redirectUrl());
-    //         }
-    //         $this->Flash->error(__('Usuário ou senha incorretos.'));
-    //     }
-    // }
 
     public function login()	{
         if ($this->request->is('post')) {
