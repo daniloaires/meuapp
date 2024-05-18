@@ -23,6 +23,7 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 
 /*
  * This file is loaded in the context of the `Application` class.
@@ -30,69 +31,25 @@ use Cake\Routing\RouteBuilder;
   * if required.
  */
 return function (RouteBuilder $routes): void {
-    /*
-     * The default class to use for all routes
-     *
-     * The following route classes are supplied with CakePHP and are appropriate
-     * to set as the default:
-     *
-     * - Route
-     * - InflectedRoute
-     * - DashedRoute
-     *
-     * If no call is made to `Router::defaultRouteClass()`, the class used is
-     * `Route` (`Cake\Routing\Route\Route`)
-     *
-     * Note that `Route` does not do any inflections on URLs which will result in
-     * inconsistently cased URLs when used with `{plugin}`, `{controller}` and
-     * `{action}` markers.
-     */
-    $routes->setRouteClass(DashedRoute::class);
+    Router::defaultRouteClass(DashedRoute::class);
 
-    $routes->scope('/', function (RouteBuilder $builder): void {
-        /*
-         * Here, we are connecting '/' (base path) to a controller called 'Pages',
-         * its action called 'display', and we pass a param to select the view file
-         * to use (in this case, templates/Pages/home.php)...
-         */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
-        $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
-
-        /*
-         * ...and connect the rest of 'Pages' controller's URLs.
-         */
-        $builder->connect('/pages/*', 'Pages::display');
-
-        /*
-         * Connect catchall routes for all controllers.
-         *
-         * The `fallbacks` method is a shortcut for
-         *
-         * ```
-         * $builder->connect('/{controller}', ['action' => 'index']);
-         * $builder->connect('/{controller}/{action}/*', []);
-         * ```
-         *
-         * You can remove these routes once you've connected the
-         * routes you want in your application.
-         */
-        $builder->fallbacks();
+    Router::scope('/', function (RouteBuilder $routes) {
+        // Rota para a página inicial
+        $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    
+        // Rota para o login
+        $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    
+        // Rota para o logout
+        $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    
+        // Rota para o controlador Clientes
+        $routes->connect('/clientes', ['controller' => 'Clientes', 'action' => 'index']);
+    
+        // Conectar o resto das URLs do controlador 'Pages'
+        $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    
+        // Conectar rotas padrão para todos os controladores
+        $routes->fallbacks(DashedRoute::class);
     });
-
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     *
-     * ```
-     * $routes->scope('/api', function (RouteBuilder $builder): void {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
-     */
 };

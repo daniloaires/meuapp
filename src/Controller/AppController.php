@@ -49,49 +49,50 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
-        $this->loadComponent('Acl', [
-            'className' => 'Acl.Acl'
-        ]);
+        // $this->loadComponent('Acl', [
+        //     'className' => 'Acl.Acl'
+        // ]);
 
-        $this->loadComponent('Auth', [
-            'authorize' => [
-                'Acl.Actions' => [
-                  'actionPath' => 'controllers/', 
-                  'userModel' => 'Users'
-                 ]
-            ],
-            'authenticate' => [
-                'Form' => [
-                    //'fields' => ['username' => 'email'],
-                    'fields' => ['username' => 'username'],
-                    'userModel' => 'Users'
-                ],
-            ],
-            'loginAction' => [
-                'plugin' => false,
-                'controller' => 'Users',
-                'action' => 'login'
-            ],
-            'loginRedirect' => [
-                'plugin' => null,
-                'controller' => '/',
-                'action' => 'index'
-            ],
-            'logoutRedirect' => [
-                'plugin' => null,
-                'controller' => 'Users',
-                'action' => 'login'
-            ],
-            'unauthorizedRedirect' => [
-                'controller' => null,
-                'action' => 'login',
-                'prefix' => false
-            ],
-            'authError' => 'Você não está autorizado a acessar esta página.',
-            'flash' => [
-                'element' => 'error'
-            ]
-        ]);
+        // $this->loadComponent('Auth', [
+        //     'authorize' => [
+        //         'Acl.Actions' => [
+        //           'actionPath' => 'controllers/', 
+        //           'userModel' => 'Users'
+        //          ]
+        //     ],
+        //     'authenticate' => [
+        //         'Form' => [
+        //             //'fields' => ['username' => 'email'],
+        //             'fields' => ['username' => 'username'],
+        //             'userModel' => 'Users'
+        //         ],
+        //     ],
+        //     'loginAction' => [
+        //         'plugin' => false,
+        //         'controller' => 'Users',
+        //         'action' => 'login'
+        //     ],
+        //     'loginRedirect' => [
+        //         'plugin' => null,
+        //         'controller' => '/',
+        //         'action' => 'index'
+        //     ],
+        //     'logoutRedirect' => [
+        //         'plugin' => null,
+        //         'controller' => 'Users',
+        //         'action' => 'login'
+        //     ],
+        //     'unauthorizedRedirect' => [
+        //         'controller' => null,
+        //         'action' => 'login',
+        //         'prefix' => false
+        //     ],
+        //     'authError' => 'Você não está autorizado a acessar esta página.',
+        //     'flash' => [
+        //         'element' => 'error'
+        //     ]
+        // ]);
+        
     }
 
     public function beforeRender(EventInterface $event)

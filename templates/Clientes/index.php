@@ -24,7 +24,6 @@
                     <th><?= $this->Paginator->sort('telefone_comercial') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('deleted') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -44,7 +43,6 @@
                     <td><?= h($cliente->telefone_comercial) ?></td>
                     <td><?= h($cliente->created) ?></td>
                     <td><?= h($cliente->modified) ?></td>
-                    <td><?= h($cliente->deleted) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $cliente->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cliente->id]) ?>

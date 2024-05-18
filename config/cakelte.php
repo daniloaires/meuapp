@@ -5,7 +5,7 @@ use CakeLte\Style\Sidebar;
 
 return [
     'CakeLte' => [
-        'app-name' => 'Meu<b>App</b>',
+        'app-name' => 'Cake<b>LTE</b>',
         'app-logo' => 'CakeLte.cake.icon.svg',
 
         'small-text' => false,

@@ -30,9 +30,9 @@ class ClientesFixture extends TestFixture
                 'telefone_fixo' => 'Lorem ipsum dolor ',
                 'telefone_celular' => 'Lorem ipsum dolor ',
                 'telefone_comercial' => 'Lorem ipsum dolor ',
-                'created' => '2024-05-11 15:08:49',
-                'modified' => '2024-05-11 15:08:49',
-                'deleted' => '2024-05-11 15:08:49',
+                'created' => '2024-05-11 15:19:49',
+                'modified' => '2024-05-11 15:19:49',
+                'deleted' => '2024-05-11 15:19:49',
             ],
         ];
         parent::init();
