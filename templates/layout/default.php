@@ -21,7 +21,7 @@ $cakeDescription = 'CakePHP O melhor framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <a href="<?= $this->Url->build('/') ?>"><span>ERP</span>Aires</a>
         </div>
         <div class="top-nav-links">
             <?= $this->Html->link('Logout', ['controller' => 'Users', 'action' => 'logout']) ?>
