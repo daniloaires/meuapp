@@ -42,8 +42,6 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-        //$this->addBehavior('Acl.Acl', ['type' => 'requester']); // Add this code
-
         $this->setTable('users');
         $this->setDisplayField('username');
         $this->setPrimaryKey('id');
@@ -97,5 +95,4 @@ class UsersTable extends Table
 
         return $rules;
     }
-
 }

@@ -14,7 +14,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property string $username
  * @property string $password
  * @property int $role_id
- * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \App\Model\Entity\Role $role
