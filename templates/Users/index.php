@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\User> $users
  */
+
+use function PHPUnit\Framework\isNull;
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -30,7 +33,7 @@
                     <td><?= h($user->username) ?></td>
                     <td><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></td>
                     <td><?= h($user->created->format('d/m/Y H:i:s')) ?></td>
-                    <td><?= h($user->modified->format('d/m/Y H:i:s')) ?></td>
+                    <td><?= (!empty($user->modified)) ? h($user->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 

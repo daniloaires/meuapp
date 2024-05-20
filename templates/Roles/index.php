@@ -28,7 +28,7 @@
                     <td><?= $this->Number->format($role->id) ?></td>
                     <td><?= h($role->name) ?></td>
                     <td><?= h($role->created->format('d/m/Y H:i:s')) ?></td>
-                    <td><?= h($role->modified->format('d/m/Y H:i:s')) ?></td>
+                    <td><?= (!empty($role->modified)) ? h($role->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 
