@@ -5,13 +5,6 @@ use Migrations\AbstractMigration;
 
 class CreateUsers extends AbstractMigration
 {
-    /**
-     * Change Method.
-     *
-     * More information on this method is available here:
-     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
-     * @return void
-     */
     public function up()
     {
         $table = $this->table('users');
@@ -32,8 +25,8 @@ class CreateUsers extends AbstractMigration
                 'default' => null,
             ])
             ->addColumn('created', 'datetime', [
-                'null' => true,
-                'default' => null,
+                'default' => 'CURRENT_TIMESTAMP',
+                'null' => false,
             ])
             ->addColumn('modified', 'datetime', [
                 'null' => true,
@@ -41,6 +34,16 @@ class CreateUsers extends AbstractMigration
             ])
             ->addPrimaryKey(['id'])
             ->create();
+
+        // Inserção do usuário inicial com a senha '123456' criptografada
+        $passwordHash = password_hash('123456', PASSWORD_DEFAULT);
+        $data = [
+            'username' => 'admin',
+            'password' => $passwordHash,
+            'role_id' => 1,
+        ];
+
+        $this->table('users')->insert($data)->save();
     }
     
     public function down()
