@@ -102,7 +102,7 @@
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Alterar')) ?>
-            <?= $this->Form->end() ?>
+            <?= $this->Form->end() ?><br />
         </div>
     </div>
 </div>

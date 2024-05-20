@@ -96,7 +96,7 @@
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Cadastrar')) ?>
-            <?= $this->Form->end() ?>
+            <?= $this->Form->end() ?><br />
         </div>
     </div>
 </div>
