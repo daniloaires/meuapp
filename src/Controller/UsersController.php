@@ -44,13 +44,33 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        $this->loadComponent('Paginator');
+    
+        // Obtenha os parâmetros de pesquisa
+        $username = $this->request->getQuery('username');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+    
+        // Configurar condições de busca
+        $conditions = [];
+        if (!empty($username)) {
+            $conditions['Users.username LIKE'] = '%' . $username . '%';
+        }
+        if (!empty($createdFrom)) {
+            $conditions['Users.created >='] = $createdFrom . ' 00:00:00';
+        }
+        if (!empty($createdTo)) {
+            $conditions['Users.created <='] = $createdTo . ' 23:59:59';
+        }
+    
+        $users = $this->Paginator->paginate($this->Users->find('all', [
+            'conditions' => $conditions,
             'contain' => ['Roles'],
-        ];
-        $users = $this->paginate($this->Users);
-
+        ]));
+    
         $this->set(compact('users'));
     }
+    
 
     /**
      * View method

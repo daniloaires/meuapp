@@ -24,10 +24,32 @@ class RolesController extends AppController
      */
     public function index()
     {
-        $roles = $this->paginate($this->Roles);
-
+        $this->loadComponent('Paginator');
+    
+        // Obtenha os parâmetros de pesquisa
+        $name = $this->request->getQuery('name');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+    
+        // Configurar condições de busca
+        $conditions = [];
+        if (!empty($name)) {
+            $conditions['Roles.name LIKE'] = '%' . $name . '%';
+        }
+        if (!empty($createdFrom)) {
+            $conditions['Roles.created >='] = $createdFrom . ' 00:00:00';
+        }
+        if (!empty($createdTo)) {
+            $conditions['Roles.created <='] = $createdTo . ' 23:59:59';
+        }
+    
+        $roles = $this->Paginator->paginate($this->Roles->find('all', [
+            'conditions' => $conditions,
+        ]));
+    
         $this->set(compact('roles'));
     }
+    
 
     /**
      * View method

@@ -11,6 +11,20 @@
 <div class="roles index content">
     <?= $this->Html->link(__('Novo Grupo'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Listar Grupos de Usuário') ?></h3>
+    
+    <!-- Search Form -->
+    <div class="search-form">
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
+        <fieldset>
+            <legend><?= __('Pesquisar') ?></legend>
+            <?= $this->Form->control('name', ['label' => 'Nome do Grupo', 'value' => $this->request->getQuery('name')]) ?>
+            <?= $this->Form->control('created_from', ['label' => 'Criado a partir de', 'type' => 'date', 'value' => $this->request->getQuery('created_from')]) ?>
+            <?= $this->Form->control('created_to', ['label' => 'Criado até', 'type' => 'date', 'value' => $this->request->getQuery('created_to')]) ?>
+        </fieldset>
+        <?= $this->Form->button(__('Pesquisar')) ?>
+        <?= $this->Form->end() ?><br />
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
