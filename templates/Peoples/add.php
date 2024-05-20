@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\People $people
  */
+
+use App\Model\Entity\People;
+
 ?>
 <div class="row">
     <aside class="col-md-3">
@@ -21,7 +24,8 @@
                         'class' => 'form-control',
                         'type' => 'select',
                         'label' => 'Tipo',
-                        'placeholder' => 'Informe o tipo de pessoa',
+                        'empty' => 'Selecione',
+                        'options' => People::LIST_TIPO_PESSOA_STR,
                     ]) ?>
                 </div>                
                 <div class="form-group">

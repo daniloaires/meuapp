@@ -28,15 +28,19 @@ use Cake\ORM\Entity;
  */
 class People extends Entity
 {
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array<string, bool>
-     */
+    const TIPO_PESSOA_CLIENTE = 1;
+    const TIPO_PESSOA_FORNECEDOR = 2;
+
+    const LIST_TIPO_PESSOA = [
+        self::TIPO_PESSOA_CLIENTE,
+        self::TIPO_PESSOA_FORNECEDOR,
+    ];
+
+    const LIST_TIPO_PESSOA_STR = [
+        self::TIPO_PESSOA_CLIENTE => 'Cliente',
+        self::TIPO_PESSOA_FORNECEDOR => 'Fornecedor',
+    ];    
+
     protected $_accessible = [
         'tipo' => true,
         'nome' => true,

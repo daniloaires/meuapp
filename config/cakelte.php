@@ -5,8 +5,8 @@ use CakeLte\Style\Sidebar;
 
 return [
     'CakeLte' => [
-        'app-name' => 'Meu<b>App</b>',
-        'app-logo' => 'CakeLte.cake.icon.svg',
+        'app-name' => 'ERP<b>Aires</b>',
+        'app-logo' => 'cloud-fog.svg',
 
         'small-text' => false,
         'dark-mode' => false,
