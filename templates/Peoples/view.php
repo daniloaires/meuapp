@@ -4,14 +4,18 @@
  * @var \App\Model\Entity\People $people
  */
 ?>
+
 <div class="row">
     <aside class="col-md-3">
-        <div class="bg-light p-3 rounded">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit People'), ['action' => 'edit', $people->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete People'), ['action' => 'delete', $people->id], ['confirm' => __('Are you sure you want to delete # {0}?', $people->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Peoples'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New People'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+        <div class="bg-light p-3">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Pessoa'), ['action' => 'edit', $people->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(__('Excluir Pessoa'), ['action' => 'delete', $people->id], [
+                'confirm' => __('Are you sure you want to delete # {0}?', $people->id), 
+                'class' => 'btn btn-danger btn-block mb-2'
+            ]) ?>
+            <?= $this->Html->link(__('Listar Pessoas'), ['action' => 'index'], ['class' => 'btn btn-outline-secondary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Nova Pessoa'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
     <div class="col-md-9">

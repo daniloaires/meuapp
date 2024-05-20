@@ -9,8 +9,8 @@
 <?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
 
 <div class="peoples index content">
-    <?= $this->Html->link(__('New People'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Peoples') ?></h3>
+    <?= $this->Html->link(__('Nova Pessoa'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Pessoas') ?></h3>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
