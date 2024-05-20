@@ -48,12 +48,10 @@
                         'value' => $this->request->getQuery('created_to')
                     ]) ?>
                 </div>
-                <div class="col-md-4"><br />
-                    <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
-                </div>
             </div>
         </fieldset>
-        <?= $this->Form->end() ?>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>        
+        <?= $this->Form->end() ?><hr />
     </div>    
 
     <div class="table-responsive">
@@ -61,7 +59,8 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('ID') ?></th>
-                    <th><?= $this->Paginator->sort('Usuário') ?></th>
+                    <th><?= $this->Paginator->sort('Nome') ?></th>
+                    <th><?= $this->Paginator->sort('Usuário (login)') ?></th>
                     <th><?= $this->Paginator->sort('Grupo ID') ?></th>
                     <th><?= $this->Paginator->sort('Criado em') ?></th>
                     <th><?= $this->Paginator->sort('Modificado em') ?></th>
@@ -72,6 +71,7 @@
                 <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?= $this->Number->format($user->id) ?></td>
+                    <td><?= h($user->name) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></td>
                     <td><?= h($user->created->format('d/m/Y H:i:s')) ?></td>

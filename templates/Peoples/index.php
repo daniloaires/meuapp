@@ -48,35 +48,31 @@
                         'value' => $this->request->getQuery('created_to')
                     ]) ?>
                 </div>
-                <div class="col-md-4"><br />
-                    <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
-                </div>
             </div>
         </fieldset>
-        <?= $this->Form->end() ?>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>        
+        <?= $this->Form->end() ?><hr />
     </div>
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('tipo') ?></th>
-                    <th><?= $this->Paginator->sort('nome') ?></th>
-                    <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('email_sec') ?></th>
-                    <th><?= $this->Paginator->sort('email_terc') ?></th>
-                    <th><?= $this->Paginator->sort('rg') ?></th>
-                    <th><?= $this->Paginator->sort('cpf') ?></th>
-                    <th><?= $this->Paginator->sort('cnpj') ?></th>
-                    <th><?= $this->Paginator->sort('inscricao_municipal') ?></th>
-                    <th><?= $this->Paginator->sort('inscricao_estadual') ?></th>
-                    <th><?= $this->Paginator->sort('telefone_fixo') ?></th>
-                    <th><?= $this->Paginator->sort('telefone_celular') ?></th>
-                    <th><?= $this->Paginator->sort('telefone_comercial') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th><?= $this->Paginator->sort('tipo', 'Tipo') ?></th>
+                    <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                    <th><?= $this->Paginator->sort('email', 'E-mails') ?></th>
+                    <th><?= $this->Paginator->sort('rg', 'RG')?></th>
+                    <th><?= $this->Paginator->sort('cpf', 'CPF') ?></th>
+                    <th><?= $this->Paginator->sort('cnpj', 'CNPJ') ?></th>
+                    <th><?= $this->Paginator->sort('inscricao_municipal', 'I.M.') ?></th>
+                    <th><?= $this->Paginator->sort('inscricao_estadual', 'I.E.') ?></th>
+                    <th><?= $this->Paginator->sort('telefone_celular', 'Celular') ?></th>
+                    <th><?= $this->Paginator->sort('telefone_fixo', 'Tel. Fixo') ?></th>                    
+                    <th><?= $this->Paginator->sort('telefone_comercial', 'Tel. Comercial') ?></th>
+                    <th><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th><?= $this->Paginator->sort('modified', 'Modificado em') ?></th>
+                    <th class="actions"><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -85,20 +81,17 @@
                     <td><?= $this->Number->format($people->id) ?></td>
                     <td><?= $this->Number->format($people->tipo) ?></td>
                     <td><?= h($people->nome) ?></td>
-                    <td><?= h($people->email) ?></td>
-                    <td><?= h($people->email_sec) ?></td>
-                    <td><?= h($people->email_terc) ?></td>
+                    <td><?= h($people->email . '; ' . $people->email_sec . '; ' . $people->email_terc) ?></td>
                     <td><?= h($people->rg) ?></td>
                     <td><?= h($people->cpf) ?></td>
                     <td><?= h($people->cnpj) ?></td>
                     <td><?= h($people->inscricao_municipal) ?></td>
                     <td><?= h($people->inscricao_estadual) ?></td>
-                    <td><?= h($people->telefone_fixo) ?></td>
                     <td><?= h($people->telefone_celular) ?></td>
+                    <td><?= h($people->telefone_fixo) ?></td>                    
                     <td><?= h($people->telefone_comercial) ?></td>
-                    <td><?= h($people->created) ?></td>
-                    <td><?= h($people->modified) ?></td>
-                    <td><?= h($people->deleted) ?></td>
+                    <td><?= h($people->created->format('d/m/Y H:i:s')) ?></td>
+                    <td><?= (!empty($people->modified)) ? h($people->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 
