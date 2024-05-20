@@ -17,13 +17,44 @@
         <?= $this->Form->create(null, ['type' => 'get']) ?>
         <fieldset>
             <legend><?= __('Pesquisar') ?></legend>
-            <?= $this->Form->control('username', ['label' => 'Nome do Usuário', 'value' => $this->request->getQuery('username')]) ?>
-            <?= $this->Form->control('created_from', ['label' => 'Criado a partir de', 'type' => 'date', 'value' => $this->request->getQuery('created_from')]) ?>
-            <?= $this->Form->control('created_to', ['label' => 'Criado até', 'type' => 'date', 'value' => $this->request->getQuery('created_to')]) ?>
+            <div class="row">
+                <div class="col-md-7">
+                    <?= $this->Form->control('name', [
+                        'label' => 'Nome', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('name')
+                    ]) ?>
+                </div>
+                <div class="col-md-5">
+                    <?= $this->Form->control('username', [
+                        'label' => 'Usuário (login)', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('username')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_from', [
+                        'label' => 'Criado a partir de', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_from')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_to', [
+                        'label' => 'Criado até', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_to')
+                    ]) ?>
+                </div>
+                <div class="col-md-4"><br />
+                    <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
+                </div>
+            </div>
         </fieldset>
-        <?= $this->Form->button(__('Pesquisar')) ?>
-        <?= $this->Form->end() ?> <br />
-    </div>
+        <?= $this->Form->end() ?>
+    </div>    
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">

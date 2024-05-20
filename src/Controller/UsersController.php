@@ -47,12 +47,16 @@ class UsersController extends AppController
         $this->loadComponent('Paginator');
     
         // Obtenha os parâmetros de pesquisa
+        $name = $this->request->getQuery('name');
         $username = $this->request->getQuery('username');
         $createdFrom = $this->request->getQuery('created_from');
         $createdTo = $this->request->getQuery('created_to');
     
         // Configurar condições de busca
         $conditions = [];
+        if (!empty($name)) {
+            $conditions['Users.name LIKE'] = '%' . $name . '%';
+        }        
         if (!empty($username)) {
             $conditions['Users.username LIKE'] = '%' . $username . '%';
         }

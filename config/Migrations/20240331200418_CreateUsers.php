@@ -9,13 +9,18 @@ class CreateUsers extends AbstractMigration
     {
         $table = $this->table('users');
         $table
+            ->addColumn('name', 'string', [
+                'limit' => 255,
+                'null' => false,
+                'default' => null,
+            ])        
             ->addColumn('username', 'string', [
                 'limit' => 255,
                 'null' => false,
                 'default' => null,
             ])
             ->addColumn('password', 'string', [
-                'limit' => 256,
+                'limit' => 512,
                 'null' => false,
                 'default' => null,
             ])
@@ -38,6 +43,7 @@ class CreateUsers extends AbstractMigration
         // Inserção do usuário inicial com a senha '123456' criptografada
         $passwordHash = password_hash('123456', PASSWORD_DEFAULT);
         $data = [
+            'name' => 'Administrador',
             'username' => 'admin',
             'password' => $passwordHash,
             'role_id' => 1,
