@@ -27,14 +27,11 @@ $this->layout = 'CakeLte.login';
 
         <div class="row">
             <div class="col-8">
-                <?= $this->Form->control('remember_me', [
-                    'type' => 'checkbox', 
-                    'custom' => true,
-                    'label' => 'Lembrar-me'
-                ]) ?>
+
             </div>
+
             <div class="col-4">
-                <?= $this->Form->control(__('Login'), ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) ?>
+                <?= $this->Form->control(__('Entrar'), ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) ?>
             </div>
         </div>
 

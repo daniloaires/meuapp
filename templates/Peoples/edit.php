@@ -1,21 +1,34 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Cliente $cliente
+ * @var \App\Model\Entity\People $people
  */
 ?>
 <div class="row">
     <aside class="col-md-3">
         <div class="bg-light p-3 rounded">
-            <h4 class="heading"><?= __('Ações') ?></h4>
-            <?= $this->Html->link(__('Listar Clientes'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $people->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $people->id), 'class' => 'side-nav-item']
+            ) ?>
+            <?= $this->Html->link(__('List Peoples'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="col-md-9">
-        <div class="clientes form content">
-            <?= $this->Form->create($cliente) ?>
-            <fieldset class="form-group">
-                <legend><?= __('Adicionar Cliente') ?></legend>
+        <div class="peoples form content">
+            <?= $this->Form->create($people) ?>
+            <fieldset>
+                <legend><?= __('Edit People') ?></legend>
+                <div class="form-group">
+                    <?= $this->Form->control('tipo', [
+                        'class' => 'form-control',
+                        'type' => 'select',
+                        'label' => 'Tipo',
+                        'placeholder' => 'Informe o tipo de pessoa',
+                    ]) ?>
+                </div>                
                 <div class="form-group">
                     <?= $this->Form->control('nome', [
                         'class' => 'form-control',
@@ -87,8 +100,8 @@
                     ]) ?>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-primary']) ?>
-            <?= $this->Form->end() ?><br />
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>

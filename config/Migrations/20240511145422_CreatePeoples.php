@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class CreateClientes extends AbstractMigration
+class CreatePeoples extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,8 +14,13 @@ class CreateClientes extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('clientes');
+        $table = $this->table('peoples');
         $table
+            ->addColumn('tipo', 'integer', [
+                'limit' => 2,
+                'default' => null,
+                'null' => false,
+            ])        
             ->addColumn('nome', 'string', [
                 'limit' => 255,
                 'default' => null,
@@ -26,6 +31,16 @@ class CreateClientes extends AbstractMigration
                 'default' => null,
                 'null' => true,
             ])
+            ->addColumn('email_sec', 'string', [
+                'limit' => 255,
+                'default' => null,
+                'null' => true,
+            ])   
+            ->addColumn('email_terc', 'string', [
+                'limit' => 255,
+                'default' => null,
+                'null' => true,
+            ])                     
             ->addColumn('rg', 'string', [
                 'limit' => 20,
                 'default' => null,
@@ -80,6 +95,8 @@ class CreateClientes extends AbstractMigration
             ])            
             ->addIndex(['nome'])
             ->addIndex(['email'])
+            ->addIndex(['email_sec'])
+            ->addIndex(['email_terc'])
             ->addIndex(['rg'])
             ->addIndex(['cpf'])
             ->addIndex(['cnpj'])
