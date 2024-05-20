@@ -11,6 +11,51 @@
 <div class="peoples index content">
     <?= $this->Html->link(__('Nova Pessoa'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Listar Pessoas') ?></h3>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
+        <fieldset>
+            <legend><?= __('Pesquisar') ?></legend>
+            <div class="row">
+                <div class="col-md-7">
+                    <?= $this->Form->control('nome', [
+                        'label' => 'Nome', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('nome')
+                    ]) ?>
+                </div>
+                <div class="col-md-5">
+                    <?= $this->Form->control('email', [
+                        'label' => 'Email', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('email')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_from', [
+                        'label' => 'Criado a partir de', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_from')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_to', [
+                        'label' => 'Criado até', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_to')
+                    ]) ?>
+                </div>
+                <div class="col-md-4"><br />
+                    <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
+                </div>
+            </div>
+        </fieldset>
+        <?= $this->Form->end() ?>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
