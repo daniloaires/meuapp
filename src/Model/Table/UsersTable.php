@@ -98,12 +98,4 @@ class UsersTable extends Table
         return $rules;
     }
 
-    public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
-        \ArrayObject $options)
-    {
-        $hasher = new DefaultPasswordHasher();
-        $entity->password = $hasher->hash($entity->password);
-        return true;
-    }
-
 }

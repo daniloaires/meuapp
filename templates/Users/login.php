@@ -5,6 +5,11 @@
  */
 
 $this->layout = 'CakeLte.login';
+
+// use Authentication\PasswordHasher\DefaultPasswordHasher;
+// $hasher = new DefaultPasswordHasher();
+// $hasher = $hasher->hash('123456');
+// echo $hasher;
 ?>
 
 <div class="card">
