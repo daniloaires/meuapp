@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\People> $peoples
  */
+
+use App\Model\Entity\People;
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -18,14 +21,24 @@
         <fieldset>
             <legend><?= __('Pesquisar') ?></legend>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-3">
+                    <?= $this->Form->control('tipo', [
+                        'class' => 'form-control',
+                        'type' => 'select',
+                        'label' => 'Tipo',
+                        'empty' => 'Selecione',
+                        'options' => People::LIST_TIPO_PESSOA_STR,
+                        'value' => $this->request->getQuery('tipo')
+                    ]) ?>
+                </div>             
+                <div class="col-md-5">
                     <?= $this->Form->control('nome', [
                         'label' => 'Nome', 
                         'class' => 'form-control', 
                         'value' => $this->request->getQuery('nome')
                     ]) ?>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <?= $this->Form->control('email', [
                         'label' => 'Email', 
                         'class' => 'form-control', 

@@ -21,6 +21,7 @@ class PeoplesController extends AppController
 
     public function index() {
         // Get search parameters
+        $searchTipo = $this->request->getQuery('tipo');
         $searchNome = $this->request->getQuery('nome');
         $searchEmail = $this->request->getQuery('email');
         $createdFrom = $this->request->getQuery('created_from');
@@ -34,6 +35,9 @@ class PeoplesController extends AppController
         if (!empty($searchEmail)) {
             $conditions['email LIKE'] = '%' . $searchEmail . '%';
         }
+        if (!empty($searchTipo)) {
+            $conditions['tipo ='] = $searchTipo;
+        }        
         if (!empty($createdFrom)) {
             $conditions['created >='] = $createdFrom;
         }

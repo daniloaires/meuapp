@@ -3,15 +3,12 @@ namespace App\Shell;
 
 use Cake\Console\Shell;
 use Cake\ORM\TableRegistry;
-use Cake\Controller\ComponentRegistry;
-use Acl\Controller\Component\AclComponent;
 
 class GruposShell extends Shell
 {
     public function initialize(): void
     {
         parent::initialize();
-        $this->Acl = new AclComponent(new ComponentRegistry());
     }
 
     public function main(): void

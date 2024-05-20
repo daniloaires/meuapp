@@ -90,7 +90,7 @@
                         ) ?>
 
                         <?= $this->Form->postLink(
-                            '<i class="ti-trash"></i> ', // Ícone Themify de trait e o texto 'Delete'
+                            '<i class="ti-trash"></i> ',
                             ['action' => 'delete', $user->id],
                             ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $user->id), 'escapeTitle' => false, 'escape' => false]
                         ) ?>

@@ -22,10 +22,18 @@
             <fieldset>
                 <legend><?= __('Adicionar Usuário') ?></legend>
                 <div class="form-group">
+                    <?= $this->Form->control('name', [
+                        'class' => 'form-control',
+                        'label' => 'Nome',
+                        'placeholder' => 'Informe o Nome',
+                    ]) ?>
+                </div>                
+                <div class="form-group">
                     <?= $this->Form->control('username', [
                         'class' => 'form-control',
-                        'label' => 'Usuário',
-                        'placeholder' => 'Nome de usuário',
+                        'label' => 'Usuário (login)',
+                        'placeholder' => 'Usuário (login)',
+                        'autocomplete' => 'new-password'
                     ]) ?>
                 </div>
                 <div class="form-group">
@@ -33,6 +41,7 @@
                         'class' => 'form-control',
                         'label' => 'Senha',
                         'placeholder' => 'Senha de acesso',
+                        'autocomplete' => 'new-password'
                     ]) ?>
                 </div>
                 <div class="form-group">
@@ -45,7 +54,7 @@
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-primary']) ?>
-            <?= $this->Form->end() ?>
+            <?= $this->Form->end() ?><br />
         </div>
     </div>
 </div>
