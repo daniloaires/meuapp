@@ -3,19 +3,21 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
  *
  * @property int $id
+ * @property string $name
  * @property string $username
  * @property string $password
  * @property int $role_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property \Cake\I18n\FrozenTime|null $deleted
  *
  * @property \App\Model\Entity\Role $role
  */
@@ -31,11 +33,13 @@ class User extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'name' => true,
         'username' => true,
         'password' => true,
         'role_id' => true,
         'created' => true,
         'modified' => true,
+        'deleted' => true,
         'role' => true,
     ];
 

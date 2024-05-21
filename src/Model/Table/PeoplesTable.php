@@ -121,8 +121,7 @@ class PeoplesTable extends Table
 
         $validator
             ->dateTime('deleted')
-            ->requirePresence('deleted', 'create')
-            ->notEmptyDateTime('deleted');
+            ->allowEmptyDateTime('deleted');
 
         return $validator;
     }

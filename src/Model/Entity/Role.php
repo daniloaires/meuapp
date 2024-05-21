@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property \Cake\I18n\FrozenTime|null $deleted
  *
  * @property \App\Model\Entity\User[] $users
  */
@@ -30,6 +31,7 @@ class Role extends Entity
         'name' => true,
         'created' => true,
         'modified' => true,
+        'deleted' => true,
         'users' => true,
     ];
 

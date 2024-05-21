@@ -62,9 +62,13 @@ class RolesTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 100)
+            ->maxLength('name', 255)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
+
+        $validator
+            ->dateTime('deleted')
+            ->allowEmptyDateTime('deleted');
 
         return $validator;
     }

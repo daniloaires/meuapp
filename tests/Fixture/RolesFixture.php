@@ -21,8 +21,9 @@ class RolesFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2024-05-20 14:53:36',
-                'modified' => '2024-05-20 14:53:36',
+                'created' => '2024-05-21 15:02:06',
+                'modified' => '2024-05-21 15:02:06',
+                'deleted' => '2024-05-21 15:02:06',
             ],
         ];
         parent::init();

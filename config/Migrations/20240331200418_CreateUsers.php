@@ -37,7 +37,15 @@ class CreateUsers extends AbstractMigration
                 'null' => true,
                 'default' => null,
             ])
-            ->addPrimaryKey(['id'])
+            ->addColumn('deleted', 'datetime', [
+                'null' => true,
+                'default' => null,
+            ])            
+            ->addIndex(['name'])
+            ->addIndex(['username'])
+            ->addIndex(['created'])
+            ->addIndex(['modified'])
+            ->addIndex(['deleted'])            
             ->create();
 
         // Inserção do usuário inicial com a senha '123456' criptografada

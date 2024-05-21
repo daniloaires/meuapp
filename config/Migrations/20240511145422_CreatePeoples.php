@@ -84,7 +84,7 @@ class CreatePeoples extends AbstractMigration
             ])
             ->addColumn('deleted', 'datetime', [
                 'default' => null,
-                'null' => false,
+                'null' => true,
             ])            
             ->addIndex(['nome'])
             ->addIndex(['email'])

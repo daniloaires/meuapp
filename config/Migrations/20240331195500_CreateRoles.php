@@ -9,13 +9,27 @@ class CreateRoles extends AbstractMigration
     {
         // Criação da tabela roles
         $this->table('roles')
-            ->addColumn('name', 'string', ['limit' => 100, 'null' => false])
+            ->addColumn('name', 'string', [
+                'limit' => 255,
+                'null' => false,
+                'default' => null,
+            ])        
             ->addColumn('created', 'datetime', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'null' => false,
             ])
-            ->addColumn('modified', 'datetime', ['null' => true])
-            ->addPrimaryKey('id')
+            ->addColumn('modified', 'datetime', [
+                'null' => true,
+                'default' => null,
+            ])
+            ->addColumn('deleted', 'datetime', [
+                'null' => true,
+                'default' => null,
+            ])
+            ->addIndex(['name'])
+            ->addIndex(['created'])
+            ->addIndex(['modified'])
+            ->addIndex(['deleted'])            
             ->create();
         
         // Inserção dos dados iniciais

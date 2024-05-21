@@ -33,9 +33,9 @@ class PeoplesFixture extends TestFixture
                 'telefone_fixo' => 'Lorem ipsum dolor ',
                 'telefone_celular' => 'Lorem ipsum dolor ',
                 'telefone_comercial' => 'Lorem ipsum dolor ',
-                'created' => '2024-05-20 12:24:06',
-                'modified' => '2024-05-20 12:24:06',
-                'deleted' => '2024-05-20 12:24:06',
+                'created' => '2024-05-21 15:02:23',
+                'modified' => '2024-05-21 15:02:23',
+                'deleted' => '2024-05-21 15:02:23',
             ],
         ];
         parent::init();

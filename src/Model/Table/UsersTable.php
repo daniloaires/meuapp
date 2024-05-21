@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -63,6 +62,12 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->scalar('name')
+            ->maxLength('name', 255)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
             ->scalar('username')
             ->maxLength('username', 255)
             ->requirePresence('username', 'create')
@@ -70,13 +75,17 @@ class UsersTable extends Table
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 256)
+            ->maxLength('password', 512)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
         $validator
             ->integer('role_id')
             ->notEmptyString('role_id');
+
+        $validator
+            ->dateTime('deleted')
+            ->allowEmptyDateTime('deleted');
 
         return $validator;
     }
