@@ -4,55 +4,108 @@
  * @var iterable<\App\Model\Entity\Employee> $employees
  */
 ?>
+
+<!-- ThemifyIcons -->
+<?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
+
 <div class="employees index content">
-    <?= $this->Html->link(__('New Employee'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Employees') ?></h3>
+    <?= $this->Html->link(__('Novo Colaborador'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Listar Colaboradores') ?></h3>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
+        <fieldset>
+        <legend><?= __('Pesquisar') ?></legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->control('nome', [
+                        'label' => 'Nome', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('nome')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_from', [
+                        'label' => 'Criado a partir de', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_from')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_to', [
+                        'label' => 'Criado até', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_to')
+                    ]) ?>
+                </div>
+
+            </div>
+        </fieldset>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
+        <?= $this->Form->end() ?><br />
+    </div>
+
     <div class="table-responsive">
-        <table>
-            <thead>
+        <table class="table table-bordered table-striped">            <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('nome') ?></th>
-                    <th><?= $this->Paginator->sort('cpf') ?></th>
-                    <th><?= $this->Paginator->sort('rg') ?></th>
-                    <th><?= $this->Paginator->sort('estado_civil') ?></th>
-                    <th><?= $this->Paginator->sort('qtde_filhos') ?></th>
-                    <th><?= $this->Paginator->sort('sexo') ?></th>
-                    <th><?= $this->Paginator->sort('nacionalidade') ?></th>
-                    <th><?= $this->Paginator->sort('dt_nascimento') ?></th>
-                    <th><?= $this->Paginator->sort('funcao') ?></th>
-                    <th><?= $this->Paginator->sort('sector_id') ?></th>
-                    <th><?= $this->Paginator->sort('modalidade_contrato') ?></th>
-                    <th><?= $this->Paginator->sort('remuneracao') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('deleted') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('cpf') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('rg') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('estado_civil') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('qtde_filhos') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('sexo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nacionalidade') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('dt_nascimento') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('funcao') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('sector_id') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modalidade_contrato') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('remuneracao') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modified') ?></th>
+                    <th class="actions nowrap"><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><?= $this->Number->format($employee->id) ?></td>
-                    <td><?= h($employee->nome) ?></td>
-                    <td><?= h($employee->cpf) ?></td>
-                    <td><?= h($employee->rg) ?></td>
-                    <td><?= $employee->estado_civil === null ? '' : $this->Number->format($employee->estado_civil) ?></td>
-                    <td><?= $employee->qtde_filhos === null ? '' : $this->Number->format($employee->qtde_filhos) ?></td>
-                    <td><?= $employee->sexo === null ? '' : $this->Number->format($employee->sexo) ?></td>
-                    <td><?= $employee->nacionalidade === null ? '' : $this->Number->format($employee->nacionalidade) ?></td>
-                    <td><?= h($employee->dt_nascimento) ?></td>
-                    <td><?= h($employee->funcao) ?></td>
-                    <td><?= $employee->has('sector') ? $this->Html->link($employee->sector->name, ['controller' => 'Sectors', 'action' => 'view', $employee->sector->id]) : '' ?></td>
-                    <td><?= $employee->modalidade_contrato === null ? '' : $this->Number->format($employee->modalidade_contrato) ?></td>
-                    <td><?= $employee->remuneracao === null ? '' : $this->Number->format($employee->remuneracao) ?></td>
-                    <td><?= h($employee->created) ?></td>
-                    <td><?= h($employee->modified) ?></td>
-                    <td><?= h($employee->deleted) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $employee->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $employee->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id)]) ?>
+                    <td class='nowrap'><?= $this->Number->format($employee->id) ?></td>
+                    <td class='nowrap'><?= h($employee->nome) ?></td>
+                    <td class='nowrap'><?= h($employee->cpf) ?></td>
+                    <td class='nowrap'><?= h($employee->rg) ?></td>
+                    <td class='nowrap'><?= $employee->estado_civil === null ? '' : $this->Number->format($employee->estado_civil) ?></td>
+                    <td class='nowrap'><?= $employee->qtde_filhos === null ? '' : $this->Number->format($employee->qtde_filhos) ?></td>
+                    <td class='nowrap'><?= $employee->sexo === null ? '' : $this->Number->format($employee->sexo) ?></td>
+                    <td class='nowrap'><?= $employee->nacionalidade === null ? '' : $this->Number->format($employee->nacionalidade) ?></td>
+                    <td class='nowrap'><?= h($employee->dt_nascimento) ?></td>
+                    <td class='nowrap'><?= h($employee->funcao) ?></td>
+                    <td class='nowrap'><?= $employee->has('sector') ? $this->Html->link($employee->sector->name, ['controller' => 'Sectors', 'action' => 'view', $employee->sector->id]) : '' ?></td>
+                    <td class='nowrap'><?= $employee->modalidade_contrato === null ? '' : $this->Number->format($employee->modalidade_contrato) ?></td>
+                    <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->format($employee->remuneracao) ?></td>
+                    <td class='nowrap'><?= h($employee->created) ?></td>
+                    <td class='nowrap'><?= h($employee->modified) ?></td>
+                    <td class="actions nowrap">
+                        <?= $this->Html->link(
+                            '<i class="ti-eye"></i> ', 
+                            ['action' => 'view', $employee->id],
+                            ['escape' => false] 
+                        ) ?>
+                    
+                        <?= $this->Html->link(
+                            '<i class="ti-pencil"></i> ', 
+                            ['action' => 'edit', $employee->id],
+                            ['escape' => false] 
+                        ) ?>
+
+                        <?= $this->Form->postLink(
+                            '<i class="ti-trash"></i> ',
+                            ['action' => 'delete', $employee->id],
+                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $employee->id), 'escapeTitle' => false, 'escape' => false]
+                        ) ?>
+
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -61,12 +114,12 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
+            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('próximo') . ' >') ?>
+            <?= $this->Paginator->last(__('último') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
 </div>

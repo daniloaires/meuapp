@@ -12,7 +12,6 @@
     <?= $this->Html->link(__('Novo Setor'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Listar Setores') ?></h3>
 
-
     <!-- Search Form -->
     <div class="search-form">
         <?= $this->Form->create(null, ['type' => 'get']) ?>

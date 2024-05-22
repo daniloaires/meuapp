@@ -11,28 +11,34 @@ namespace App\Controller;
  */
 class EmployeesController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Sectors'],
-        ];
-        $employees = $this->paginate($this->Employees);
-
-        $this->set(compact('employees'));
+        $this->loadComponent('Paginator');
+    
+        // Obtenha os parâmetros de pesquisa
+        $nome = $this->request->getQuery('nome');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+    
+        // Configurar condições de busca
+        $conditions = [];
+        if (!empty($nome)) {
+            $conditions['Employees.nome LIKE'] = '%' . $nome . '%';
+        }
+        if (!empty($createdFrom)) {
+            $conditions['Employees.created >='] = $createdFrom . ' 00:00:00';
+        }
+        if (!empty($createdTo)) {
+            $conditions['Employees.created <='] = $createdTo . ' 23:59:59';
+        }
+    
+        $employees = $this->Paginator->paginate($this->Employees->find('all', [
+            'conditions' => $conditions,
+        ]));
+    
+        $this->set(compact('roles'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Employee id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $employee = $this->Employees->get($id, [
@@ -42,11 +48,6 @@ class EmployeesController extends AppController
         $this->set(compact('employee'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $employee = $this->Employees->newEmptyEntity();
@@ -63,13 +64,6 @@ class EmployeesController extends AppController
         $this->set(compact('employee', 'sectors'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Employee id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $employee = $this->Employees->get($id, [
@@ -88,13 +82,6 @@ class EmployeesController extends AppController
         $this->set(compact('employee', 'sectors'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Employee id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
