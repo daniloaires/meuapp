@@ -30,15 +30,28 @@ use Cake\ORM\Entity;
  */
 class Employee extends Entity
 {
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array<string, bool>
-     */
+    const ESTADO_CIVIL_SOLTEIRO = 1;
+    const ESTADO_CIVIL_CASADO = 2;
+    const ESTADO_CIVIL_DIVORCIADO = 3;
+    const ESTADO_CIVIL_UNIAO_ESTAVEL = 4;
+    const ESTADO_CIVIL_VIUVO = 5;
+
+    const LIST_ESTADO_CIVIL = [
+        self::ESTADO_CIVIL_SOLTEIRO,
+        self::ESTADO_CIVIL_CASADO,
+        self::ESTADO_CIVIL_DIVORCIADO,
+        self::ESTADO_CIVIL_UNIAO_ESTAVEL,
+        self::ESTADO_CIVIL_VIUVO,
+    ];
+
+    const LIST_ESTADO_CIVIL_STR = [
+        self::ESTADO_CIVIL_SOLTEIRO => 'Solteiro(a)',
+        self::ESTADO_CIVIL_CASADO => 'Casado(a)',
+        self::ESTADO_CIVIL_DIVORCIADO => 'Divorciado(a)',
+        self::ESTADO_CIVIL_UNIAO_ESTAVEL => 'União Estável',
+        self::ESTADO_CIVIL_VIUVO => 'Viúvo(a)',
+    ];
+
     protected $_accessible = [
         'nome' => true,
         'cpf' => true,
