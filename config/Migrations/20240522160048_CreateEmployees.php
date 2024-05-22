@@ -5,13 +5,6 @@ use Migrations\AbstractMigration;
 
 class CreateEmployees extends AbstractMigration
 {
-    /**
-     * Change Method.
-     *
-     * More information on this method is available here:
-     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
-     * @return void
-     */
     public function change()
     {
         $table = $this->table('employees');
@@ -54,6 +47,16 @@ class CreateEmployees extends AbstractMigration
                 'null' => true,
                 'default' => null,
             ])
+            ->addColumn('funcao', 'string', [
+                'limit' => 255,
+                'null' => true,
+                'default' => null,
+            ])            
+            ->addColumn('sector_id', 'integer', [
+                'limit' => 3,
+                'null' => true,
+                'default' => null,
+            ])            
             ->addColumn('modalidade_contrato', 'integer', [
                 'limit' => 2,
                 'null' => true,
@@ -82,11 +85,14 @@ class CreateEmployees extends AbstractMigration
             ->addIndex(['nome'])
             ->addIndex(['cpf'])
             ->addIndex(['rg'])
+            ->addIndex(['funcao'])
+            ->addIndex(['sector_id'])
             ->addIndex(['remuneracao'])
             ->addIndex(['modalidade_contrato'])
             ->addIndex(['created'])
             ->addIndex(['modified'])
             ->addIndex(['deleted'])
+            ->addForeignKey('sector_id', 'sectors', 'id')
             ->create();
     }
 }
