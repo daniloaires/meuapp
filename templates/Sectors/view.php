@@ -4,65 +4,71 @@
  * @var \App\Model\Entity\Sector $sector
  */
 ?>
+
+<!-- ThemifyIcons -->
+<?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
+
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Sector'), ['action' => 'edit', $sector->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Sector'), ['action' => 'delete', $sector->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sector->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Sectors'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Sector'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Setor'), ['action' => 'edit', $sector->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Excluir Setor'),
+                ['action' => 'delete', $sector->id],
+                [
+                    'confirm' => __('Tem certesa de que deseja excluir # {0}?', $sector->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('Listar Setores'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Novo Setor'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="sectors view content">
             <h3><?= h($sector->name) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Name') ?></th>
+                    <th><?= __('Nome') ?></th>
                     <td><?= h($sector->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($sector->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($sector->created) ?></td>
+                    <th><?= __('Criado em') ?></th>
+                    <td><?= h($sector->created->format('d/m/Y H:i:s')) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($sector->modified) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Deleted') ?></th>
-                    <td><?= h($sector->deleted) ?></td>
+                    <th><?= __('Modificado') ?></th>
+                    <td><?= (!empty($sector->modified)) ? h($sector->modified->format('d/m/Y H:i:s')) : '' ?></td>
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Employees') ?></h4>
+                <h4><?= __('Colaboradores Relacionados') ?></h4>
                 <?php if (!empty($sector->employees)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered table-hover">
                         <tr>
-                            <th><?= __('Id') ?></th>
+                            <th><?= __('ID') ?></th>
                             <th><?= __('Nome') ?></th>
-                            <th><?= __('Cpf') ?></th>
-                            <th><?= __('Rg') ?></th>
+                            <th><?= __('CPF') ?></th>
+                            <th><?= __('RG') ?></th>
                             <th><?= __('Estado Civil') ?></th>
                             <th><?= __('Qtde Filhos') ?></th>
                             <th><?= __('Sexo') ?></th>
                             <th><?= __('Nacionalidade') ?></th>
-                            <th><?= __('Dt Nascimento') ?></th>
-                            <th><?= __('Funcao') ?></th>
-                            <th><?= __('Sector Id') ?></th>
+                            <th><?= __('Nascimento') ?></th>
+                            <th><?= __('Função') ?></th>
+                            <th><?= __('Setor') ?></th>
                             <th><?= __('Modalidade Contrato') ?></th>
-                            <th><?= __('Remuneracao') ?></th>
+                            <th><?= __('Remuneração') ?></th>
                             <th><?= __('Obs') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th><?= __('Deleted') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
+                            <th><?= __('Creado em') ?></th>
+                            <th><?= __('Modificado') ?></th>
+                            <th class="actions"><?= __('Ações') ?></th>
                         </tr>
                         <?php foreach ($sector->employees as $employees) : ?>
                         <tr>
@@ -80,13 +86,28 @@
                             <td><?= h($employees->modalidade_contrato) ?></td>
                             <td><?= h($employees->remuneracao) ?></td>
                             <td><?= h($employees->obs) ?></td>
-                            <td><?= h($employees->created) ?></td>
-                            <td><?= h($employees->modified) ?></td>
-                            <td><?= h($employees->deleted) ?></td>
+                            <td><?= h($employees->created->format('d/m/Y H:i:s')) ?></td>
+                            <td><?= (!empty($employees->modified)) ? h($employees->modified->format('d/m/Y H:i:s')) : '' ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Employees', 'action' => 'view', $employees->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Employees', 'action' => 'edit', $employees->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Employees', 'action' => 'delete', $employees->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employees->id)]) ?>
+                            <?= $this->Html->link(
+                                    '<i class="ti-eye"></i> ', 
+                                    ['action' => 'view', $employees->id],
+                                    ['escape' => false] 
+                                ) ?>
+                            
+                                <?= $this->Html->link(
+                                    '<i class="ti-pencil"></i> ', 
+                                    ['action' => 'edit', $employees->id],
+                                    ['escape' => false] 
+                                ) ?>
+
+                                <?= $this->Form->postLink(
+                                    '<i class="ti-trash"></i> ',
+                                    ['action' => 'delete', $employees->id],
+                                    ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $employees->id), 'escapeTitle' => false, 'escape' => false]
+                                ) ?>
+
+                            </td>
                             </td>
                         </tr>
                         <?php endforeach; ?>

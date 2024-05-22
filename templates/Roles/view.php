@@ -30,20 +30,20 @@
             <h3><?= h($role->name) ?></h3>
             <table class="table table-striped">
                 <tr>
-                    <th><?= __('Name') ?></th>
+                    <th><?= __('Nome') ?></th>
                     <td><?= h($role->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($role->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($role->created) ?></td>
+                    <th><?= __('Criado em') ?></th>
+                    <td><?= h($role->created->format('d/m/Y H:i:s')) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($role->modified) ?></td>
+                    <th><?= __('Modificado') ?></th>
+                    <td><?= (!empty($role->modified)) ? h($role->modified->format('d/m/Y H:i:s')) : '' ?></td>
                 </tr>
             </table>
             <div class="related">
@@ -69,25 +69,25 @@
                             <td><?= h($users->created->format('d/m/Y H:i:s')) ?></td>
                             <td><?= (!empty($users->modified)) ? h($users->modified->format('d/m/Y H:i:s')) : '' ?></td>
                             <td class="actions">
-                        <?= $this->Html->link(
-                            '<i class="ti-eye"></i> ', 
-                            ['action' => 'view', $users->id],
-                            ['escape' => false] 
-                        ) ?>
-                    
-                        <?= $this->Html->link(
-                            '<i class="ti-pencil"></i> ', 
-                            ['action' => 'edit', $users->id],
-                            ['escape' => false] 
-                        ) ?>
+                                <?= $this->Html->link(
+                                    '<i class="ti-eye"></i> ', 
+                                    ['action' => 'view', $users->id],
+                                    ['escape' => false] 
+                                ) ?>
+                            
+                                <?= $this->Html->link(
+                                    '<i class="ti-pencil"></i> ', 
+                                    ['action' => 'edit', $users->id],
+                                    ['escape' => false] 
+                                ) ?>
 
-                        <?= $this->Form->postLink(
-                            '<i class="ti-trash"></i> ',
-                            ['action' => 'delete', $users->id],
-                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $users->id), 'escapeTitle' => false, 'escape' => false]
-                        ) ?>
+                                <?= $this->Form->postLink(
+                                    '<i class="ti-trash"></i> ',
+                                    ['action' => 'delete', $users->id],
+                                    ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $users->id), 'escapeTitle' => false, 'escape' => false]
+                                ) ?>
 
-                    </td>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </table>
