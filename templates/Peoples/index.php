@@ -71,40 +71,34 @@ use App\Model\Entity\People;
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                    <th><?= $this->Paginator->sort('tipo', 'Tipo') ?></th>
-                    <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
-                    <th><?= $this->Paginator->sort('email', 'E-mails') ?></th>
-                    <th><?= $this->Paginator->sort('rg', 'RG')?></th>
-                    <th><?= $this->Paginator->sort('cpf', 'CPF') ?></th>
-                    <th><?= $this->Paginator->sort('cnpj', 'CNPJ') ?></th>
-                    <th><?= $this->Paginator->sort('inscricao_municipal', 'I.M.') ?></th>
-                    <th><?= $this->Paginator->sort('inscricao_estadual', 'I.E.') ?></th>
-                    <th><?= $this->Paginator->sort('telefone_celular', 'Celular') ?></th>
-                    <th><?= $this->Paginator->sort('telefone_fixo', 'Tel. Fixo') ?></th>                    
-                    <th><?= $this->Paginator->sort('telefone_comercial', 'Tel. Comercial') ?></th>
-                    <th><?= $this->Paginator->sort('created', 'Criado em') ?></th>
-                    <th><?= $this->Paginator->sort('modified', 'Modificado em') ?></th>
-                    <th class="actions"><?= __('Ações') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('tipo', 'Tipo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('email', 'E-mails') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('rg', 'RG')?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('cpf', 'CPF') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('cnpj', 'CNPJ') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('inscricao_municipal', 'I.M.') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('inscricao_estadual', 'I.E.') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('', 'Telefones') ?></th>                    
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class="actions nowrap"><?= __('Ações' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($peoples as $people): ?>
                 <tr>
-                    <td><?= $this->Number->format($people->id) ?></td>
-                    <td><?= $this->Number->format($people->tipo) ?></td>
-                    <td><?= h($people->nome) ?></td>
-                    <td><?= h($people->email . '; ' . $people->email_sec . '; ' . $people->email_terc) ?></td>
-                    <td><?= h($people->rg) ?></td>
-                    <td><?= h($people->cpf) ?></td>
-                    <td><?= h($people->cnpj) ?></td>
-                    <td><?= h($people->inscricao_municipal) ?></td>
-                    <td><?= h($people->inscricao_estadual) ?></td>
-                    <td><?= h($people->telefone_celular) ?></td>
-                    <td><?= h($people->telefone_fixo) ?></td>                    
-                    <td><?= h($people->telefone_comercial) ?></td>
-                    <td><?= h($people->created->format('d/m/Y H:i:s')) ?></td>
-                    <td><?= (!empty($people->modified)) ? h($people->modified->format('d/m/Y H:i:s')) : '' ?></td>
+                    <td class='nowrap'><?= $this->Number->format($people->id) ?></td>
+                    <td class='nowrap'><?= People::LIST_TIPO_PESSOA_STR[$people->tipo] ?></td>
+                    <td class='nowrap'><?= h($people->nome) ?></td>
+                    <td class='nowrap'><?= h($people->email . '; ' . $people->email_sec . '; ' . $people->email_terc) ?></td>
+                    <td class='nowrap'><?= h($people->rg) ?></td>
+                    <td class='nowrap'><?= h($people->cpf) ?></td>
+                    <td class='nowrap'><?= h($people->cnpj) ?></td>
+                    <td class='nowrap'><?= h($people->inscricao_municipal) ?></td>
+                    <td class='nowrap'><?= h($people->inscricao_estadual) ?></td>
+                    <td class='nowrap'><?= h($people->telefone_celular . '; ' . $people->telefone_fixo . '; ' . $people->telefone_comercial) ?></td>
+                    <td class='nowrap'><?= h($people->created->format('d/m/Y H:i:s')) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 

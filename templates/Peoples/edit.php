@@ -15,7 +15,7 @@ use App\Model\Entity\People;
             <?= $this->Form->postLink(
                 __('Excluir'),
                 ['action' => 'delete', $people->id],
-                ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $people->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $people->id), 'class' => 'btn btn-danger btn-block side-nav-item']
             ) ?>
             <?= $this->Html->link(__('Listar Pessoas'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
         </div>
@@ -57,14 +57,14 @@ use App\Model\Entity\People;
                 </div>
                 <div class="form-group">
                     <?= $this->Form->control('cpf', [
-                        'class' => 'form-control',
+                        'class' => 'form-control cpf',
                         'label' => 'CPF',
                         'placeholder' => 'Informe o CPF',
                     ]) ?>
                 </div>
                 <div class="form-group">
                     <?= $this->Form->control('cnpj', [
-                        'class' => 'form-control',
+                        'class' => 'form-control cnpj',
                         'label' => 'CNPJ',
                         'placeholder' => 'Informe o CNPJ',
                     ]) ?>
@@ -85,28 +85,35 @@ use App\Model\Entity\People;
                 </div>
                 <div class="form-group">
                     <?= $this->Form->control('telefone_celular', [
-                        'class' => 'form-control',
+                        'class' => 'form-control cel',
                         'label' => 'Celular',
                         'placeholder' => 'Informe o celular',
                     ]) ?>
                 </div>
                 <div class="form-group">
                     <?= $this->Form->control('telefone_fixo', [
-                        'class' => 'form-control',
+                        'class' => 'form-control tel',
                         'label' => 'Telefone Fixo',
                         'placeholder' => 'Informe o telefone fixo',
                     ]) ?>
                 </div>                
                 <div class="form-group">
                     <?= $this->Form->control('telefone_comercial', [
-                        'class' => 'form-control',
+                        'class' => 'form-control tel',
                         'label' => 'Telefone Comercial',
                         'placeholder' => 'Informe o telefone comercial',
                     ]) ?>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Alterar')) ?>
+            <?= $this->Form->button(__('Alterar'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
+<!-- inputMask -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
+<!-- paginaAtual -->
+<?= $this->Html->script('peoples/edit') ?>

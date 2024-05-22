@@ -52,21 +52,21 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('ID') ?></th>
-                    <th><?= $this->Paginator->sort('Nome do Grupo') ?></th>
-                    <th><?= $this->Paginator->sort('Criado em') ?></th>
-                    <th><?= $this->Paginator->sort('Modificado em') ?></th>
-                    <th class="actions"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Nome do Grupo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Modificado em') ?></th>
+                    <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($roles as $role): ?>
                 <tr>
-                    <td><?= $this->Number->format($role->id) ?></td>
-                    <td><?= h($role->name) ?></td>
-                    <td><?= h($role->created->format('d/m/Y H:i:s')) ?></td>
-                    <td><?= (!empty($role->modified)) ? h($role->modified->format('d/m/Y H:i:s')) : '' ?></td>
-                    <td class="actions">
+                    <td class='nowrap'><?= $this->Number->format($role->id) ?></td>
+                    <td class='nowrap'><?= h($role->name) ?></td>
+                    <td class='nowrap'><?= h($role->created->format('d/m/Y H:i:s')) ?></td>
+                    <td class='nowrap'><?= (!empty($role->modified)) ? h($role->modified->format('d/m/Y H:i:s')) : '' ?></td>
+                    <td class="actions nowrap">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 
                             ['action' => 'view', $role->id],

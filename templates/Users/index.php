@@ -58,25 +58,25 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('ID') ?></th>
-                    <th><?= $this->Paginator->sort('Nome') ?></th>
-                    <th><?= $this->Paginator->sort('Usuário (login)') ?></th>
-                    <th><?= $this->Paginator->sort('Grupo ID') ?></th>
-                    <th><?= $this->Paginator->sort('Criado em') ?></th>
-                    <th><?= $this->Paginator->sort('Modificado em') ?></th>
-                    <th class="actions"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Nome') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Usuário (login)') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Grupo ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('Modificado em') ?></th>
+                    <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
                 <tr>
-                    <td><?= $this->Number->format($user->id) ?></td>
-                    <td><?= h($user->name) ?></td>
-                    <td><?= h($user->username) ?></td>
-                    <td><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></td>
-                    <td><?= h($user->created->format('d/m/Y H:i:s')) ?></td>
-                    <td><?= (!empty($user->modified)) ? h($user->modified->format('d/m/Y H:i:s')) : '' ?></td>
-                    <td class="actions">
+                    <td class='nowrap'><?= $this->Number->format($user->id) ?></td>
+                    <td class='nowrap'><?= h($user->name) ?></td>
+                    <td class='nowrap'><?= h($user->username) ?></td>
+                    <td class='nowrap'><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></td>
+                    <td class='nowrap'><?= h($user->created->format('d/m/Y H:i:s')) ?></td>
+                    <td class='nowrap'><?= (!empty($user->modified)) ? h($user->modified->format('d/m/Y H:i:s')) : '' ?></td>
+                    <td class="actions nowrap">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 
                             ['action' => 'view', $user->id],

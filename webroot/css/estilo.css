@@ -4,3 +4,9 @@
     background-position: center; /* Centraliza a imagem de fundo */
     min-height: 70vh; /* Garante que a imagem de fundo cubra toda a altura da tela */
   }
+
+.nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." no final do texto que não cabe */
+}
