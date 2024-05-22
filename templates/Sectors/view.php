@@ -30,20 +30,20 @@
             <h3><?= h($sector->name) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Nome') ?></th>
-                    <td><?= h($sector->name) ?></td>
+                    <th class='nowrap'><?= __('Nome') ?></th>
+                    <td class='nowrap'><?= h($sector->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('ID') ?></th>
-                    <td><?= $this->Number->format($sector->id) ?></td>
+                    <th class='nowrap'><?= __('ID') ?></th>
+                    <td class='nowrap'><?= $this->Number->format($sector->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Criado em') ?></th>
-                    <td><?= h($sector->created->format('d/m/Y H:i:s')) ?></td>
+                    <th class='nowrap'><?= __('Criado em') ?></th>
+                    <td class='nowrap'><?= h($sector->created->format('d/m/Y H:i:s')) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modificado') ?></th>
-                    <td><?= (!empty($sector->modified)) ? h($sector->modified->format('d/m/Y H:i:s')) : '' ?></td>
+                    <th class='nowrap'><?= __('Modificado') ?></th>
+                    <td class='nowrap'><?= (!empty($sector->modified)) ? h($sector->modified->format('d/m/Y H:i:s')) : '' ?></td>
                 </tr>
             </table>
             <div class="related">
@@ -52,43 +52,43 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <th><?= __('ID') ?></th>
-                            <th><?= __('Nome') ?></th>
-                            <th><?= __('CPF') ?></th>
-                            <th><?= __('RG') ?></th>
-                            <th><?= __('Estado Civil') ?></th>
-                            <th><?= __('Qtde Filhos') ?></th>
-                            <th><?= __('Sexo') ?></th>
-                            <th><?= __('Nacionalidade') ?></th>
-                            <th><?= __('Nascimento') ?></th>
-                            <th><?= __('Função') ?></th>
-                            <th><?= __('Setor') ?></th>
-                            <th><?= __('Modalidade Contrato') ?></th>
-                            <th><?= __('Remuneração') ?></th>
-                            <th><?= __('Obs') ?></th>
-                            <th><?= __('Creado em') ?></th>
-                            <th><?= __('Modificado') ?></th>
-                            <th class="actions"><?= __('Ações') ?></th>
+                            <th class='nowrap'><?= __('ID') ?></th>
+                            <th class='nowrap'><?= __('Nome') ?></th>
+                            <th class='nowrap'><?= __('CPF') ?></th>
+                            <th class='nowrap'><?= __('RG') ?></th>
+                            <th class='nowrap'><?= __('Estado Civil') ?></th>
+                            <th class='nowrap'><?= __('Qtde Filhos') ?></th>
+                            <th class='nowrap'><?= __('Sexo') ?></th>
+                            <th class='nowrap'><?= __('Nacionalidade') ?></th>
+                            <th class='nowrap'><?= __('Nascimento') ?></th>
+                            <th class='nowrap'><?= __('Função') ?></th>
+                            <th class='nowrap'><?= __('Setor') ?></th>
+                            <th class='nowrap'><?= __('Modalidade Contrato') ?></th>
+                            <th class='nowrap'><?= __('Remuneração') ?></th>
+                            <th class='nowrap'><?= __('Obs') ?></th>
+                            <th class='nowrap'><?= __('Creado em') ?></th>
+                            <th class='nowrap'><?= __('Modificado') ?></th>
+                            <th class="actions nowrap"><?= __('Ações') ?></th>
                         </tr>
                         <?php foreach ($sector->employees as $employees) : ?>
                         <tr>
-                            <td><?= h($employees->id) ?></td>
-                            <td><?= h($employees->nome) ?></td>
-                            <td><?= h($employees->cpf) ?></td>
-                            <td><?= h($employees->rg) ?></td>
-                            <td><?= h($employees->estado_civil) ?></td>
-                            <td><?= h($employees->qtde_filhos) ?></td>
-                            <td><?= h($employees->sexo) ?></td>
-                            <td><?= h($employees->nacionalidade) ?></td>
-                            <td><?= h($employees->dt_nascimento) ?></td>
-                            <td><?= h($employees->funcao) ?></td>
-                            <td><?= h($employees->sector_id) ?></td>
-                            <td><?= h($employees->modalidade_contrato) ?></td>
-                            <td><?= h($employees->remuneracao) ?></td>
-                            <td><?= h($employees->obs) ?></td>
-                            <td><?= h($employees->created->format('d/m/Y H:i:s')) ?></td>
-                            <td><?= (!empty($employees->modified)) ? h($employees->modified->format('d/m/Y H:i:s')) : '' ?></td>
-                            <td class="actions">
+                            <td class='nowrap'><?= h($employees->id) ?></td>
+                            <td class='nowrap'><?= h($employees->nome) ?></td>
+                            <td class='nowrap'><?= h($employees->cpf) ?></td>
+                            <td class='nowrap'><?= h($employees->rg) ?></td>
+                            <td class='nowrap'><?= h($employees->estado_civil) ?></td>
+                            <td class='nowrap'><?= h($employees->qtde_filhos) ?></td>
+                            <td class='nowrap'><?= h($employees->sexo) ?></td>
+                            <td class='nowrap'><?= h($employees->nacionalidade) ?></td>
+                            <td class='nowrap'><?= h($employees->dt_nascimento) ?></td>
+                            <td class='nowrap'><?= h($employees->funcao) ?></td>
+                            <td class='nowrap'><?= h($employees->sector_id) ?></td>
+                            <td class='nowrap'><?= h($employees->modalidade_contrato) ?></td>
+                            <td class='nowrap'><?= h($employees->remuneracao) ?></td>
+                            <td class='nowrap'><?= h($employees->obs) ?></td>
+                            <td class='nowrap'><?= h($employees->created->format('d/m/Y H:i:s')) ?></td>
+                            <td class='nowrap'><?= (!empty($employees->modified)) ? h($employees->modified->format('d/m/Y H:i:s')) : '' ?></td>
+                            <td class="actions nowrap">
                             <?= $this->Html->link(
                                     '<i class="ti-eye"></i> ', 
                                     ['action' => 'view', $employees->id],

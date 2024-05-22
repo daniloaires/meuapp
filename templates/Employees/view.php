@@ -3,21 +3,31 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Employee $employee
  */
+
+use App\Model\Entity\Employee;
+
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Employee'), ['action' => 'edit', $employee->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Employee'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Employees'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Employee'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Colaborador'), ['action' => 'edit', $employee->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Excluir Colaborador'),
+                ['action' => 'delete', $employee->id],
+                [
+                    'confirm' => __('Tem certesa de que deseja excluir # {0}?', $employee->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('Listar Colaboradores'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Novo Colaborador'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="employees view content">
             <h3><?= h($employee->nome) ?></h3>
-            <table>
+            <table class="table table-striped">
                 <tr>
                     <th><?= __('Nome') ?></th>
                     <td><?= h($employee->nome) ?></td>
@@ -44,7 +54,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Estado Civil') ?></th>
-                    <td><?= $employee->estado_civil === null ? '' : $this->Number->format($employee->estado_civil) ?></td>
+                    <td><?= $employee->estado_civil === null ? '' : Employee::LIST_ESTADO_CIVIL_STR[$employee->estado_civil] ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Qtde Filhos') ?></th>
@@ -52,35 +62,31 @@
                 </tr>
                 <tr>
                     <th><?= __('Sexo') ?></th>
-                    <td><?= $employee->sexo === null ? '' : $this->Number->format($employee->sexo) ?></td>
+                    <td><?= $employee->sexo === null ? '' : Employee::LIST_SEXO_STR[$employee->sexo] ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Nacionalidade') ?></th>
-                    <td><?= $employee->nacionalidade === null ? '' : $this->Number->format($employee->nacionalidade) ?></td>
+                    <td><?= $employee->nacionalidade === null ? '' : Employee::LIST_NACIONALIDADE_STR[$employee->nacionalidade] ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Modalidade Contrato') ?></th>
-                    <td><?= $employee->modalidade_contrato === null ? '' : $this->Number->format($employee->modalidade_contrato) ?></td>
+                    <td><?= $employee->modalidade_contrato === null ? '' : Employee::LIST_MODALIDADE_CONTRATO_STR[$employee->modalidade_contrato] ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Remuneracao') ?></th>
-                    <td><?= $employee->remuneracao === null ? '' : $this->Number->format($employee->remuneracao) ?></td>
+                    <td><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Dt Nascimento') ?></th>
-                    <td><?= h($employee->dt_nascimento) ?></td>
+                    <td><?= h($employee->dt_nascimento->format('d/m/Y')) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
-                    <td><?= h($employee->created) ?></td>
+                    <td><?= h($employee->created->format('d/m/Y H:i:s')) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Modified') ?></th>
-                    <td><?= h($employee->modified) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Deleted') ?></th>
-                    <td><?= h($employee->deleted) ?></td>
+                    <td><?= (!empty($employee->modified)) ? h($employee->modified->format('d/m/Y H:i:s')) : '' ?></td>
                 </tr>
             </table>
             <div class="text">
