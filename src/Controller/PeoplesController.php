@@ -48,7 +48,7 @@ class PeoplesController extends AppController
         // Fetch data with conditions
         $peoplesTable = TableRegistry::getTableLocator()->get('Peoples');
         $query = $peoplesTable->find('all')
-            ->contain(['AdressesPeoples'])
+            ->contain(['AddressesPeoples'])
             ->where($conditions);
 
         $peoples = $this->Paginator->paginate($query);
@@ -56,27 +56,15 @@ class PeoplesController extends AppController
         $this->set(compact('peoples'));
     }
     
-    /**
-     * View method
-     *
-     * @param string|null $id People id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $people = $this->Peoples->get($id, [
-            'contain' => [],
+            'contain' => ['AddressesPeoples'],
         ]);
 
         $this->set(compact('people'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $people = $this->Peoples->newEmptyEntity();
@@ -92,17 +80,10 @@ class PeoplesController extends AppController
         $this->set(compact('people'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id People id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $people = $this->Peoples->get($id, [
-            'contain' => [],
+            'contain' => ['AddressesPeoples'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $people = $this->Peoples->patchEntity($people, $this->request->getData());
@@ -116,13 +97,6 @@ class PeoplesController extends AppController
         $this->set(compact('people'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id People id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
