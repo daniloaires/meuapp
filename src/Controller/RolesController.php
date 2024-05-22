@@ -17,11 +17,6 @@ class RolesController extends AppController
         //$this->Auth->allow();
     }
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
         $this->loadComponent('Paginator');

@@ -52,10 +52,10 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th class='nowrap'><?= $this->Paginator->sort('ID') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('Nome do Grupo') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('Criado em') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('Modificado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('name', 'Nome do Grupo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modified', 'Modificado em') ?></th>
                     <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
@@ -80,7 +80,7 @@
                         ) ?>
 
                         <?= $this->Form->postLink(
-                            '<i class="ti-trash"></i> ', // Ícone Themify de trait e o texto 'Delete'
+                            '<i class="ti-trash"></i> ',
                             ['action' => 'delete', $role->id],
                             ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $role->id), 'escapeTitle' => false, 'escape' => false]
                         ) ?>
