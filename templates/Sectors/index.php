@@ -54,7 +54,7 @@
             <thead>
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('name', 'Nome do Grupo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('name', 'Nome do Setor') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('modified', 'Modificado em') ?></th>
                     <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
