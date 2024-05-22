@@ -138,6 +138,28 @@ class Employee extends Entity
         self::NACIONALIDADE_OUTRA => "Outra",
     ];
 
+    const MODALIDADE_CONTRATO_CLT = 1;
+    const MODALIDADE_CONTRATO_COOPERADO = 2;
+    const MODALIDADE_CONTRATO_PJ = 3;
+    const MODALIDADE_CONTRATO_ESTATUTO = 4;
+    const MODALIDADE_CONTRATO_OUTRO = 5;    
+
+    const LIST_MODALIDADE_CONTRATO = [
+        self::MODALIDADE_CONTRATO_CLT,
+        self::MODALIDADE_CONTRATO_COOPERADO,
+        self::MODALIDADE_CONTRATO_PJ,
+        self::MODALIDADE_CONTRATO_ESTATUTO,
+        self::MODALIDADE_CONTRATO_OUTRO,
+    ];
+
+    const LIST_MODALIDADE_CONTRATO_STR = [
+        self::MODALIDADE_CONTRATO_CLT => 'CLT',
+        self::MODALIDADE_CONTRATO_COOPERADO => 'Cooperado',
+        self::MODALIDADE_CONTRATO_PJ => 'Pessoa Jurídica',
+        self::MODALIDADE_CONTRATO_ESTATUTO => 'Estatuto',
+        self::MODALIDADE_CONTRATO_OUTRO => 'Outro',
+    ];
+
     protected $_accessible = [
         'nome' => true,
         'cpf' => true,
