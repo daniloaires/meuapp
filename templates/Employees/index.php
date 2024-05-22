@@ -1,8 +1,5 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Employee> $employees
- */
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -53,19 +50,19 @@
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('nome', 'Nome') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('cpf') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('rg') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('estado_civil') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('qtde_filhos') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('sexo') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('nacionalidade') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('dt_nascimento') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('funcao') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('sector_id') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('modalidade_contrato') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('remuneracao') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('created') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('modified') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('cpf', 'CPF') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('rg', 'RG') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('estado_civil', 'Estado Civil') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('qtde_filhos', 'Qtde filhos') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('sexo', 'Sexo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nacionalidade', 'Nacionalidade') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('dt_nascimento', 'Nascimento') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('funcao', 'Função') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('sector_id', 'Setor') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modalidade_contrato', 'Modalidade contrato') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('remuneracao', 'Remuneração') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modified', 'Modificado') ?></th>
                     <th class="actions nowrap"><?= __('Ações') ?></th>
                 </tr>
             </thead>
@@ -85,8 +82,8 @@
                     <td class='nowrap'><?= $employee->has('sector') ? $this->Html->link($employee->sector->name, ['controller' => 'Sectors', 'action' => 'view', $employee->sector->id]) : '' ?></td>
                     <td class='nowrap'><?= $employee->modalidade_contrato === null ? '' : $this->Number->format($employee->modalidade_contrato) ?></td>
                     <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->format($employee->remuneracao) ?></td>
-                    <td class='nowrap'><?= h($employee->created) ?></td>
-                    <td class='nowrap'><?= h($employee->modified) ?></td>
+                    <td class='nowrap'><?= h($employee->created->format('d/m/Y H:i:s')) ?></td>
+                    <td class='nowrap'><?= (!empty($employee->modified)) ? h($employee->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions nowrap">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 
