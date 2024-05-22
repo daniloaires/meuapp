@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Entity\Employee;
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -46,7 +48,8 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">            <thead>
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('nome', 'Nome') ?></th>
@@ -73,15 +76,15 @@
                     <td class='nowrap'><?= h($employee->nome) ?></td>
                     <td class='nowrap'><?= h($employee->cpf) ?></td>
                     <td class='nowrap'><?= h($employee->rg) ?></td>
-                    <td class='nowrap'><?= $employee->estado_civil === null ? '' : $this->Number->format($employee->estado_civil) ?></td>
+                    <td class='nowrap'><?= $employee->estado_civil === null ? '' : Employee::LIST_ESTADO_CIVIL_STR[$employee->estado_civil] ?></td>
                     <td class='nowrap'><?= $employee->qtde_filhos === null ? '' : $this->Number->format($employee->qtde_filhos) ?></td>
-                    <td class='nowrap'><?= $employee->sexo === null ? '' : $this->Number->format($employee->sexo) ?></td>
-                    <td class='nowrap'><?= $employee->nacionalidade === null ? '' : $this->Number->format($employee->nacionalidade) ?></td>
-                    <td class='nowrap'><?= h($employee->dt_nascimento) ?></td>
+                    <td class='nowrap'><?= $employee->sexo === null ? '' : Employee::LIST_SEXO_STR[$employee->sexo] ?></td>
+                    <td class='nowrap'><?= $employee->nacionalidade === null ? '' : Employee::LIST_NACIONALIDADE_STR[$employee->nacionalidade] ?></td>
+                    <td class='nowrap'><?= h($employee->dt_nascimento->format('d/m/Y')) ?></td>
                     <td class='nowrap'><?= h($employee->funcao) ?></td>
                     <td class='nowrap'><?= $employee->has('sector') ? $this->Html->link($employee->sector->name, ['controller' => 'Sectors', 'action' => 'view', $employee->sector->id]) : '' ?></td>
-                    <td class='nowrap'><?= $employee->modalidade_contrato === null ? '' : $this->Number->format($employee->modalidade_contrato) ?></td>
-                    <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->format($employee->remuneracao) ?></td>
+                    <td class='nowrap'><?= $employee->modalidade_contrato === null ? '' : Employee::LIST_MODALIDADE_CONTRATO_STR[$employee->modalidade_contrato] ?></td>
+                    <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></td>
                     <td class='nowrap'><?= h($employee->created->format('d/m/Y H:i:s')) ?></td>
                     <td class='nowrap'><?= (!empty($employee->modified)) ? h($employee->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions nowrap">
