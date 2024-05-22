@@ -24,7 +24,7 @@ use Cake\ORM\Entity;
  * @property string|null $telefone_comercial
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
- * @property \Cake\I18n\FrozenTime $deleted
+ * @property \Cake\I18n\FrozenTime|null $deleted
  */
 class People extends Entity
 {

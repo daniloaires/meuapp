@@ -44,6 +44,10 @@ class PeoplesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('AddressesPeoples', [
+            'foreignKey' => 'people_id',
+        ]);
     }
 
     /**

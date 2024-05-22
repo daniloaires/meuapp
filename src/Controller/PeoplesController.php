@@ -47,7 +47,9 @@ class PeoplesController extends AppController
 
         // Fetch data with conditions
         $peoplesTable = TableRegistry::getTableLocator()->get('Peoples');
-        $query = $peoplesTable->find('all')->where($conditions);
+        $query = $peoplesTable->find('all')
+            ->contain(['AdressesPeoples'])
+            ->where($conditions);
 
         $peoples = $this->Paginator->paginate($query);
 
