@@ -6,6 +6,7 @@
  */
 
 use App\Model\Entity\Employee;
+use App\Model\Entity\People;
 
 ?>
 <div class="row">
@@ -119,6 +120,67 @@ use App\Model\Entity\Employee;
                         'placeholder' => 'Informe o salário',
                     ]) ?>
                 </div>
+                <div class="col-md-4">
+                        <?= $this->Form->hidden('addresses_employees.0.id', [
+                            'value' => $employee->AddressesEmployees->id
+                        ]) ?>                    
+                        <?= $this->Form->control('addresses_employees.0.cep', [
+                            'class' => 'form-control cep',
+                            'label' => 'CEP',
+                            'placeholder' => 'Informe o CEP',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-8">
+                        <?= $this->Form->control('addresses_employees.0.logradouro', [
+                            'class' => 'form-control',
+                            'label' => 'Logradouro',
+                            'placeholder' => 'Informe o Logradouro',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-3">
+                        <?= $this->Form->control('addresses_employees.0.numero', [
+                            'class' => 'form-control',
+                            'label' => 'Número',
+                            'placeholder' => 'Informe o Número',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-3">
+                        <?= $this->Form->control('addresses_employees.0.complemento', [
+                            'class' => 'form-control',
+                            'label' => 'Complemento',
+                            'placeholder' => 'Informe o Complemento',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-6">
+                        <?= $this->Form->control('addresses_employees.0.bairro', [
+                            'class' => 'form-control',
+                            'label' => 'Bairro',
+                            'placeholder' => 'Informe o Bairro',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-8">
+                        <?= $this->Form->control('addresses_employees.0.cidade', [
+                            'class' => 'form-control',
+                            'label' => 'Cidade',
+                            'placeholder' => 'Informe a Cidade',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_employees.0.uf', [
+                            'class' => 'form-control',
+                            'type' => 'select',
+                            'label' => 'Estado',
+                            'empty' => 'Selecione',
+                            'options' => People::LIST_ESTADOS_STR,
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-12">
+                        <?= $this->Form->control('obs', [
+                            'class' => 'form-control',
+                            'label' => 'Observações',
+                            'placeholder' => 'Coloque aqui informações relevantes',
+                        ]) ?>
+                    </div>                
                 <div class="form-group">
                     <?= $this->Form->control('obs', [
                         'class' => 'form-control',
