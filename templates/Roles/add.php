@@ -29,3 +29,10 @@
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
+<!-- inputMask -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
+<!-- paginaAtual -->
+<?= $this->Html->script('peoples/add') ?>
