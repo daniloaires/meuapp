@@ -39,10 +39,24 @@ use App\Model\Entity\People;
                     <div class="col-md-4">
                         <?= $this->Form->control('email', [
                             'class' => 'form-control',
-                            'label' => 'E-mail',
+                            'label' => 'E-mail 1',
                             'placeholder' => 'Informe o e-mail',
                         ]) ?>
                     </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->control('email_sec', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 2',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->control('email_terc', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 3',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>                                        
                     <div class="col-md-4">
                         <?= $this->Form->control('rg', [
                             'class' => 'form-control',

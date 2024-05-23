@@ -24,6 +24,16 @@ class CreateEmployees extends AbstractMigration
                 'default' => null,
                 'null' => false,                
             ])
+            ->addColumn('email', 'string', [
+                'limit' => 255,
+                'default' => null,
+                'null' => true,
+            ])
+            ->addColumn('email_sec', 'string', [
+                'limit' => 255,
+                'default' => null,
+                'null' => true,
+            ])            
             ->addColumn('estado_civil', 'integer', [
                 'limit' => 2,
                 'null' => true,
@@ -38,6 +48,21 @@ class CreateEmployees extends AbstractMigration
                 'null' => true,
                 'default' => null,
             ])
+            ->addColumn('telefone_fixo', 'string', [
+                'limit' => 20,
+                'default' => null,
+                'null' => true,
+            ])
+            ->addColumn('telefone_celular', 'string', [
+                'limit' => 20,
+                'default' => null,
+                'null' => true,
+            ])
+            ->addColumn('telefone_comercial', 'string', [
+                'limit' => 20,
+                'default' => null,
+                'null' => true,
+            ])            
             ->addColumn('nacionalidade', 'integer', [
                 'limit' => 2, 
                 'null' => true,

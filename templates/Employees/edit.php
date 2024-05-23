@@ -68,6 +68,20 @@ use App\Model\Entity\People;
                             'options' => Employee::LIST_SEXO_STR,
                         ]) ?>
                     </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('email', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 1',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('email_sec', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 2',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>                    
                     <div class="col-md-4">
                         <?= $this->Form->control('telefone_celular', [
                             'class' => 'form-control cel',

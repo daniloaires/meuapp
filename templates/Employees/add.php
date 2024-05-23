@@ -63,6 +63,41 @@ use App\Model\Entity\People;
                             'options' => Employee::LIST_SEXO_STR,
                         ]) ?>
                     </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('email', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 1',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $this->Form->control('email_sec', [
+                            'class' => 'form-control',
+                            'label' => 'E-mail 2',
+                            'placeholder' => 'Informe o e-mail',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('telefone_celular', [
+                            'class' => 'form-control cel',
+                            'label' => 'Celular',
+                            'placeholder' => 'Informe o celular',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?= $this->Form->control('telefone_fixo', [
+                            'class' => 'form-control tel',
+                            'label' => 'Telefone Fixo',
+                            'placeholder' => 'Informe o telefone fixo',
+                        ]) ?>
+                    </div>                
+                    <div class="col-md-4">
+                        <?= $this->Form->control('telefone_comercial', [
+                            'class' => 'form-control tel',
+                            'label' => 'Telefone Comercial',
+                            'placeholder' => 'Informe o telefone comercial',
+                        ]) ?>
+                    </div>                    
                     <div class="col-md-4">
                         <?= $this->Form->control('nacionalidade', [
                             'class' => 'form-control',

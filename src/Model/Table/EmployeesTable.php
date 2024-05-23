@@ -83,6 +83,15 @@ class EmployeesTable extends Table
             ->notEmptyString('rg');
 
         $validator
+            ->email('email')
+            ->allowEmptyString('email');
+
+        $validator
+            ->scalar('email_sec')
+            ->maxLength('email_sec', 255)
+            ->allowEmptyString('email_sec');
+
+        $validator
             ->integer('estado_civil')
             ->allowEmptyString('estado_civil');
 
@@ -93,6 +102,21 @@ class EmployeesTable extends Table
         $validator
             ->integer('sexo')
             ->allowEmptyString('sexo');
+
+        $validator
+            ->scalar('telefone_fixo')
+            ->maxLength('telefone_fixo', 20)
+            ->allowEmptyString('telefone_fixo');
+
+        $validator
+            ->scalar('telefone_celular')
+            ->maxLength('telefone_celular', 20)
+            ->allowEmptyString('telefone_celular');
+
+        $validator
+            ->scalar('telefone_comercial')
+            ->maxLength('telefone_comercial', 20)
+            ->allowEmptyString('telefone_comercial');
 
         $validator
             ->integer('nacionalidade')

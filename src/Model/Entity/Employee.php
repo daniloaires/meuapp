@@ -12,9 +12,14 @@ use Cake\ORM\Entity;
  * @property string $nome
  * @property string $cpf
  * @property string $rg
+ * @property string|null $email
+ * @property string|null $email_sec
  * @property int|null $estado_civil
  * @property int|null $qtde_filhos
  * @property int|null $sexo
+ * @property string|null $telefone_fixo
+ * @property string|null $telefone_celular
+ * @property string|null $telefone_comercial
  * @property int|null $nacionalidade
  * @property \Cake\I18n\FrozenDate|null $dt_nascimento
  * @property string|null $funcao
@@ -165,9 +170,14 @@ class Employee extends Entity
         'nome' => true,
         'cpf' => true,
         'rg' => true,
+        'email' => true,
+        'email_sec' => true,
         'estado_civil' => true,
         'qtde_filhos' => true,
         'sexo' => true,
+        'telefone_fixo' => true,
+        'telefone_celular' => true,
+        'telefone_comercial' => true,
         'nacionalidade' => true,
         'dt_nascimento' => true,
         'funcao' => true,
