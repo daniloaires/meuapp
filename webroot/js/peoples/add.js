@@ -33,6 +33,8 @@ jQuery(function() {
                             $('.bairro').val(data.bairro);
                             $('.cidade').val(data.localidade);
                             $('.uf').val(data.uf);
+                            // Focar no campo número
+                            $('.numero').focus();                            
                         } else {
                             // CEP não encontrado
                             alert("CEP não encontrado.");
@@ -58,7 +60,6 @@ jQuery(function() {
         $('.bairro').val('');
         $('.cidade').val('');
         $('.uf').val('');
-        $('.numero').focus();
     }    
 
 });

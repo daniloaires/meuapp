@@ -130,15 +130,15 @@ use App\Model\Entity\People;
                     </div>                    
                     <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.0.numero', [
-                            'class' => 'form-control',
-                            'label' => 'Número numero',
+                            'class' => 'form-control numero',
+                            'label' => 'Número',
                             'placeholder' => 'Informe o Número',
                         ]) ?>
                     </div>                    
                     <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.0.complemento', [
-                            'class' => 'form-control',
-                            'label' => 'Complemento complemento',
+                            'class' => 'form-control complemento',
+                            'label' => 'Complemento',
                             'placeholder' => 'Informe o Complemento',
                         ]) ?>
                     </div>                    
