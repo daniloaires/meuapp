@@ -70,9 +70,6 @@ class PeoplesController extends AppController
         $people = $this->Peoples->newEmptyEntity();
         if ($this->request->is('post')) {
             $people = $this->Peoples->patchEntity($people, $this->request->getData());
-
-            dd($people);
-
             if ($this->Peoples->save($people)) {
                 $this->Flash->success(__('The people has been saved.'));
 
