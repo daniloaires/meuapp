@@ -58,6 +58,7 @@ jQuery(function() {
         $('.bairro').val('');
         $('.cidade').val('');
         $('.uf').val('');
+        $('.numero').focus();
     }    
 
 });
