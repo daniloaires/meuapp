@@ -107,8 +107,8 @@ use App\Model\Entity\People;
                     </div>
 
                     <div class="col-md-4">
-                        <?= $this->Form->hidden('id', ['value' => $people->AddressesPeoples->id]) ?>
-                        <?= $this->Form->control('adresses_peoples.cep', [
+                        <?= $this->Form->hidden('addresses_peoples.id', ['value' => $people->AddressesPeoples->id]) ?>
+                        <?= $this->Form->control('addresses_peoples.cep', [
                             'class' => 'form-control cep',
                             'label' => 'CEP',
                             'placeholder' => 'Informe o CEP',

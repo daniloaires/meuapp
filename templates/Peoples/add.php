@@ -101,7 +101,7 @@ use App\Model\Entity\People;
                     </div>
 
                     <div class="col-md-4">
-                        <?= $this->Form->control('adresses_peoples.0.cep', [
+                        <?= $this->Form->control('addresses_peoples.0.cep', [
                             'class' => 'form-control cep',
                             'label' => 'CEP',
                             'placeholder' => 'Informe o CEP',
