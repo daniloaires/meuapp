@@ -101,13 +101,63 @@ use App\Model\Entity\People;
                     </div>
 
                     <div class="col-md-4">
-                        <?= $this->Form->control('addresses_peoples.0.cep', [
+                        <?= $this->Form->control('addresses_peoples.cep', [
                             'class' => 'form-control cep',
                             'label' => 'CEP',
                             'placeholder' => 'Informe o CEP',
                         ]) ?>
                     </div>
 
+                    <div class="col-md-6">
+                        <?= $this->Form->control('addresses_peoples.logradouro', [
+                            'class' => 'form-control',
+                            'label' => 'Logradouro',
+                            'placeholder' => 'Informe o Logradouro',
+                        ]) ?>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <?= $this->Form->control('addresses_peoples.numero', [
+                            'class' => 'form-control',
+                            'label' => 'Número',
+                            'placeholder' => 'Informe o Número',
+                        ]) ?>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_peoples.complemento', [
+                            'class' => 'form-control',
+                            'label' => 'Complemento',
+                            'placeholder' => 'Informe o Complemento',
+                        ]) ?>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_peoples.bairro', [
+                            'class' => 'form-control',
+                            'label' => 'Bairro',
+                            'placeholder' => 'Informe o Bairro',
+                        ]) ?>
+                    </div>
+
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_peoples.cidade', [
+                            'class' => 'form-control',
+                            'label' => 'Cidade',
+                            'placeholder' => 'Informe a Cidade',
+                        ]) ?>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_peoples.uf', [
+                            'class' => 'form-control',
+                            'type' => 'select',
+                            'label' => 'Estado',
+                            'empty' => 'Selecione',
+                            'options' => People::LIST_ESTADOS_STR,
+                        ]) ?>
+                    </div>
+                    
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-primary']) ?>
