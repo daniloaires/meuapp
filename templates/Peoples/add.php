@@ -108,7 +108,7 @@ use App\Model\Entity\People;
                         ]) ?>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.logradouro', [
                             'class' => 'form-control',
                             'label' => 'Logradouro',
@@ -116,7 +116,7 @@ use App\Model\Entity\People;
                         ]) ?>
                     </div>
                     
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.numero', [
                             'class' => 'form-control',
                             'label' => 'Número',
@@ -124,7 +124,7 @@ use App\Model\Entity\People;
                         ]) ?>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.complemento', [
                             'class' => 'form-control',
                             'label' => 'Complemento',
@@ -132,7 +132,7 @@ use App\Model\Entity\People;
                         ]) ?>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <?= $this->Form->control('addresses_peoples.bairro', [
                             'class' => 'form-control',
                             'label' => 'Bairro',
@@ -140,7 +140,7 @@ use App\Model\Entity\People;
                         ]) ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.cidade', [
                             'class' => 'form-control',
                             'label' => 'Cidade',
