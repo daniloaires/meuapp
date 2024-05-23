@@ -8,7 +8,7 @@ use App\Model\Entity\Employee;
 <?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
 
 <div class="employees index content">
-    <?= $this->Html->link(__('Novo Colaborador'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Novo Colaborador'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
     <h3><?= __('Listar Colaboradores') ?></h3>
 
     <!-- Search Form -->
@@ -43,7 +43,7 @@ use App\Model\Entity\Employee;
 
             </div>
         </fieldset>
-        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
         <?= $this->Form->end() ?><br />
     </div>
 

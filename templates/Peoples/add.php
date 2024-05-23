@@ -166,7 +166,7 @@ use App\Model\Entity\People;
                     </div>                    
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-success']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>

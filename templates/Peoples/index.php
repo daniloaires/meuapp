@@ -63,7 +63,7 @@ use App\Model\Entity\People;
                 </div>
             </div>
         </fieldset>
-        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>        
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>        
         <?= $this->Form->end() ?><hr />
     </div>
 

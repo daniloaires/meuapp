@@ -9,7 +9,7 @@
 <?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
 
 <div class="users index content">
-    <?= $this->Html->link(__('Novo Usuário'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Novo Usuário'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
     <h3><?= __('Listar Usuários') ?></h3>
     
     <!-- Search Form -->
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </fieldset>
-        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-primary']) ?>        
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>        
         <?= $this->Form->end() ?><hr />
     </div>    
 
