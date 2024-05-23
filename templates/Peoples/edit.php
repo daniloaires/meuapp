@@ -105,7 +105,6 @@ use App\Model\Entity\People;
                             'placeholder' => 'Informe o telefone comercial',
                         ]) ?>
                     </div>
-
                     <div class="col-md-4">
                         <?= $this->Form->hidden('addresses_peoples.0.id', [
                             'value' => $people->AddressesPeoples->id

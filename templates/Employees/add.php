@@ -1,9 +1,4 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Employee $employee
- * @var \Cake\Collection\CollectionInterface|string[] $sectors
- */
 
 use App\Model\Entity\Employee;
 use App\Model\Entity\People;
