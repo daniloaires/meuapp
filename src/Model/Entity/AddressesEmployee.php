@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $cep
- * @property string $tipo
  * @property string $logradouro
  * @property string $numero
  * @property string $complemento
@@ -34,7 +33,6 @@ class AddressesEmployee extends Entity
      */
     protected $_accessible = [
         'cep' => true,
-        'tipo' => true,
         'logradouro' => true,
         'numero' => true,
         'complemento' => true,

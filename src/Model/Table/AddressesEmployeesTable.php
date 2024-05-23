@@ -64,12 +64,6 @@ class AddressesEmployeesTable extends Table
             ->notEmptyString('cep');
 
         $validator
-            ->scalar('tipo')
-            ->maxLength('tipo', 50)
-            ->requirePresence('tipo', 'create')
-            ->notEmptyString('tipo');
-
-        $validator
             ->scalar('logradouro')
             ->maxLength('logradouro', 512)
             ->requirePresence('logradouro', 'create')

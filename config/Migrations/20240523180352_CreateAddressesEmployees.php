@@ -21,11 +21,6 @@ class CreateAddressesEmployees extends AbstractMigration
                 'null' => false,
                 'default' => null,
             ])        
-            ->addColumn('tipo', 'string', [
-                'limit' => 50,
-                'null' => false,
-                'default' => null,
-            ])
             ->addColumn('logradouro', 'string', [
                 'limit' => 512,
                 'null' => false,

@@ -21,7 +21,6 @@ class AddressesPeoplesFixture extends TestFixture
             [
                 'id' => 1,
                 'cep' => 'Lorem ipsum dolor sit amet',
-                'tipo' => 'Lorem ipsum dolor sit amet',
                 'logradouro' => 'Lorem ipsum dolor sit amet',
                 'numero' => 'Lorem ipsum dolor sit amet',
                 'complemento' => 'Lorem ipsum dolor sit amet',

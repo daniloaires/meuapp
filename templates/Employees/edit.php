@@ -26,8 +26,6 @@ use App\Model\Entity\Employee;
             <fieldset>
                 <legend><?= __('Alterar Colaborador') ?></legend>
                 <div class="form-group">
-                    <?= $this->Form->hidden('id', ['value' => $employee->id]) ?>
-
                     <?= $this->Form->control('nome', [
                         'class' => 'form-control',
                         'label' => 'Nome',
