@@ -25,6 +25,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
  * @property \Cake\I18n\FrozenTime|null $deleted
+ *
+ * @property \App\Model\Entity\AddressesPeople[] $addresses_peoples
  */
 class People extends Entity
 {
@@ -58,5 +60,6 @@ class People extends Entity
         'created' => true,
         'modified' => true,
         'deleted' => true,
+        'addresses_peoples' => true,
     ];
 }
