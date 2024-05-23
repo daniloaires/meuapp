@@ -37,7 +37,7 @@ class EmployeesController extends AppController
     public function view($id = null)
     {
         $employee = $this->Employees->get($id, [
-            'contain' => ['Sectors'],
+            'contain' => ['Sectors', 'AddressesEmployees'],
         ]);
 
         $this->set(compact('employee'));
@@ -62,8 +62,9 @@ class EmployeesController extends AppController
     public function edit($id = null)
     {
         $employee = $this->Employees->get($id, [
-            'contain' => [],
+            'contain' => ['AddressesEmployees'],
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $employee = $this->Employees->patchEntity($employee, $this->request->getData());
             if ($this->Employees->save($employee)) {
