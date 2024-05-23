@@ -6,7 +6,7 @@ jQuery(function() {
     $('.cnpj').inputmask('99.999.999/9999-99', { clearIncomplete: true });
 
     // Aplicar máscara ao campo CEP
-    $('.cep').mask('00000-000');
+    $('.cep').inputmask('99999-999', { clearIncomplete: true });
 
     // Função para buscar endereço a partir do CEP
     $('.cep').on('blur', function() {

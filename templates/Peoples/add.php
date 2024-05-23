@@ -88,10 +88,11 @@ use App\Model\Entity\People;
                     <div class="col-md-4">
                         <?= $this->Form->control('inscricao_estadual', [
                             'class' => 'form-control',
-                            'label' => 'Inscrição estadual',
+                            'label' => 'Inscrição Estadual',
                             'placeholder' => 'Informe a Inscrição estadual',
                         ]) ?>
                     </div>
+                    <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <?= $this->Form->control('telefone_celular', [
                             'class' => 'form-control cel',
