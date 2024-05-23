@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Employees Model
  *
  * @property \App\Model\Table\SectorsTable&\Cake\ORM\Association\BelongsTo $Sectors
+ * @property \App\Model\Table\AddressesEmployeesTable&\Cake\ORM\Association\HasMany $AddressesEmployees
  *
  * @method \App\Model\Entity\Employee newEmptyEntity()
  * @method \App\Model\Entity\Employee newEntity(array $data, array $options = [])

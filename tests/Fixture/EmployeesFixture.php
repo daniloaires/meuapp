@@ -33,9 +33,9 @@ class EmployeesFixture extends TestFixture
                 'modalidade_contrato' => 1,
                 'remuneracao' => 1,
                 'obs' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2024-05-23 18:16:42',
-                'modified' => '2024-05-23 18:16:42',
-                'deleted' => '2024-05-23 18:16:42',
+                'created' => '2024-05-23 19:08:02',
+                'modified' => '2024-05-23 19:08:02',
+                'deleted' => '2024-05-23 19:08:02',
             ],
         ];
         parent::init();
