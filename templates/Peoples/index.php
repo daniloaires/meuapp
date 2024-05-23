@@ -12,7 +12,7 @@ use App\Model\Entity\People;
 <?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
 
 <div class="peoples index content">
-    <?= $this->Html->link(__('Nova Pessoa'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Nova Pessoa'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
     <h3><?= __('Listar Pessoas') ?></h3>
 
     <!-- Search Form -->
