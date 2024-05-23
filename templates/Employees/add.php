@@ -19,7 +19,7 @@ use App\Model\Entity\People;
                 <div class="row">
                     <div class="col-md-4">
                         <?= $this->Form->control('cpf', [
-                            'class' => 'form-control',
+                            'class' => 'form-control cpf',
                             'label' => 'CPF',
                             'placeholder' => 'Informe o CPF',
                         ]) ?>
@@ -211,3 +211,10 @@ use App\Model\Entity\People;
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
+<!-- inputMask -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
+<!-- paginaAtual -->
+<?= $this->Html->script('peoples/add') ?>

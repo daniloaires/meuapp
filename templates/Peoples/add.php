@@ -88,7 +88,7 @@ use App\Model\Entity\People;
                     <div class="col-md-4">
                         <?= $this->Form->control('inscricao_estadual', [
                             'class' => 'form-control',
-                            'label' => 'Inscrição Estadual',
+                            'label' => 'Inscrição estadual',
                             'placeholder' => 'Informe a Inscrição estadual',
                         ]) ?>
                     </div>
