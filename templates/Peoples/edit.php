@@ -107,14 +107,59 @@ use App\Model\Entity\People;
                     </div>
 
                     <div class="col-md-4">
-                        <?= $this->Form->hidden('addresses_peoples.id', ['value' => $people->AddressesPeoples->id]) ?>
-                        <?= $this->Form->control('addresses_peoples.cep', [
+                        <?= $this->Form->hidden('addresses_peoples.0.id', [
+                            'value' => $people->AddressesPeoples->id
+                        ]) ?>
+                        <?= $this->Form->control('addresses_peoples.0.cep', [
                             'class' => 'form-control cep',
                             'label' => 'CEP',
                             'placeholder' => 'Informe o CEP',
                         ]) ?>
                     </div>
-
+                    <div class="col-md-8">
+                        <?= $this->Form->control('addresses_peoples.0.logradouro', [
+                            'class' => 'form-control',
+                            'label' => 'Logradouro',
+                            'placeholder' => 'Informe o Logradouro',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-3">
+                        <?= $this->Form->control('addresses_peoples.0.numero', [
+                            'class' => 'form-control',
+                            'label' => 'Número',
+                            'placeholder' => 'Informe o Número',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-3">
+                        <?= $this->Form->control('addresses_peoples.0.complemento', [
+                            'class' => 'form-control',
+                            'label' => 'Complemento',
+                            'placeholder' => 'Informe o Complemento',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-6">
+                        <?= $this->Form->control('addresses_peoples.0.bairro', [
+                            'class' => 'form-control',
+                            'label' => 'Bairro',
+                            'placeholder' => 'Informe o Bairro',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-8">
+                        <?= $this->Form->control('addresses_peoples.0.cidade', [
+                            'class' => 'form-control',
+                            'label' => 'Cidade',
+                            'placeholder' => 'Informe a Cidade',
+                        ]) ?>
+                    </div>                    
+                    <div class="col-md-4">
+                        <?= $this->Form->control('addresses_peoples.0.uf', [
+                            'class' => 'form-control',
+                            'type' => 'select',
+                            'label' => 'Estado',
+                            'empty' => 'Selecione',
+                            'options' => People::LIST_ESTADOS_STR,
+                        ]) ?>
+                    </div>
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Alterar'), ['class' => 'btn btn-primary']) ?>

@@ -99,7 +99,6 @@ use App\Model\Entity\People;
                             'placeholder' => 'Informe o telefone comercial',
                         ]) ?>
                     </div>
-
                     <div class="col-md-4">
                         <?= $this->Form->control('addresses_peoples.0.cep', [
                             'class' => 'form-control cep',
@@ -107,31 +106,27 @@ use App\Model\Entity\People;
                             'placeholder' => 'Informe o CEP',
                         ]) ?>
                     </div>
-
                     <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.0.logradouro', [
                             'class' => 'form-control',
                             'label' => 'Logradouro',
                             'placeholder' => 'Informe o Logradouro',
                         ]) ?>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.0.numero', [
                             'class' => 'form-control',
                             'label' => 'Número',
                             'placeholder' => 'Informe o Número',
                         ]) ?>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-md-3">
                         <?= $this->Form->control('addresses_peoples.0.complemento', [
                             'class' => 'form-control',
                             'label' => 'Complemento',
                             'placeholder' => 'Informe o Complemento',
                         ]) ?>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-md-6">
                         <?= $this->Form->control('addresses_peoples.0.bairro', [
                             'class' => 'form-control',
@@ -139,15 +134,13 @@ use App\Model\Entity\People;
                             'placeholder' => 'Informe o Bairro',
                         ]) ?>
                     </div>
-
                     <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.0.cidade', [
                             'class' => 'form-control',
                             'label' => 'Cidade',
                             'placeholder' => 'Informe a Cidade',
                         ]) ?>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-md-4">
                         <?= $this->Form->control('addresses_peoples.0.uf', [
                             'class' => 'form-control',
@@ -156,8 +149,7 @@ use App\Model\Entity\People;
                             'empty' => 'Selecione',
                             'options' => People::LIST_ESTADOS_STR,
                         ]) ?>
-                    </div>
-                    
+                    </div>                    
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-primary']) ?>
