@@ -50,6 +50,9 @@ class EmployeesTable extends Table
         $this->belongsTo('Sectors', [
             'foreignKey' => 'sector_id',
         ]);
+        $this->hasMany('AddressesEmployees', [
+            'foreignKey' => 'employee_id',
+        ]);
     }
 
     /**

@@ -27,7 +27,7 @@ class EmployeesController extends AppController
         }
     
         $employees = $this->Paginator->paginate($this->Employees->find('all', [
-            'contain' => 'Sectors',
+            'contain' => ['Sectors', 'AddressesEmployees'],
             'conditions' => $conditions,
         ]));
     
