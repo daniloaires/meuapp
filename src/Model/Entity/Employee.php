@@ -5,29 +5,6 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-/**
- * Employee Entity
- *
- * @property int $id
- * @property string $nome
- * @property string $cpf
- * @property string $rg
- * @property int|null $estado_civil
- * @property int|null $qtde_filhos
- * @property int|null $sexo
- * @property int|null $nacionalidade
- * @property \Cake\I18n\FrozenDate|null $dt_nascimento
- * @property string|null $funcao
- * @property int|null $sector_id
- * @property int|null $modalidade_contrato
- * @property float|null $remuneracao
- * @property string|null $obs
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime|null $modified
- * @property \Cake\I18n\FrozenTime|null $deleted
- *
- * @property \App\Model\Entity\Sector $sector
- */
 class Employee extends Entity
 {
     const ESTADO_CIVIL_SOLTEIRO = 1;
