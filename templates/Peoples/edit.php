@@ -117,7 +117,7 @@ use App\Model\Entity\People;
                     </div>
                     <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.0.logradouro', [
-                            'class' => 'form-control',
+                            'class' => 'form-control logradouro',
                             'label' => 'Logradouro',
                             'placeholder' => 'Informe o Logradouro',
                         ]) ?>
@@ -138,21 +138,21 @@ use App\Model\Entity\People;
                     </div>                    
                     <div class="col-md-6">
                         <?= $this->Form->control('addresses_peoples.0.bairro', [
-                            'class' => 'form-control',
+                            'class' => 'form-control bairro',
                             'label' => 'Bairro',
                             'placeholder' => 'Informe o Bairro',
                         ]) ?>
                     </div>
                     <div class="col-md-8">
                         <?= $this->Form->control('addresses_peoples.0.cidade', [
-                            'class' => 'form-control',
+                            'class' => 'form-control cidade',
                             'label' => 'Cidade',
                             'placeholder' => 'Informe a Cidade',
                         ]) ?>
                     </div>                    
                     <div class="col-md-4">
                         <?= $this->Form->control('addresses_peoples.0.uf', [
-                            'class' => 'form-control',
+                            'class' => 'form-control uf',
                             'type' => 'select',
                             'label' => 'Estado',
                             'empty' => 'Selecione',
