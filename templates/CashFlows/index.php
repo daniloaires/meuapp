@@ -74,36 +74,40 @@ use App\Model\Entity\CashFlow;
             </thead>
             <tbody>
                 <?php foreach ($cashFlows as $cashFlow): ?>
-                <tr>
-                    <td class='nowrap'><?= $this->Number->format($cashFlow->id) ?></td>
-                    <td class='nowrap'><?= h($cashFlow->descricao) ?></td>
-                    <td class='nowrap'><?= $this->Number->format($cashFlow->valor) ?></td>
-                    <td class='nowrap'><?= $this->Number->format($cashFlow->tipo) ?></td>
-                    <td class='nowrap'><?= $this->Number->format($cashFlow->forma_pagto) ?></td>
-                    <td class='nowrap'><?= h($cashFlow->data) ?></td>
-                    <td class='nowrap'><?= h($cashFlow->created) ?></td>
-                    <td class='nowrap'><?= h($cashFlow->modified) ?></td>
-                    <td class='nowrap'><?= h($cashFlow->deleted) ?></td>
-                    <td class="actions nowrap">
-                        <?= $this->Html->link(
-                            '<i class="ti-eye"></i> ', 
-                            ['action' => 'view', $cashFlow->id],
-                            ['escape' => false] 
-                        ) ?>
-                    
-                        <?= $this->Html->link(
-                            '<i class="ti-pencil"></i> ', 
-                            ['action' => 'edit', $cashFlow->id],
-                            ['escape' => false] 
-                        ) ?>
+                    <?php 
+                        // Definir a cor com base no valor do campo "tipo"
+                        $cor = ($cashFlow->tipo == 1) ? 'text-danger' : (($cashFlow->tipo == 2) ? 'text-primary' : '');
+                    ?>
+                    <tr>
+                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->id) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->descricao) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->valor) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->tipo) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->forma_pagto) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->data) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->created) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->modified) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->deleted) ?></td>
+                        <td class="actions nowrap">
+                            <?= $this->Html->link(
+                                '<i class="ti-eye"></i> ', 
+                                ['action' => 'view', $cashFlow->id],
+                                ['escape' => false] 
+                            ) ?>
+                        
+                            <?= $this->Html->link(
+                                '<i class="ti-pencil"></i> ', 
+                                ['action' => 'edit', $cashFlow->id],
+                                ['escape' => false] 
+                            ) ?>
 
-                        <?= $this->Form->postLink(
-                            '<i class="ti-trash"></i> ',
-                            ['action' => 'delete', $cashFlow->id],
-                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $cashFlow->id), 'escapeTitle' => false, 'escape' => false]
-                        ) ?>
-                    </td>
-                </tr>
+                            <?= $this->Form->postLink(
+                                '<i class="ti-trash"></i> ',
+                                ['action' => 'delete', $cashFlow->id],
+                                ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $cashFlow->id), 'escapeTitle' => false, 'escape' => false]
+                            ) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>

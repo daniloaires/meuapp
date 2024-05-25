@@ -68,16 +68,21 @@ class CashFlowsController extends AppController
         $cashFlow = $this->CashFlows->newEmptyEntity();
         if ($this->request->is('post')) {
             $cashFlow = $this->CashFlows->patchEntity($cashFlow, $this->request->getData());
+            
+            // Limpar o valor antes de salvar
+            $valor = $this->request->getData('valor');
+            $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
+            $cashFlow->valor = $valorLimpo;
+    
             if ($this->CashFlows->save($cashFlow)) {
                 $this->Flash->success(__('The cash flow has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The cash flow could not be saved. Please, try again.'));
         }
         $this->set(compact('cashFlow'));
     }
-
+    
     public function edit($id = null)
     {
         $cashFlow = $this->CashFlows->get($id, [
@@ -85,9 +90,14 @@ class CashFlowsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $cashFlow = $this->CashFlows->patchEntity($cashFlow, $this->request->getData());
+    
+            // Limpar o valor antes de salvar
+            $valor = $this->request->getData('valor');
+            $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
+            $cashFlow->valor = $valorLimpo;
+    
             if ($this->CashFlows->save($cashFlow)) {
                 $this->Flash->success(__('The cash flow has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The cash flow could not be saved. Please, try again.'));
