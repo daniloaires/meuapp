@@ -1,44 +1,95 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\CashFlow> $cashFlows
- */
+
 ?>
+
+<!-- ThemifyIcons -->
+<?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
+
 <div class="cashFlows index content">
-    <?= $this->Html->link(__('New Cash Flow'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Cash Flows') ?></h3>
+    <?= $this->Html->link(__('Nova Entrada/Saída'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
+    <h3><?= __('Fluxo de Caixa') ?></h3>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
+        <fieldset>
+        <legend><?= __('Pesquisar') ?></legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->control('descricao', [
+                        'label' => 'Descrição', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('descricao')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_from', [
+                        'label' => 'Criado a partir de', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_from')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_to', [
+                        'label' => 'Criado até', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_to')
+                    ]) ?>
+                </div>
+
+            </div>
+        </fieldset>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
+        <?= $this->Form->end() ?><br />
+    </div>
+
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('descricao') ?></th>
-                    <th><?= $this->Paginator->sort('valor') ?></th>
-                    <th><?= $this->Paginator->sort('tipo') ?></th>
-                    <th><?= $this->Paginator->sort('forma_pagto') ?></th>
-                    <th><?= $this->Paginator->sort('data') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('deleted') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('valor', 'Valor') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('tipo', 'Tipo') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('forma_pagto', 'Forma de pagamento') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('data', 'Data') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('modified', 'Modificado') ?></th>
+                    <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($cashFlows as $cashFlow): ?>
                 <tr>
-                    <td><?= $this->Number->format($cashFlow->id) ?></td>
-                    <td><?= h($cashFlow->descricao) ?></td>
-                    <td><?= $this->Number->format($cashFlow->valor) ?></td>
-                    <td><?= $this->Number->format($cashFlow->tipo) ?></td>
-                    <td><?= $this->Number->format($cashFlow->forma_pagto) ?></td>
-                    <td><?= h($cashFlow->data) ?></td>
-                    <td><?= h($cashFlow->created) ?></td>
-                    <td><?= h($cashFlow->modified) ?></td>
-                    <td><?= h($cashFlow->deleted) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $cashFlow->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cashFlow->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $cashFlow->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cashFlow->id)]) ?>
+                    <td class='nowrap'><?= $this->Number->format($cashFlow->id) ?></td>
+                    <td class='nowrap'><?= h($cashFlow->descricao) ?></td>
+                    <td class='nowrap'><?= $this->Number->format($cashFlow->valor) ?></td>
+                    <td class='nowrap'><?= $this->Number->format($cashFlow->tipo) ?></td>
+                    <td class='nowrap'><?= $this->Number->format($cashFlow->forma_pagto) ?></td>
+                    <td class='nowrap'><?= h($cashFlow->data) ?></td>
+                    <td class='nowrap'><?= h($cashFlow->created) ?></td>
+                    <td class='nowrap'><?= h($cashFlow->modified) ?></td>
+                    <td class='nowrap'><?= h($cashFlow->deleted) ?></td>
+                    <td class="actions nowrap">
+                        <?= $this->Html->link(
+                            '<i class="ti-eye"></i> ', 
+                            ['action' => 'view', $cashFlow->id],
+                            ['escape' => false] 
+                        ) ?>
+                    
+                        <?= $this->Html->link(
+                            '<i class="ti-pencil"></i> ', 
+                            ['action' => 'edit', $cashFlow->id],
+                            ['escape' => false] 
+                        ) ?>
+
+                        <?= $this->Form->postLink(
+                            '<i class="ti-trash"></i> ',
+                            ['action' => 'delete', $cashFlow->id],
+                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $cashFlow->id), 'escapeTitle' => false, 'escape' => false]
+                        ) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -47,12 +98,12 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
+            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('próximo') . ' >') ?>
+            <?= $this->Paginator->last(__('último') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
 </div>

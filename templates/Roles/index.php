@@ -81,7 +81,6 @@
                             ['action' => 'delete', $role->id],
                             ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $role->id), 'escapeTitle' => false, 'escape' => false]
                         ) ?>
-
                     </td>
                 </tr>
                 <?php endforeach; ?>
