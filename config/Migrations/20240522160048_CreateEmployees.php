@@ -40,12 +40,12 @@ class CreateEmployees extends AbstractMigration
                 'default' => null,
             ])
             ->addColumn('qtde_filhos', 'integer', [
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])
             ->addColumn('sexo', 'integer', [
                 'limit' => 2,
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])
             ->addColumn('telefone_fixo', 'string', [
@@ -65,30 +65,30 @@ class CreateEmployees extends AbstractMigration
             ])            
             ->addColumn('nacionalidade', 'integer', [
                 'limit' => 2, 
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])
             ->addColumn('dt_nascimento', 'date', [
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])
             ->addColumn('funcao', 'string', [
                 'limit' => 255,
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])            
             ->addColumn('sector_id', 'integer', [
                 'limit' => 3,
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])            
             ->addColumn('modalidade_contrato', 'integer', [
                 'limit' => 2,
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])            
             ->addColumn('remuneracao', 'double', [
-                'null' => true,
+                'null' => false,
                 'default' => null,
             ])            
             ->addColumn('obs', 'text', [
