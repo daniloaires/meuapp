@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Entity\CashFlow;
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -15,6 +17,16 @@
         <fieldset>
         <legend><?= __('Pesquisar') ?></legend>
             <div class="row">
+                <div class="col-md-2">
+                    <?= $this->Form->control('tipo', [
+                        'class' => 'form-control',
+                        'type' => 'select',
+                        'label' => 'Tipo',
+                        'empty' => 'Selecione',
+                        'options' => CashFlow::LIST_TIPO_CAIXA_STR,
+                        'value' => $this->request->getQuery('tipo')
+                    ]) ?>
+                </div>                
                 <div class="col-md-6">
                     <?= $this->Form->control('descricao', [
                         'label' => 'Descrição', 
@@ -22,7 +34,7 @@
                         'value' => $this->request->getQuery('descricao')
                     ]) ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $this->Form->control('created_from', [
                         'label' => 'Criado a partir de', 
                         'type' => 'date', 
@@ -30,7 +42,7 @@
                         'value' => $this->request->getQuery('created_from')
                     ]) ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $this->Form->control('created_to', [
                         'label' => 'Criado até', 
                         'type' => 'date', 

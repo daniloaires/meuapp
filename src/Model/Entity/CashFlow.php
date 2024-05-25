@@ -5,30 +5,21 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-/**
- * CashFlow Entity
- *
- * @property int $id
- * @property string $descricao
- * @property float $valor
- * @property int $tipo
- * @property int $forma_pagto
- * @property \Cake\I18n\FrozenDate $data
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime|null $modified
- * @property \Cake\I18n\FrozenTime|null $deleted
- */
 class CashFlow extends Entity
 {
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array<string, bool>
-     */
+    const TIPO_CAIXA_ENTRADA = 1;
+    const TIPO_CAIXA_SAIDA = 2;
+
+    const LIST_TIPO_CAIXA = [
+        self::TIPO_CAIXA_ENTRADA,
+        self::TIPO_CAIXA_SAIDA,
+    ];
+
+    const LIST_TIPO_CAIXA_STR = [
+        self::TIPO_CAIXA_ENTRADA => 'Entrada',
+        self::TIPO_CAIXA_SAIDA => 'Saída',
+    ];    
+
     protected $_accessible = [
         'descricao' => true,
         'valor' => true,

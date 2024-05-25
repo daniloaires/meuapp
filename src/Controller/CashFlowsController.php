@@ -3,40 +3,55 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * CashFlows Controller
- *
- * @property \App\Model\Table\CashFlowsTable $CashFlows
- * @method \App\Model\Entity\CashFlow[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
+use Cake\ORM\TableRegistry;
+
 class CashFlowsController extends AppController
 {
-    public function index()
+    public function initialize(): void
     {
+        parent::initialize();
         $this->loadComponent('Paginator');
-    
-        // Obtenha os parâmetros de pesquisa
-        $descricao = $this->request->getQuery('descricao');
+    }
+
+    public function index() {
+        // Get search parameters
+        $searchTipo = $this->request->getQuery('tipo');
+        $searchNome = $this->request->getQuery('nome');
         $createdFrom = $this->request->getQuery('created_from');
         $createdTo = $this->request->getQuery('created_to');
-    
-        // Configurar condições de busca
+
+        // Set up query conditions
         $conditions = [];
-        if (!empty($descricao)) {
-            $conditions['cashFlows.name LIKE'] = '%' . $descricao . '%';
+        if (!empty($searchNome)) {
+            $conditions['descricao LIKE'] = '%' . $searchNome . '%';
         }
+        if (!empty($searchTipo)) {
+            $conditions['tipo ='] = $searchTipo;
+        }        
         if (!empty($createdFrom)) {
-            $conditions['cashFlows.created >='] = $createdFrom . ' 00:00:00';
+            $conditions['created >='] = $createdFrom;
         }
         if (!empty($createdTo)) {
-            $conditions['cashFlows.created <='] = $createdTo . ' 23:59:59';
+            $conditions['created <='] = $createdTo;
         }
-    
-        $cashFlows = $this->Paginator->paginate($this->cashFlows->find('all', [
-            'conditions' => $conditions,
-        ]));
-    
-        $this->set(compact('cashFlows'));
+
+        // Fetch data with conditions
+        $cashFlowsTable = TableRegistry::getTableLocator()->get('CashFlows');
+        $query = $cashFlowsTable->find('all')
+            ->where($conditions);
+
+        // Get the sum of the 'valor' field
+        $sumQuery = $cashFlowsTable->find();
+        $valorTotal = $sumQuery->select([
+            'total' => $sumQuery->func()->sum('valor')
+        ])
+        ->where($conditions)
+        ->first()
+        ->total;
+
+        $cashFlows = $this->Paginator->paginate($query);
+
+        $this->set(compact('cashFlows', 'valorTotal'));
     }
 
     public function view($id = null)
