@@ -31,9 +31,9 @@ class AccountsPayableReceivableFixture extends TestFixture
                 'tipo' => 1,
                 'vencimento' => '2024-05-25',
                 'status' => 1,
-                'created' => '2024-05-25 14:18:18',
-                'modified' => '2024-05-25 14:18:18',
-                'deleted' => '2024-05-25 14:18:18',
+                'created' => '2024-05-25 18:49:11',
+                'modified' => '2024-05-25 18:49:11',
+                'deleted' => '2024-05-25 18:49:11',
             ],
         ];
         parent::init();

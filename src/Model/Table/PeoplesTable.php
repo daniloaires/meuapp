@@ -88,7 +88,8 @@ class PeoplesTable extends Table
         $validator
             ->scalar('rg')
             ->maxLength('rg', 20)
-            ->allowEmptyString('rg');
+            ->requirePresence('rg', 'create')
+            ->notEmptyString('rg');
 
         $validator
             ->scalar('cpf')

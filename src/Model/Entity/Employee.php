@@ -15,17 +15,17 @@ use Cake\ORM\Entity;
  * @property string|null $email
  * @property string|null $email_sec
  * @property int|null $estado_civil
- * @property int|null $qtde_filhos
- * @property int|null $sexo
+ * @property int $qtde_filhos
+ * @property int $sexo
  * @property string|null $telefone_fixo
  * @property string|null $telefone_celular
  * @property string|null $telefone_comercial
- * @property int|null $nacionalidade
- * @property \Cake\I18n\FrozenDate|null $dt_nascimento
- * @property string|null $funcao
- * @property int|null $sector_id
- * @property int|null $modalidade_contrato
- * @property float|null $remuneracao
+ * @property int $nacionalidade
+ * @property \Cake\I18n\FrozenDate $dt_nascimento
+ * @property string $funcao
+ * @property int $sector_id
+ * @property int $modalidade_contrato
+ * @property float $remuneracao
  * @property string|null $obs
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified

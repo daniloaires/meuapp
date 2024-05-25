@@ -21,9 +21,9 @@ class SectorsFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2024-05-22 16:09:00',
-                'modified' => '2024-05-22 16:09:00',
-                'deleted' => '2024-05-22 16:09:00',
+                'created' => '2024-05-25 18:47:52',
+                'modified' => '2024-05-25 18:47:52',
+                'deleted' => '2024-05-25 18:47:52',
             ],
         ];
         parent::init();

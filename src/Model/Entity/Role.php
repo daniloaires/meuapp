@@ -34,10 +34,4 @@ class Role extends Entity
         'deleted' => true,
         'users' => true,
     ];
-
-    public function parentNode()
-    {
-        return null;
-    }
-
 }

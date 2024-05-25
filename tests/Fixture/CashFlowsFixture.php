@@ -25,9 +25,9 @@ class CashFlowsFixture extends TestFixture
                 'tipo' => 1,
                 'forma_pagto' => 1,
                 'data' => '2024-05-25',
-                'created' => '2024-05-25 14:17:29',
-                'modified' => '2024-05-25 14:17:29',
-                'deleted' => '2024-05-25 14:17:29',
+                'created' => '2024-05-25 18:48:44',
+                'modified' => '2024-05-25 18:48:44',
+                'deleted' => '2024-05-25 18:48:44',
             ],
         ];
         parent::init();

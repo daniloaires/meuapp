@@ -50,6 +50,7 @@ class EmployeesTable extends Table
 
         $this->belongsTo('Sectors', [
             'foreignKey' => 'sector_id',
+            'joinType' => 'INNER',
         ]);
         $this->hasMany('AddressesEmployees', [
             'foreignKey' => 'employee_id',
@@ -97,11 +98,13 @@ class EmployeesTable extends Table
 
         $validator
             ->integer('qtde_filhos')
-            ->allowEmptyString('qtde_filhos');
+            ->requirePresence('qtde_filhos', 'create')
+            ->notEmptyString('qtde_filhos');
 
         $validator
             ->integer('sexo')
-            ->allowEmptyString('sexo');
+            ->requirePresence('sexo', 'create')
+            ->notEmptyString('sexo');
 
         $validator
             ->scalar('telefone_fixo')
@@ -120,28 +123,33 @@ class EmployeesTable extends Table
 
         $validator
             ->integer('nacionalidade')
-            ->allowEmptyString('nacionalidade');
+            ->requirePresence('nacionalidade', 'create')
+            ->notEmptyString('nacionalidade');
 
         $validator
             ->date('dt_nascimento')
-            ->allowEmptyDate('dt_nascimento');
+            ->requirePresence('dt_nascimento', 'create')
+            ->notEmptyDate('dt_nascimento');
 
         $validator
             ->scalar('funcao')
             ->maxLength('funcao', 255)
-            ->allowEmptyString('funcao');
+            ->requirePresence('funcao', 'create')
+            ->notEmptyString('funcao');
 
         $validator
             ->integer('sector_id')
-            ->allowEmptyString('sector_id');
+            ->notEmptyString('sector_id');
 
         $validator
             ->integer('modalidade_contrato')
-            ->allowEmptyString('modalidade_contrato');
+            ->requirePresence('modalidade_contrato', 'create')
+            ->notEmptyString('modalidade_contrato');
 
         $validator
             ->numeric('remuneracao')
-            ->allowEmptyString('remuneracao');
+            ->requirePresence('remuneracao', 'create')
+            ->notEmptyString('remuneracao');
 
         $validator
             ->scalar('obs')
