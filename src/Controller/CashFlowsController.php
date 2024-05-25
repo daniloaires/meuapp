@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\CashFlow;
 use Cake\ORM\TableRegistry;
 
 class CashFlowsController extends AppController
@@ -74,6 +75,11 @@ class CashFlowsController extends AppController
             $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
             $cashFlow->valor = $valorLimpo;
     
+            // Se o tipo do caixa for saída, transformar o valor em negativo
+            if ($cashFlow->tipo == CashFlow::TIPO_CAIXA_SAIDA) {
+                $cashFlow->valor = -$cashFlow->valor;
+            }
+    
             if ($this->CashFlows->save($cashFlow)) {
                 $this->Flash->success(__('The cash flow has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -95,6 +101,11 @@ class CashFlowsController extends AppController
             $valor = $this->request->getData('valor');
             $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
             $cashFlow->valor = $valorLimpo;
+    
+            // Se o tipo do caixa for saída, transformar o valor em negativo
+            if ($cashFlow->tipo == CashFlow::TIPO_CAIXA_SAIDA) {
+                $cashFlow->valor = -$cashFlow->valor;
+            }
     
             if ($this->CashFlows->save($cashFlow)) {
                 $this->Flash->success(__('The cash flow has been saved.'));

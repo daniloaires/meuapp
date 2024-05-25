@@ -76,7 +76,14 @@ use App\Model\Entity\CashFlow;
                 <?php foreach ($cashFlows as $cashFlow): ?>
                     <?php 
                         // Definir a cor com base no valor do campo "tipo"
-                        $cor = ($cashFlow->tipo == 1) ? 'text-danger' : (($cashFlow->tipo == 2) ? 'text-primary' : '');
+                        $cor = '';
+
+                        // Verificar o tipo do caixa e definir a cor correspondente
+                        if ($cashFlow->tipo == CashFlow::TIPO_CAIXA_ENTRADA) {
+                            $cor = 'text-primary'; // Azul para entrada
+                        } elseif ($cashFlow->tipo == CashFlow::TIPO_CAIXA_SAIDA) {
+                            $cor = 'text-danger'; // Vermelho para saída
+                        }
                     ?>
                     <tr>
                         <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->id) ?></td>
@@ -87,7 +94,6 @@ use App\Model\Entity\CashFlow;
                         <td class='nowrap <?= $cor ?>'><?= h($cashFlow->data) ?></td>
                         <td class='nowrap <?= $cor ?>'><?= h($cashFlow->created) ?></td>
                         <td class='nowrap <?= $cor ?>'><?= h($cashFlow->modified) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->deleted) ?></td>
                         <td class="actions nowrap">
                             <?= $this->Html->link(
                                 '<i class="ti-eye"></i> ', 
@@ -112,6 +118,11 @@ use App\Model\Entity\CashFlow;
             </tbody>
         </table>
     </div>
+
+    <div class="sum-container float-right">
+        <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
+    </div>    
+            
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
@@ -122,7 +133,5 @@ use App\Model\Entity\CashFlow;
         </ul>
         <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
-    <div class="sum-container float-right">
-        <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
-    </div>    
+
 </div>
