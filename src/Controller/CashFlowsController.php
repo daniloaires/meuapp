@@ -11,25 +11,34 @@ namespace App\Controller;
  */
 class CashFlowsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
-        $cashFlows = $this->paginate($this->CashFlows);
-
+        $this->loadComponent('Paginator');
+    
+        // Obtenha os parâmetros de pesquisa
+        $descricao = $this->request->getQuery('descricao');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+    
+        // Configurar condições de busca
+        $conditions = [];
+        if (!empty($descricao)) {
+            $conditions['cashFlows.name LIKE'] = '%' . $descricao . '%';
+        }
+        if (!empty($createdFrom)) {
+            $conditions['cashFlows.created >='] = $createdFrom . ' 00:00:00';
+        }
+        if (!empty($createdTo)) {
+            $conditions['cashFlows.created <='] = $createdTo . ' 23:59:59';
+        }
+    
+        $cashFlows = $this->Paginator->paginate($this->cashFlows->find('all', [
+            'conditions' => $conditions,
+        ]));
+    
         $this->set(compact('cashFlows'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Cash Flow id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $cashFlow = $this->CashFlows->get($id, [
@@ -39,11 +48,6 @@ class CashFlowsController extends AppController
         $this->set(compact('cashFlow'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $cashFlow = $this->CashFlows->newEmptyEntity();
@@ -59,13 +63,6 @@ class CashFlowsController extends AppController
         $this->set(compact('cashFlow'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Cash Flow id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $cashFlow = $this->CashFlows->get($id, [
@@ -83,13 +80,6 @@ class CashFlowsController extends AppController
         $this->set(compact('cashFlow'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Cash Flow id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
