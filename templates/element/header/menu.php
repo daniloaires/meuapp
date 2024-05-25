@@ -7,9 +7,9 @@
         Cadastro
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <?= $this->Html->link(__('Pessoas'), '/peoples', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link(__('Setores'), '/sectors', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link(__('Colaboradores'), '/employees', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Pessoas'), '/Peoples', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Setores'), '/Sectors', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Colaboradores'), '/Employees', ['class' => 'dropdown-item']) ?>
       </div>
     </li>      
 
@@ -19,8 +19,8 @@
         Financeiro
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <?= $this->Html->link(__('Contas a pagar/receber'), '#', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link(__('Fluxo de Caixa'), '#', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Contas a pagar/receber'), '/AccountsPayableReceivable', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Fluxo de Caixa'), '/CashFlows', ['class' => 'dropdown-item']) ?>
       </div>
     </li>        
 
@@ -30,8 +30,8 @@
         Configurações
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <?= $this->Html->link(__('Grupos'), '/roles', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link(__('Usuários'), '/users', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Grupos'), '/Roles', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Usuários'), '/Users', ['class' => 'dropdown-item']) ?>
       </div>
     </li>    
 
