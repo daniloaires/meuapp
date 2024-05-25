@@ -141,8 +141,9 @@ use App\Model\Entity\People;
                     </div>
                     <div class="col-md-4">
                         <?= $this->Form->control('remuneracao', [
-                            'class' => 'form-control',
+                            'class' => 'form-control dinheiro',
                             'label' => 'Remuneração',
+                            'type' => 'text',
                             'placeholder' => 'Informe o salário',
                         ]) ?>
                     </div>
@@ -206,7 +207,7 @@ use App\Model\Entity\People;
                     </div>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>
@@ -214,7 +215,9 @@ use App\Model\Entity\People;
 
 <!-- jQuery -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
+<!-- maskMoney -->
+<?= $this->Html->script('../js/maskmoney.min.js') ?>
 <!-- inputMask -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
 <!-- paginaAtual -->
-<?= $this->Html->script('peoples/add') ?>
+<?= $this->Html->script('employees/add') ?>

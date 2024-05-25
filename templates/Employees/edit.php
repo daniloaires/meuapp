@@ -214,7 +214,7 @@ use App\Model\Entity\People;
                     </div>                
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Alterar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Alterar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>
@@ -225,4 +225,4 @@ use App\Model\Entity\People;
 <!-- inputMask -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
 <!-- paginaAtual -->
-<?= $this->Html->script('peoples/edit') ?>
+<?= $this->Html->script('employees/edit') ?>

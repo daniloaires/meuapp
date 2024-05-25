@@ -5,6 +5,17 @@ jQuery(function() {
     $('.cpf').inputmask('999.999.999-99', { clearIncomplete: true });
     $('.cep').inputmask('99999-999', { clearIncomplete: true });
 
+    // Defina o valor inicial do campo de entrada como vazio
+    $('.dinheiro').val('');
+    // Aplique a máscara de dinheiro ao campo de entrada
+    $('.dinheiro').maskMoney({
+        prefix: 'R$ ',
+        thousands: '.',
+        decimal: ',',
+        allowZero: true,
+        showSymbol: true
+    });
+
     // Função para buscar endereço a partir do CEP
     $('.cep').on('blur', function() {
         var cep = $(this).val().replace(/\D/g, '');

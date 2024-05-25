@@ -32,7 +32,7 @@
                     ]) ?>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Alterar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Alterar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

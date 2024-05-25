@@ -16,7 +16,7 @@
             <?= $this->Html->link(__('List Cash Flows'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="cashFlows form content">
             <?= $this->Form->create($cashFlow) ?>
             <fieldset>
@@ -30,8 +30,17 @@
                     echo $this->Form->control('deleted', ['empty' => true]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
+<!-- maskMoney -->
+<?= $this->Html->script('../js/maskmoney.min.js') ?>
+<!-- inputMask -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
+<!-- paginaAtual -->
+<?= $this->Html->script('cashflows/edit') ?>

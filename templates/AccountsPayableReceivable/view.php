@@ -14,7 +14,7 @@
             <?= $this->Html->link(__('New Accounts Payable Receivable'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="accountsPayableReceivable view content">
             <h3><?= h($accountsPayableReceivable->descricao) ?></h3>
             <table>

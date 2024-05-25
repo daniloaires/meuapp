@@ -1,12 +1,8 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\People $people
- */
 
 use App\Model\Entity\People;
-
 ?>
+
 <div class="row">
     <aside class="col-md-3">
         <div class="bg-light p-3 rounded">
@@ -167,7 +163,7 @@ use App\Model\Entity\People;
                     </div>                    
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>

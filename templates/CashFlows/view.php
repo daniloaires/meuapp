@@ -14,7 +14,7 @@
             <?= $this->Html->link(__('New Cash Flow'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="cashFlows view content">
             <h3><?= h($cashFlow->descricao) ?></h3>
             <table>

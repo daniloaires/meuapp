@@ -53,7 +53,7 @@
                     ]) ?>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>
@@ -64,4 +64,4 @@
 <!-- inputMask -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
 <!-- paginaAtual -->
-<?= $this->Html->script('peoples/add') ?>
+<?= $this->Html->script('users/add') ?>

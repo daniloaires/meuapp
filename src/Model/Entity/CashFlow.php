@@ -20,6 +20,22 @@ class CashFlow extends Entity
         self::TIPO_CAIXA_SAIDA => 'Saída',
     ];    
 
+    const FORMA_PAGTO_DINHEIRO = 1;
+    const FORMA_PAGTO_CARTAO = 2;
+    const FORMA_PAGTO_PIX = 3;
+
+    const LIST_FORMA_PAGTO = [
+        self::FORMA_PAGTO_DINHEIRO, 
+        self::FORMA_PAGTO_CARTAO, 
+        self::FORMA_PAGTO_PIX, 
+    ];
+
+    const LIST_FORMA_PAGTO_STR = [
+        self::FORMA_PAGTO_DINHEIRO => 'Dinheiro', 
+        self::FORMA_PAGTO_CARTAO => 'Cartão', 
+        self::FORMA_PAGTO_PIX => 'Pix', 
+    ];        
+
     protected $_accessible = [
         'descricao' => true,
         'valor' => true,

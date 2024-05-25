@@ -11,7 +11,7 @@
             <?= $this->Html->link(__('List Accounts Payable Receivable'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="accountsPayableReceivable form content">
             <?= $this->Form->create($accountsPayableReceivable) ?>
             <fieldset>
@@ -25,7 +25,7 @@
                     echo $this->Form->control('deleted', ['empty' => true]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

@@ -161,7 +161,7 @@ use App\Model\Entity\People;
                     </div>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Alterar'), ['class' => 'btn btn-success']) ?>
+            <?= $this->Form->button(__('Alterar Dados'), ['class' => 'btn btn-success float-right']) ?>
             <?= $this->Form->end() ?><br />
         </div>
     </div>
