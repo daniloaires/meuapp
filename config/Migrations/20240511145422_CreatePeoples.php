@@ -37,7 +37,7 @@ class CreatePeoples extends AbstractMigration
             ->addColumn('rg', 'string', [
                 'limit' => 20,
                 'default' => null,
-                'null' => false,
+                'null' => true,
             ])
             ->addColumn('cpf', 'string', [
                 'limit' => 20,

@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property string|null $email
  * @property string|null $email_sec
  * @property string|null $email_terc
- * @property string $rg
+ * @property string|null $rg
  * @property string|null $cpf
  * @property string|null $cnpj
  * @property string|null $inscricao_municipal
