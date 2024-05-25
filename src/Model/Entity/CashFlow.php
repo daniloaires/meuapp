@@ -5,19 +5,6 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-/**
- * CashFlow Entity
- *
- * @property int $id
- * @property string $descricao
- * @property float $valor
- * @property int $tipo
- * @property int $forma_pagto
- * @property \Cake\I18n\FrozenDate $data
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime|null $modified
- * @property \Cake\I18n\FrozenTime|null $deleted
- */
 class CashFlow extends Entity
 {
     const TIPO_CAIXA_ENTRADA = 1;

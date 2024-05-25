@@ -5,30 +5,21 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-/**
- * PayRecAccount Entity
- *
- * @property int $id
- * @property string $descricao
- * @property float $valor
- * @property int $tipo
- * @property \Cake\I18n\FrozenDate $vencimento
- * @property int $status
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime|null $modified
- * @property \Cake\I18n\FrozenTime|null $deleted
- */
 class PayRecAccount extends Entity
 {
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array<string, bool>
-     */
+    const CONTA_PAGAR = 1;
+    const CONTA_RECEBER = 2;
+
+    const LIST_TIPO_CONTA = [
+        self::CONTA_PAGAR,
+        self::CONTA_RECEBER,
+    ];
+
+    const LIST_TIPO_CONTA_STR = [
+        self::CONTA_PAGAR => 'A Pagar',
+        self::CONTA_RECEBER => 'A Receber',
+    ];
+
     protected $_accessible = [
         'descricao' => true,
         'valor' => true,

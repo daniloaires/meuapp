@@ -19,7 +19,7 @@
         Financeiro
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <?= $this->Html->link(__('Contas a pagar/receber'), '/AccountsPayableReceivable', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Contas a pagar/receber'), '/PayRecAccounts', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link(__('Fluxo de Caixa'), '/CashFlows', ['class' => 'dropdown-item']) ?>
       </div>
     </li>        
