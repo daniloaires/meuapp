@@ -23,10 +23,12 @@ class CreateAccountsPayableReceivable extends AbstractMigration
         ]);
         $table->addColumn('vencimento', 'date', [
             'null' => false,
+            'default' => null,
         ]);
         $table->addColumn('status', 'integer', [
             'limit' => 2,
             'null' => false,
+            'default' => null,
         ])
         ->addColumn('created', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
