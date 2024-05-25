@@ -25,9 +25,9 @@ class PayRecAccountsFixture extends TestFixture
                 'tipo' => 1,
                 'vencimento' => '2024-05-25',
                 'status' => 1,
-                'created' => '2024-05-25 19:27:40',
-                'modified' => '2024-05-25 19:27:40',
-                'deleted' => '2024-05-25 19:27:40',
+                'created' => '2024-05-25 19:28:22',
+                'modified' => '2024-05-25 19:28:22',
+                'deleted' => '2024-05-25 19:28:22',
             ],
         ];
         parent::init();
