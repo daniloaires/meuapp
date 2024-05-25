@@ -22,7 +22,7 @@ use App\Model\Entity\CashFlow;
                         'class' => 'form-control',
                         'type' => 'select',
                         'label' => 'Tipo',
-                        'empty' => 'Selecione',
+                        'empty' => 'Todos',
                         'options' => CashFlow::LIST_TIPO_CAIXA_STR,
                         'value' => $this->request->getQuery('tipo')
                     ]) ?>
@@ -54,7 +54,7 @@ use App\Model\Entity\CashFlow;
             </div>
         </fieldset>
         <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
-        <?= $this->Form->end() ?><br /></br />
+        <?= $this->Form->end() ?><hr />
     </div>
 
     <div class="table-responsive">
@@ -62,13 +62,11 @@ use App\Model\Entity\CashFlow;
             <thead>
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('data', 'Data') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('valor', 'Valor') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('tipo', 'Tipo') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('forma_pagto', 'Forma de pagamento') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('data', 'Data') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('forma_pagto', 'Pago em') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('modified', 'Modificado') ?></th>
                     <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
@@ -77,23 +75,17 @@ use App\Model\Entity\CashFlow;
                     <?php 
                         // Definir a cor com base no valor do campo "tipo"
                         $cor = '';
-
-                        // Verificar o tipo do caixa e definir a cor correspondente
-                        if ($cashFlow->tipo == CashFlow::TIPO_CAIXA_ENTRADA) {
-                            $cor = 'text-primary'; // Azul para entrada
-                        } elseif ($cashFlow->tipo == CashFlow::TIPO_CAIXA_SAIDA) {
+                        if ($cashFlow->tipo == CashFlow::TIPO_CAIXA_SAIDA) {
                             $cor = 'text-danger'; // Vermelho para saída
                         }
                     ?>
                     <tr>
                         <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->id) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->data->format('d/m/Y')) ?></td>
                         <td class='nowrap <?= $cor ?>'><?= h($cashFlow->descricao) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->valor) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->tipo) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= $this->Number->format($cashFlow->forma_pagto) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->data) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->created) ?></td>
-                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->modified) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= $cashFlow->valor === null ? '' : $this->Number->currency($cashFlow->valor, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= CashFlow::LIST_FORMA_PAGTO_STR[$cashFlow->forma_pagto] ?></td>
+                        <td class='nowrap <?= $cor ?>'><?= h($cashFlow->created->format('d/m/Y H:i:s')) ?></td>
                         <td class="actions nowrap">
                             <?= $this->Html->link(
                                 '<i class="ti-eye"></i> ', 
@@ -121,8 +113,8 @@ use App\Model\Entity\CashFlow;
 
     <div class="sum-container float-right">
         <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
-    </div>    
-            
+    </div>        
+
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
@@ -133,5 +125,7 @@ use App\Model\Entity\CashFlow;
         </ul>
         <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
+
+    <div style="clear:both;"></div>    
 
 </div>
