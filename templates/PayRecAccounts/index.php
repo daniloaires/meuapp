@@ -1,12 +1,12 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\AccountsPayableReceivable> $accountsPayableReceivable
+ * @var iterable<\App\Model\Entity\PayRecAccount> $payRecAccounts
  */
 ?>
-<div class="accountsPayableReceivable index content">
-    <?= $this->Html->link(__('New Accounts Payable Receivable'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Accounts Payable Receivable') ?></h3>
+<div class="payRecAccounts index content">
+    <?= $this->Html->link(__('New Pay Rec Account'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Pay Rec Accounts') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
@@ -24,21 +24,21 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($accountsPayableReceivable as $accountsPayableReceivable): ?>
+                <?php foreach ($payRecAccounts as $payRecAccount): ?>
                 <tr>
-                    <td><?= $this->Number->format($accountsPayableReceivable->id) ?></td>
-                    <td><?= h($accountsPayableReceivable->descricao) ?></td>
-                    <td><?= $this->Number->format($accountsPayableReceivable->valor) ?></td>
-                    <td><?= $this->Number->format($accountsPayableReceivable->tipo) ?></td>
-                    <td><?= h($accountsPayableReceivable->vencimento) ?></td>
-                    <td><?= $this->Number->format($accountsPayableReceivable->status) ?></td>
-                    <td><?= h($accountsPayableReceivable->created) ?></td>
-                    <td><?= h($accountsPayableReceivable->modified) ?></td>
-                    <td><?= h($accountsPayableReceivable->deleted) ?></td>
+                    <td><?= $this->Number->format($payRecAccount->id) ?></td>
+                    <td><?= h($payRecAccount->descricao) ?></td>
+                    <td><?= $this->Number->format($payRecAccount->valor) ?></td>
+                    <td><?= $this->Number->format($payRecAccount->tipo) ?></td>
+                    <td><?= h($payRecAccount->vencimento) ?></td>
+                    <td><?= $this->Number->format($payRecAccount->status) ?></td>
+                    <td><?= h($payRecAccount->created) ?></td>
+                    <td><?= h($payRecAccount->modified) ?></td>
+                    <td><?= h($payRecAccount->deleted) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $accountsPayableReceivable->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $accountsPayableReceivable->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $accountsPayableReceivable->id], ['confirm' => __('Are you sure you want to delete # {0}?', $accountsPayableReceivable->id)]) ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $payRecAccount->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $payRecAccount->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $payRecAccount->id], ['confirm' => __('Are you sure you want to delete # {0}?', $payRecAccount->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

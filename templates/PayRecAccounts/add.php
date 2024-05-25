@@ -1,21 +1,21 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\AccountsPayableReceivable $accountsPayableReceivable
+ * @var \App\Model\Entity\PayRecAccount $payRecAccount
  */
 ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Accounts Payable Receivable'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Pay Rec Accounts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
-    <div class="col-md-9">
-        <div class="accountsPayableReceivable form content">
-            <?= $this->Form->create($accountsPayableReceivable) ?>
+    <div class="column-responsive column-80">
+        <div class="payRecAccounts form content">
+            <?= $this->Form->create($payRecAccount) ?>
             <fieldset>
-                <legend><?= __('Add Accounts Payable Receivable') ?></legend>
+                <legend><?= __('Add Pay Rec Account') ?></legend>
                 <?php
                     echo $this->Form->control('descricao');
                     echo $this->Form->control('valor');
@@ -25,8 +25,8 @@
                     echo $this->Form->control('deleted', ['empty' => true]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
-            <?= $this->Form->end() ?></br /></br />
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * AccountsPayableReceivable Entity
+ * PayRecAccount Entity
  *
  * @property int $id
  * @property string $descricao
@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $modified
  * @property \Cake\I18n\FrozenTime|null $deleted
  */
-class AccountsPayableReceivable extends Entity
+class PayRecAccount extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

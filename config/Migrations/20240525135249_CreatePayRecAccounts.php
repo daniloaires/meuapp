@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class CreateAccountsPayableReceivable extends AbstractMigration
+class CreatePayRecAccounts extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('accounts_payable_receivable');
+        $table = $this->table('pay_rec_accounts');
         $table->addColumn('descricao', 'string', [
             'limit' => 255,
             'null' => false,

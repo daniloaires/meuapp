@@ -9,25 +9,25 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * AccountsPayableReceivable Model
+ * PayRecAccounts Model
  *
- * @method \App\Model\Entity\AccountsPayableReceivable newEmptyEntity()
- * @method \App\Model\Entity\AccountsPayableReceivable newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable get($primaryKey, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\AccountsPayableReceivable[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\PayRecAccount newEmptyEntity()
+ * @method \App\Model\Entity\PayRecAccount newEntity(array $data, array $options = [])
+ * @method \App\Model\Entity\PayRecAccount[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\PayRecAccount get($primaryKey, $options = [])
+ * @method \App\Model\Entity\PayRecAccount findOrCreate($search, ?callable $callback = null, $options = [])
+ * @method \App\Model\Entity\PayRecAccount patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\PayRecAccount[] patchEntities(iterable $entities, array $data, array $options = [])
+ * @method \App\Model\Entity\PayRecAccount|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\PayRecAccount saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\PayRecAccount[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\PayRecAccount[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\PayRecAccount[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\PayRecAccount[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class AccountsPayableReceivableTable extends Table
+class PayRecAccountsTable extends Table
 {
     /**
      * Initialize method
@@ -39,7 +39,7 @@ class AccountsPayableReceivableTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('accounts_payable_receivable');
+        $this->setTable('pay_rec_accounts');
         $this->setDisplayField('descricao');
         $this->setPrimaryKey('id');
 

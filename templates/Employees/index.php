@@ -44,7 +44,7 @@ use App\Model\Entity\Employee;
             </div>
         </fieldset>
         <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
-        <?= $this->Form->end() ?><br /></br />
+        <?= $this->Form->end() ?><hr />
     </div>
 
     <div class="table-responsive">

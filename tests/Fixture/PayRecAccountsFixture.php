@@ -6,16 +6,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * AccountsPayableReceivableFixture
+ * PayRecAccountsFixture
  */
-class AccountsPayableReceivableFixture extends TestFixture
+class PayRecAccountsFixture extends TestFixture
 {
-    /**
-     * Table name
-     *
-     * @var string
-     */
-    public $table = 'accounts_payable_receivable';
     /**
      * Init method
      *
@@ -31,9 +25,9 @@ class AccountsPayableReceivableFixture extends TestFixture
                 'tipo' => 1,
                 'vencimento' => '2024-05-25',
                 'status' => 1,
-                'created' => '2024-05-25 18:49:11',
-                'modified' => '2024-05-25 18:49:11',
-                'deleted' => '2024-05-25 18:49:11',
+                'created' => '2024-05-25 19:26:13',
+                'modified' => '2024-05-25 19:26:13',
+                'deleted' => '2024-05-25 19:26:13',
             ],
         ];
         parent::init();

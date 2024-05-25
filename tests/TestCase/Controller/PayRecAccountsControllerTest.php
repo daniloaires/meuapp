@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ClientesController;
+use App\Controller\PayRecAccountsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\ClientesController Test Case
+ * App\Controller\PayRecAccountsController Test Case
  *
- * @uses \App\Controller\ClientesController
+ * @uses \App\Controller\PayRecAccountsController
  */
-class ClientesControllerTest extends TestCase
+class PayRecAccountsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,14 +22,14 @@ class ClientesControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Clientes',
+        'app.PayRecAccounts',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\ClientesController::index()
+     * @uses \App\Controller\PayRecAccountsController::index()
      */
     public function testIndex(): void
     {
@@ -40,7 +40,7 @@ class ClientesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\ClientesController::view()
+     * @uses \App\Controller\PayRecAccountsController::view()
      */
     public function testView(): void
     {
@@ -51,7 +51,7 @@ class ClientesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\ClientesController::add()
+     * @uses \App\Controller\PayRecAccountsController::add()
      */
     public function testAdd(): void
     {
@@ -62,7 +62,7 @@ class ClientesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\ClientesController::edit()
+     * @uses \App\Controller\PayRecAccountsController::edit()
      */
     public function testEdit(): void
     {
@@ -73,7 +73,7 @@ class ClientesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\ClientesController::delete()
+     * @uses \App\Controller\PayRecAccountsController::delete()
      */
     public function testDelete(): void
     {

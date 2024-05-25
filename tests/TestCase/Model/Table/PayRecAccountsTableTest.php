@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ClientesTable;
+use App\Model\Table\PayRecAccountsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ClientesTable Test Case
+ * App\Model\Table\PayRecAccountsTable Test Case
  */
-class ClientesTableTest extends TestCase
+class PayRecAccountsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ClientesTable
+     * @var \App\Model\Table\PayRecAccountsTable
      */
-    protected $Clientes;
+    protected $PayRecAccounts;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class ClientesTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Clientes',
+        'app.PayRecAccounts',
     ];
 
     /**
@@ -35,8 +35,8 @@ class ClientesTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Clientes') ? [] : ['className' => ClientesTable::class];
-        $this->Clientes = $this->getTableLocator()->get('Clientes', $config);
+        $config = $this->getTableLocator()->exists('PayRecAccounts') ? [] : ['className' => PayRecAccountsTable::class];
+        $this->PayRecAccounts = $this->getTableLocator()->get('PayRecAccounts', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class ClientesTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Clientes);
+        unset($this->PayRecAccounts);
 
         parent::tearDown();
     }
@@ -55,7 +55,7 @@ class ClientesTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\ClientesTable::validationDefault()
+     * @uses \App\Model\Table\PayRecAccountsTable::validationDefault()
      */
     public function testValidationDefault(): void
     {

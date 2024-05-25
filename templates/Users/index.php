@@ -1,8 +1,7 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\User> $users
- */
+
+
+
 ?>
 
 <!-- ThemifyIcons -->
@@ -18,21 +17,21 @@
         <fieldset>
             <legend><?= __('Pesquisar') ?></legend>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-5">
                     <?= $this->Form->control('name', [
                         'label' => 'Nome', 
                         'class' => 'form-control', 
                         'value' => $this->request->getQuery('name')
                     ]) ?>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <?= $this->Form->control('username', [
                         'label' => 'Usuário (login)', 
                         'class' => 'form-control', 
                         'value' => $this->request->getQuery('username')
                     ]) ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $this->Form->control('created_from', [
                         'label' => 'Criado a partir de', 
                         'type' => 'date', 
@@ -40,7 +39,7 @@
                         'value' => $this->request->getQuery('created_from')
                     ]) ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?= $this->Form->control('created_to', [
                         'label' => 'Criado até', 
                         'type' => 'date', 
