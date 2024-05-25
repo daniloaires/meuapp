@@ -26,7 +26,7 @@
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
-            <?= $this->Form->end() ?></br />
+            <?= $this->Form->end() ?></br /></br />
         </div>
     </div>
 </div>

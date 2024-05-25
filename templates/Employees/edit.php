@@ -215,7 +215,7 @@ use App\Model\Entity\People;
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Alterar Dados'), ['class' => 'btn btn-success float-right']) ?>
-            <?= $this->Form->end() ?><br />
+            <?= $this->Form->end() ?><br /></br />
         </div>
     </div>
 </div>

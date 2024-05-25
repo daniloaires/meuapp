@@ -54,7 +54,7 @@ use App\Model\Entity\CashFlow;
             </div>
         </fieldset>
         <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
-        <?= $this->Form->end() ?><br />
+        <?= $this->Form->end() ?><br /></br />
     </div>
 
     <div class="table-responsive">
