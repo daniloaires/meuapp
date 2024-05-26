@@ -47,15 +47,17 @@ use App\Model\Entity\Product;
                             'options' => Product::LIST_UNIDADES_STR,
                         ]) ?>
                     </div> 
-                    <?= $this->Form->control('valor_compra', [
-                        'class' => 'form-control dinheiro',
-                        'type' => 'text',
-                        'label' => 'Valor de compra',
-                        'placeholder' => 'Informe o valor de compra',
-                        'value' => isset($product->valor_compra) ? 
-                        number_format($product->valor_compra, 2, ',', '') 
-                        : '', // Formata o valor com duas casas decimais
-                    ]) ?>
+                    <div class="col-md-3">                    
+                        <?= $this->Form->control('valor_compra', [
+                            'class' => 'form-control dinheiro',
+                            'type' => 'text',
+                            'label' => 'Valor de compra',
+                            'placeholder' => 'Informe o valor de compra',
+                            'value' => isset($product->valor_compra) ? 
+                            number_format($product->valor_compra, 2, ',', '') 
+                            : '', // Formata o valor com duas casas decimais
+                        ]) ?>
+                    </div>                        
                     <div class="col-md-3">
                         <?= $this->Form->control('valor_venda', [
                             'class' => 'form-control dinheiro',
