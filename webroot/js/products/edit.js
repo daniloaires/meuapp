@@ -1,29 +1,51 @@
 jQuery(function() {
 
-    Dropzone.options.myDropzone = {
-        paramName: 'foto', // O nome do parâmetro que será enviado
-        maxFilesize: 2, // Tamanho máximo do arquivo em MB
-        acceptedFiles: 'image/*', // Aceitar apenas imagens
-        init: function() {
-            this.on('success', function(file, response) {
-                console.log('Upload bem-sucedido', response);
-            });
-            this.on('error', function(file, response) {
-                console.log('Erro no upload', response);
-            });
-        }
-    }; 
+    const fileInput = document.getElementById('foto');
+    const maxSize = 2 * 1024 * 1024; // 2MB
 
-    $('.valor').inputmask('currency', { 
-        prefix: 'R$ ', 
-        groupSeparator: '.', 
-        radixPoint: ',', 
-        allowMinus: false,
-        autoGroup: true,
-        digits: 2,
-        digitsOptional: false,
-        rightAlign: false,
-        clearIncomplete: true
-    });    
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+
+        // Verificar o formato do arquivo
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            alert('Formato de arquivo inválido. Por favor, envie uma imagem JPEG, PNG ou GIF.');
+            fileInput.value = ''; // Limpar o input
+            return;
+        }
+
+        // Verificar o tamanho do arquivo
+        if (file.size > maxSize) {
+            alert('O arquivo é muito grande. O tamanho máximo permitido é de 2MB.');
+            fileInput.value = ''; // Limpar o input
+            return;
+        }
+
+        console.log('Arquivo válido. Nome:', file.name, 'Tamanho:', file.size, 'Tipo:', file.type);
+    });
+
+    $('#foto').change(function(event){
+        var file = event.target.files[0];
+        if (file && file.size <= 2 * 1024 * 1024 && file.type.startsWith('image/')) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview').attr('src', e.target.result).show();
+            }
+            reader.readAsDataURL(file);
+        } else {
+            alert('Por favor, selecione uma imagem com tamanho máximo de 2MB.');
+            $('#foto').val('');
+            $('#preview').hide();
+        }
+    });  
+
+    // Aplique a máscara de dinheiro ao campo de entrada
+    $('.dinheiro').maskMoney({
+        prefix: 'R$ ',
+        thousands: '.',
+        decimal: ',',
+        allowZero: true,
+        showSymbol: true
+    });   
             
 });

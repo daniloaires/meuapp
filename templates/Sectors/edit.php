@@ -1,9 +1,9 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Sector $sector
- */
+
+
+
 ?>
+
 <div class="row">
     <aside class="col-md-3">
         <div class="bg-light p-3 rounded">

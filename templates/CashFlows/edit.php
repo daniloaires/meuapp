@@ -46,6 +46,9 @@ use App\Model\Entity\CashFlow;
                             'type' => 'text',
                             'label' => 'Valor',
                             'placeholder' => 'Informe o valor',
+                            'value' => isset($cashFlow->valor) ? 
+                            number_format($cashFlow->valor, 2, ',', '') 
+                            : '', // Formata o valor com duas casas decimais   
                         ]) ?>
                     </div>                    
                     <div class="col-md-3">

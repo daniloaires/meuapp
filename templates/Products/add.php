@@ -4,9 +4,6 @@ use App\Model\Entity\Product;
 
 ?>
 
-<!-- dropZone CSS -->
-<?= $this->Html->css('CakeLte./AdminLTE/plugins/dropzone/min/dropzone.min') ?>
-
 <div class="row">
     <aside class="col-md-3">
         <div class="bg-light p-3 rounded">
@@ -105,7 +102,5 @@ use App\Model\Entity\Product;
 <?= $this->Html->script('../js/maskmoney.min.js') ?>
 <!-- inputMask -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
-<!-- dropZone -->
-<?= $this->Html->script('CakeLte./AdminLTE/plugins/dropzone/min/dropzone.min') ?>
 <!-- paginaAtual -->
 <?= $this->Html->script('products/add') ?>

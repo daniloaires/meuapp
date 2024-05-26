@@ -47,6 +47,9 @@ use App\Model\Entity\PayRecAccount;
                             'label' => 'Valor',
                             'type' => 'text',
                             'placeholder' => 'Informe o valor',
+                            'value' => isset($payRecAccount->valor) ? 
+                            number_format($payRecAccount->valor, 2, ',', '') 
+                            : '', // Formata o valor com duas casas decimais                              
                         ]) ?>
                     </div> 
                     <div class="col-md-3">
