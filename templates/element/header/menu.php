@@ -9,6 +9,7 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <?= $this->Html->link(__('Pessoas'), '/Peoples', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link(__('Setores'), '/Sectors', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Produtos'), '/Products', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link(__('Colaboradores'), '/Employees', ['class' => 'dropdown-item']) ?>
       </div>
     </li>      
