@@ -51,9 +51,45 @@ class ProductsController extends AppController
         $product = $this->Products->newEmptyEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
+    
+            // Processar o upload do arquivo
+            $file = $this->request->getData('foto');
+            if ($file && $file->getError() === UPLOAD_ERR_OK) {
+                // Definir o caminho de destino
+                $uploadPath = WWW_ROOT . 'files' . DS . 'uploads' . DS;
+                
+                // Verificar se o diretório existe, se não, criar
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0775, true);
+                }
+                
+                // Verificar se o diretório é gravável
+                if (!is_writable($uploadPath)) {
+                    $this->Flash->error(__('O diretório de upload não tem permissões de escrita.'));
+                    return $this->redirect(['action' => 'add']);
+                }
+                
+                // Definir o caminho do arquivo
+                $destination = $uploadPath . $file->getClientFilename();
+                
+                // Mover o arquivo para o destino
+                $file->moveTo($destination);
+                
+                // Salvar o caminho relativo do arquivo no banco de dados
+                $product->foto = 'uploads/' . $file->getClientFilename();
+            }
+
+            // Limpar o valor antes de salvar
+            $product->valor_compra = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_compra'));
+            $product->valor_venda = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_venda'));
+            $product->valor_locacao = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_locacao'));                                
+    
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
-
+    
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
@@ -68,26 +104,82 @@ class ProductsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
+    
+            // Processar o upload do arquivo
+            $file = $this->request->getData('foto');
+            if ($file && $file->getError() === UPLOAD_ERR_OK) {
+                // Definir o caminho de destino
+                $uploadPath = WWW_ROOT . 'files' . DS . 'uploads' . DS;
+                
+                // Verificar se o diretório existe, se não, criar
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0775, true);
+                }
+                
+                // Verificar se o diretório é gravável
+                if (!is_writable($uploadPath)) {
+                    $this->Flash->error(__('O diretório de upload não tem permissões de escrita.'));
+                    return $this->redirect(['action' => 'edit', $id]);
+                }
+                
+                // Definir o caminho do arquivo
+                $destination = $uploadPath . $file->getClientFilename();
+                
+                // Remover o arquivo antigo se existir
+                if (!empty($product->foto) && file_exists(WWW_ROOT . 'files' . DS . $product->foto)) {
+                    unlink(WWW_ROOT . 'files' . DS . $product->foto);
+                }
+                
+                // Mover o novo arquivo para o destino
+                $file->moveTo($destination);
+                
+                // Salvar o caminho relativo do novo arquivo no banco de dados
+                $product->foto = 'uploads/' . $file->getClientFilename();
+            }
+
+            // Limpar o valor antes de salvar
+            $product->valor_compra = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_compra'));
+            $product->valor_venda = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_venda'));
+            $product->valor_locacao = str_replace(['R$', '.', ','], ['', '', '.'], 
+                $this->request->getData('valor_locacao'));             
+    
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
-
+    
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $this->set(compact('product'));
     }
+    
 
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
+    
+        // Caminho completo do arquivo
+        $filePath = WWW_ROOT . 'files' . DS . $product->foto;
+    
+        // Excluir o arquivo se ele existir
+        if (file_exists($filePath)) {
+            if (!unlink($filePath)) {
+                $this->Flash->error(__('The file could not be deleted. Please, try again.'));
+                return $this->redirect(['action' => 'index']);
+            }
+        }
+    
+        // Excluir o produto do banco de dados
         if ($this->Products->delete($product)) {
             $this->Flash->success(__('The product has been deleted.'));
         } else {
             $this->Flash->error(__('The product could not be deleted. Please, try again.'));
         }
-
+    
         return $this->redirect(['action' => 'index']);
     }
+    
 }

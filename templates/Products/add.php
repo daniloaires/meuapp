@@ -16,18 +16,18 @@ use App\Model\Entity\Product;
     </aside>
     <div class="col-md-9">
         <div class="products form content">
-            <?= $this->Form->create($product) ?>
+            <?= $this->Form->create($product, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Adicionar Produto') ?></legend>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <?= $this->Form->control('nome', [
                             'class' => 'form-control',
                             'label' => 'Nome do Produto',
                             'placeholder' => 'Informe o Nome',
                         ]) ?>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <?= $this->Form->control('descricao', [
                             'class' => 'form-control',
                             'label' => 'Descrição',
@@ -80,7 +80,17 @@ use App\Model\Entity\Product;
                             'label' => 'Estoque',
                             'placeholder' => 'Informe a qtde',
                         ]) ?>
-                    </div>                                                                                                      
+                    </div> 
+                    <div class="col-md-12">
+                        <?= $this->Form->control('foto', [
+                            'type' => 'file', 
+                            'id' => 'foto', 
+                            'label' => 'Foto do Produto',
+                            'class' => 'form-control'
+                        ]); ?>  
+                        <img id="preview" src="#" alt="Pré-visualização da imagem" 
+                            style="display:none; max-width: 400px; max-height: 400px;" />
+                    </div>
                 </div>
             </fieldset>
             <?= $this->Form->button(__('Salvar Dados'), ['class' => 'btn btn-success float-right']) ?>
