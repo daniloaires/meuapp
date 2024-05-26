@@ -160,8 +160,9 @@ class ProductsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
         
-        // Caminho completo do arquivo
-        $filePath = WWW_ROOT . 'files' . DS . $product->foto;
+        if (!$product->foto) {
+            $filePath = WWW_ROOT . 'files' . DS . $product->foto;
+        }
         
         // Verificar se o arquivo existe antes de tentar excluir
         if (file_exists($filePath)) {
@@ -170,6 +171,8 @@ class ProductsController extends AppController
                 $this->Flash->error(__('The file could not be deleted. Please, try again.'));
                 return $this->redirect(['action' => 'index']);
             }
+        } else {
+            $this->Flash->error(__('The file does not exist.'));
         }
         
         // Excluir o produto do banco de dados
@@ -181,5 +184,6 @@ class ProductsController extends AppController
         
         return $this->redirect(['action' => 'index']);
     }
+    
     
 }
