@@ -105,39 +105,38 @@ class ProductsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
     
-            // Processar o upload do arquivo
+            // Verificar se um novo arquivo de upload foi enviado
             $file = $this->request->getData('foto');
             if ($file && $file->getError() === UPLOAD_ERR_OK) {
+                // Processar o upload do novo arquivo
+    
                 // Definir o caminho de destino
                 $uploadPath = WWW_ROOT . 'files' . DS . 'uploads' . DS;
-                
+    
                 // Verificar se o diretório existe, se não, criar
                 if (!is_dir($uploadPath)) {
                     mkdir($uploadPath, 0775, true);
                 }
-                
-                // Verificar se o diretório é gravável
-                if (!is_writable($uploadPath)) {
-                    $this->Flash->error(__('O diretório de upload não tem permissões de escrita.'));
-                    return $this->redirect(['action' => 'edit', $id]);
-                }
-                
-                // Definir o caminho do arquivo
+    
+                // Definir o caminho do novo arquivo
                 $destination = $uploadPath . $file->getClientFilename();
-                
+    
                 // Remover o arquivo antigo se existir
                 if (!empty($product->foto) && file_exists(WWW_ROOT . 'files' . DS . $product->foto)) {
                     unlink(WWW_ROOT . 'files' . DS . $product->foto);
                 }
-                
+    
                 // Mover o novo arquivo para o destino
                 $file->moveTo($destination);
-                
+    
                 // Salvar o caminho relativo do novo arquivo no banco de dados
                 $product->foto = 'uploads/' . $file->getClientFilename();
+            } else {
+                // Se não houver novo arquivo de upload, manter o valor atual do campo foto
+                $product->unsetProperty('foto');
             }
-
-            // Limpar o valor antes de salvar
+    
+            // Limpar os valores antes de salvar
             $product->valor_compra = str_replace(['R$', '.', ','], ['', '', '.'], 
                 $this->request->getData('valor_compra'));
             $product->valor_venda = str_replace(['R$', '.', ','], ['', '', '.'], 
@@ -154,7 +153,7 @@ class ProductsController extends AppController
         }
         $this->set(compact('product'));
     }
-
+    
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
