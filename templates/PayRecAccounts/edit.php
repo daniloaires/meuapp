@@ -60,8 +60,7 @@ use App\Model\Entity\PayRecAccount;
                         <?= $this->Form->control('status', [
                             'class' => 'form-control',
                             'type' => 'select',
-                            'label' => 'Forma de pagamento',
-                            'empty' => 'Selecione',
+                            'label' => 'Status',
                             'options' => PayRecAccount::LIST_STATUS_CONTA_STR,
                         ]) ?>
                     </div>                                       

@@ -3,24 +3,55 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * PayRecAccounts Controller
- *
- * @property \App\Model\Table\PayRecAccountsTable $PayRecAccounts
- * @method \App\Model\Entity\PayRecAccount[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
+use Cake\ORM\TableRegistry;
+
 class PayRecAccountsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function index()
+    public function initialize(): void
     {
-        $payRecAccounts = $this->paginate($this->PayRecAccounts);
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
 
-        $this->set(compact('payRecAccounts'));
+    public function index() {
+        // Get search parameters
+        $searchTipo = $this->request->getQuery('tipo');
+        $searchNome = $this->request->getQuery('nome');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+
+        // Set up query conditions
+        $conditions = [];
+        if (!empty($searchNome)) {
+            $conditions['descricao LIKE'] = '%' . $searchNome . '%';
+        }
+        if (!empty($searchTipo)) {
+            $conditions['tipo ='] = $searchTipo;
+        }        
+        if (!empty($createdFrom)) {
+            $conditions['created >='] = $createdFrom;
+        }
+        if (!empty($createdTo)) {
+            $conditions['created <='] = $createdTo;
+        }
+
+        // Fetch data with conditions
+        $payRecAccountTable = TableRegistry::getTableLocator()->get('CashFlows');
+        $query = $payRecAccountTable->find('all')
+            ->where($conditions);
+
+        // Get the sum of the 'valor' field
+        $sumQuery = $payRecAccountTable->find();
+        $valorTotal = $sumQuery->select([
+            'total' => $sumQuery->func()->sum('valor')
+        ])
+        ->where($conditions)
+        ->first()
+        ->total;
+
+        $payRecAccounts = $this->Paginator->paginate($query);
+
+        $this->set(compact('payRecAccounts', 'valorTotal'));
     }
 
     /**
