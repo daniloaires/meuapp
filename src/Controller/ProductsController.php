@@ -160,8 +160,10 @@ class ProductsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
         
-        if (!$product->foto) {
+        if ($product->foto) {
             $filePath = WWW_ROOT . 'files' . DS . $product->foto;
+        } else {
+            $filePath = '';
         }
         
         // Verificar se o arquivo existe antes de tentar excluir
