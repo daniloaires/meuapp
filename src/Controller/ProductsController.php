@@ -154,7 +154,6 @@ class ProductsController extends AppController
         }
         $this->set(compact('product'));
     }
-    
 
     public function delete($id = null)
     {
@@ -164,8 +163,9 @@ class ProductsController extends AppController
         // Caminho completo do arquivo
         $filePath = WWW_ROOT . 'files' . DS . $product->foto;
         
-        // Excluir o arquivo se ele existir
+        // Verificar se o arquivo existe antes de tentar excluir
         if (file_exists($filePath)) {
+            // Tentar excluir o arquivo
             if (!unlink($filePath)) {
                 $this->Flash->error(__('The file could not be deleted. Please, try again.'));
                 return $this->redirect(['action' => 'index']);
@@ -181,6 +181,5 @@ class ProductsController extends AppController
         
         return $this->redirect(['action' => 'index']);
     }
-    
     
 }
