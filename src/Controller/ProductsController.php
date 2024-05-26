@@ -160,10 +160,10 @@ class ProductsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
-    
+        
         // Caminho completo do arquivo
         $filePath = WWW_ROOT . 'files' . DS . $product->foto;
-    
+        
         // Excluir o arquivo se ele existir
         if (file_exists($filePath)) {
             if (!unlink($filePath)) {
@@ -171,15 +171,16 @@ class ProductsController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
         }
-    
+        
         // Excluir o produto do banco de dados
         if ($this->Products->delete($product)) {
             $this->Flash->success(__('The product has been deleted.'));
         } else {
             $this->Flash->error(__('The product could not be deleted. Please, try again.'));
         }
-    
+        
         return $this->redirect(['action' => 'index']);
     }
+    
     
 }
