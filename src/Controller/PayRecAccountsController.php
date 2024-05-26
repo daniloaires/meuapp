@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\PayRecAccount;
 use Cake\ORM\TableRegistry;
 
 class PayRecAccountsController extends AppController
@@ -36,31 +37,19 @@ class PayRecAccountsController extends AppController
         }
 
         // Fetch data with conditions
-        $payRecAccountTable = TableRegistry::getTableLocator()->get('CashFlows');
-        $query = $payRecAccountTable->find('all')
+        $payRecAccountsTable = TableRegistry::getTableLocator()->get('PayRecAccounts');
+        $query = $payRecAccountsTable->find('all')
             ->where($conditions);
 
-        // Get the sum of the 'valor' field
-        $sumQuery = $payRecAccountTable->find();
-        $valorTotal = $sumQuery->select([
-            'total' => $sumQuery->func()->sum('valor')
-        ])
-        ->where($conditions)
-        ->first()
-        ->total;
+        // Get the sum of the 'valor' field for both types
+        $totalAPagar = $this->getSumByType($payRecAccountsTable, $conditions, PayRecAccount::CONTA_PAGAR);
+        $totalAReceber = $this->getSumByType($payRecAccountsTable, $conditions, PayRecAccount::CONTA_RECEBER);
 
         $payRecAccounts = $this->Paginator->paginate($query);
 
-        $this->set(compact('payRecAccounts', 'valorTotal'));
+        $this->set(compact('payRecAccounts', 'totalAPagar', 'totalAReceber'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Pay Rec Account id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $payRecAccount = $this->PayRecAccounts->get($id, [
@@ -70,11 +59,6 @@ class PayRecAccountsController extends AppController
         $this->set(compact('payRecAccount'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $payRecAccount = $this->PayRecAccounts->newEmptyEntity();
@@ -90,13 +74,6 @@ class PayRecAccountsController extends AppController
         $this->set(compact('payRecAccount'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Pay Rec Account id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $payRecAccount = $this->PayRecAccounts->get($id, [
@@ -114,13 +91,6 @@ class PayRecAccountsController extends AppController
         $this->set(compact('payRecAccount'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Pay Rec Account id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -133,4 +103,18 @@ class PayRecAccountsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    private function getSumByType($table, $conditions, $type)
+    {
+        $sumQuery = $table->find()
+            ->where($conditions)
+            ->where(['tipo' => $type])
+            ->select([
+                'total' => $table->find()->func()->sum('valor')
+            ])
+            ->first();
+
+        return $sumQuery ? $sumQuery->total : 0;
+    }
+
 }
