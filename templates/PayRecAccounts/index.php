@@ -131,8 +131,8 @@ use App\Model\Entity\PayRecAccount;
     </div>
 
     <div class="sum-container float-right">
-        <h4>T. Pagar: <?= $this->Number->currency($totalAPagar, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
-        <h4>T. Receber: <?= $this->Number->currency($totalAReceber, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
+        <h4>T. Pagar: <?= $this->Number->currency($totalAPagar, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></h4>
+        <h4>T. Receber: <?= $this->Number->currency($totalAReceber, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></h4>
     </div>
 
     <div class="paginator">

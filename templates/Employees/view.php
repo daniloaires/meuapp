@@ -71,7 +71,7 @@ use App\Model\Entity\Employee;
                 </tr>
                 <tr>
                     <th><?= __('Remuneracao') ?></th>
-                    <td><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></td>
+                    <td><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Dt Nascimento') ?></th>

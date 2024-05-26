@@ -3,33 +3,40 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * Products Controller
- *
- * @property \App\Model\Table\ProductsTable $Products
- * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class ProductsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
-        $products = $this->paginate($this->Products);
-
+        $this->loadComponent('Paginator');
+    
+        // Obtenha os parâmetros de pesquisa
+        $nome = $this->request->getQuery('nome');
+        $descricao = $this->request->getQuery('descricao');
+        $createdFrom = $this->request->getQuery('created_from');
+        $createdTo = $this->request->getQuery('created_to');
+    
+        // Configurar condições de busca
+        $conditions = [];
+        if (!empty($nome)) {
+            $conditions['Products.nome LIKE'] = '%' . $nome . '%';
+        }
+        if (!empty($descricao)) {
+            $conditions['Products.descricao LIKE'] = '%' . $descricao . '%';
+        }        
+        if (!empty($createdFrom)) {
+            $conditions['Products.created >='] = $createdFrom . ' 00:00:00';
+        }
+        if (!empty($createdTo)) {
+            $conditions['Products.created <='] = $createdTo . ' 23:59:59';
+        }
+    
+        $products = $this->Paginator->paginate($this->Products->find('all', [
+            'conditions' => $conditions,
+        ]));
+    
         $this->set(compact('products'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Product id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $product = $this->Products->get($id, [
@@ -39,11 +46,6 @@ class ProductsController extends AppController
         $this->set(compact('product'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $product = $this->Products->newEmptyEntity();
@@ -59,13 +61,6 @@ class ProductsController extends AppController
         $this->set(compact('product'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Product id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $product = $this->Products->get($id, [
@@ -83,13 +78,6 @@ class ProductsController extends AppController
         $this->set(compact('product'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Product id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

@@ -112,7 +112,7 @@ use App\Model\Entity\CashFlow;
     </div>
 
     <div class="sum-container float-right">
-        <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></h4>
+        <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></h4>
     </div>        
 
     <div class="paginator">

@@ -84,7 +84,7 @@ use App\Model\Entity\Employee;
                     <td class='nowrap'><?= h($employee->funcao) ?></td>
                     <td class='nowrap'><?= $employee->has('sector') ? $this->Html->link($employee->sector->name, ['controller' => 'Sectors', 'action' => 'view', $employee->sector->id]) : '' ?></td>
                     <td class='nowrap'><?= $employee->modalidade_contrato === null ? '' : Employee::LIST_MODALIDADE_CONTRATO_STR[$employee->modalidade_contrato] ?></td>
-                    <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤#,##0.00']) ?></td>
+                    <td class='nowrap'><?= $employee->remuneracao === null ? '' : $this->Number->currency($employee->remuneracao, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></td>
                     <td class='nowrap'><?= h($employee->created->format('d/m/Y H:i:s')) ?></td>
                     <td class='nowrap'><?= (!empty($employee->modified)) ? h($employee->modified->format('d/m/Y H:i:s')) : '' ?></td>
                     <td class="actions nowrap">
