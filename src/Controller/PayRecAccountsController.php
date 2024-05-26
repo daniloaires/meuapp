@@ -17,9 +17,12 @@ class PayRecAccountsController extends AppController
     public function index() {
         // Get search parameters
         $searchTipo = $this->request->getQuery('tipo');
+        $searchStatus = $this->request->getQuery('status');
         $searchNome = $this->request->getQuery('nome');
         $createdFrom = $this->request->getQuery('created_from');
         $createdTo = $this->request->getQuery('created_to');
+        $vencimentoFrom = $this->request->getQuery('vencimento_from');
+        $vencimentoTo = $this->request->getQuery('vencimento_to');        
 
         // Set up query conditions
         $conditions = [];
@@ -28,13 +31,22 @@ class PayRecAccountsController extends AppController
         }
         if (!empty($searchTipo)) {
             $conditions['tipo ='] = $searchTipo;
-        }        
+        }  
+        if (!empty($searchStatus)) {
+            $conditions['status ='] = $searchStatus;
+        }                
         if (!empty($createdFrom)) {
             $conditions['created >='] = $createdFrom;
         }
         if (!empty($createdTo)) {
             $conditions['created <='] = $createdTo;
         }
+        if (!empty($vencimentoFrom)) {
+            $conditions['vencimento >='] = $vencimentoFrom;
+        }
+        if (!empty($vencimentoTo)) {
+            $conditions['vencimento <='] = $vencimentoTo;
+        }        
 
         // Fetch data with conditions
         $payRecAccountsTable = TableRegistry::getTableLocator()->get('PayRecAccounts');
