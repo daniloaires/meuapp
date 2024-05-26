@@ -64,6 +64,12 @@ class PayRecAccountsController extends AppController
         $payRecAccount = $this->PayRecAccounts->newEmptyEntity();
         if ($this->request->is('post')) {
             $payRecAccount = $this->PayRecAccounts->patchEntity($payRecAccount, $this->request->getData());
+
+            // Limpar o valor antes de salvar
+            $valor = $this->request->getData('valor');
+            $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
+            $payRecAccount->valor = $valorLimpo;
+
             if ($this->PayRecAccounts->save($payRecAccount)) {
                 $this->Flash->success(__('The pay rec account has been saved.'));
 
@@ -81,6 +87,12 @@ class PayRecAccountsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $payRecAccount = $this->PayRecAccounts->patchEntity($payRecAccount, $this->request->getData());
+
+            // Limpar o valor antes de salvar
+            $valor = $this->request->getData('valor');
+            $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valor);
+            $payRecAccount->valor = $valorLimpo;
+
             if ($this->PayRecAccounts->save($payRecAccount)) {
                 $this->Flash->success(__('The pay rec account has been saved.'));
 
