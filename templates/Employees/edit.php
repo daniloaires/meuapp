@@ -9,11 +9,14 @@ use App\Model\Entity\People;
         <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Ações') ?></h4>
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Excluir Colaborador'),
                 ['action' => 'delete', $employee->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'side-nav-item']
+                [
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $employee->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
             ) ?>
-            <?= $this->Html->link(__('Listar Colaboradores'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Listar Grupos'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
         </div>
     </aside>
     <div class="col-md-9">
