@@ -1,12 +1,9 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Employee $employee
- */
 
 use App\Model\Entity\Employee;
 
 ?>
+
 <div class="row">
     <aside class="col-md-3">
         <div class="bg-light p-3 rounded">
@@ -16,7 +13,7 @@ use App\Model\Entity\Employee;
                 __('Excluir Colaborador'),
                 ['action' => 'delete', $employee->id],
                 [
-                    'confirm' => __('Tem certesa de que deseja excluir # {0}?', $employee->id),
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $employee->id),
                     'class' => 'btn btn-danger btn-block mb-2'
                 ]
             ) ?>

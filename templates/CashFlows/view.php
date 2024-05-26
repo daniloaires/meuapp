@@ -1,17 +1,24 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\CashFlow $cashFlow
- */
+
+
+
 ?>
+
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Cash Flow'), ['action' => 'edit', $cashFlow->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Cash Flow'), ['action' => 'delete', $cashFlow->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cashFlow->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Cash Flows'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Cash Flow'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Entradas/Saídas'), ['action' => 'edit', $cashFlow->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Excluir Entrada/Saída'),
+                ['action' => 'delete', $cashFlow->id],
+                [
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $cashFlow->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('Listar Entradas/Saídas'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Nova Entrada/Saída'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
     <div class="col-md-9">

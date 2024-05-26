@@ -17,7 +17,7 @@
                 __('Excluir Setor'),
                 ['action' => 'delete', $sector->id],
                 [
-                    'confirm' => __('Tem certesa de que deseja excluir # {0}?', $sector->id),
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $sector->id),
                     'class' => 'btn btn-danger btn-block mb-2'
                 ]
             ) ?>

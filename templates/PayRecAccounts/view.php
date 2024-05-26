@@ -1,20 +1,27 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\PayRecAccount $payRecAccount
- */
+
+
+
 ?>
+
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Pay Rec Account'), ['action' => 'edit', $payRecAccount->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Pay Rec Account'), ['action' => 'delete', $payRecAccount->id], ['confirm' => __('Are you sure you want to delete # {0}?', $payRecAccount->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Pay Rec Accounts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Pay Rec Account'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Conta'), ['action' => 'edit', $payRecAccount->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Excluir Conta'),
+                ['action' => 'delete', $payRecAccount->id],
+                [
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $payRecAccount->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('Listar Contas'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Nova Conta'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="payRecAccounts view content">
             <h3><?= h($payRecAccount->descricao) ?></h3>
             <table>

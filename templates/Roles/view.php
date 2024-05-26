@@ -17,7 +17,7 @@
                 __('Excluir Grupo'),
                 ['action' => 'delete', $role->id],
                 [
-                    'confirm' => __('Tem certesa de que deseja excluir # {0}?', $role->id),
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $role->id),
                     'class' => 'btn btn-danger btn-block mb-2'
                 ]
             ) ?>
