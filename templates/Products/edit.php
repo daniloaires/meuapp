@@ -20,7 +20,7 @@ use App\Model\Entity\Product;
         </div>
     </aside>
     <div class="col-md-9">
-            <?= $this->Form->create($product) ?>
+        <?= $this->Form->create($product, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Alterar Produto') ?></legend>
                 <div class="row">

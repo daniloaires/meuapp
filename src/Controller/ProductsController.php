@@ -56,7 +56,7 @@ class ProductsController extends AppController
             $file = $this->request->getData('foto');
             if ($file && $file->getError() === UPLOAD_ERR_OK) {
                 // Definir o caminho de destino
-                $uploadPath = WWW_ROOT . 'files' . DS . 'uploads' . DS;
+                $uploadPath = WWW_ROOT . 'files' . DS . 'produtos' . DS;
                 
                 // Verificar se o diretório existe, se não, criar
                 if (!is_dir($uploadPath)) {
@@ -76,7 +76,7 @@ class ProductsController extends AppController
                 $file->moveTo($destination);
                 
                 // Salvar o caminho relativo do arquivo no banco de dados
-                $product->foto = 'uploads/' . $file->getClientFilename();
+                $product->foto = 'produtos/' . $file->getClientFilename();
             }
 
             // Limpar o valor antes de salvar
@@ -111,7 +111,7 @@ class ProductsController extends AppController
                 // Processar o upload do novo arquivo
     
                 // Definir o caminho de destino
-                $uploadPath = WWW_ROOT . 'files' . DS . 'uploads' . DS;
+                $uploadPath = WWW_ROOT . 'files' . DS . 'produtos' . DS;
     
                 // Verificar se o diretório existe, se não, criar
                 if (!is_dir($uploadPath)) {
@@ -130,10 +130,10 @@ class ProductsController extends AppController
                 $file->moveTo($destination);
     
                 // Salvar o caminho relativo do novo arquivo no banco de dados
-                $product->foto = 'uploads/' . $file->getClientFilename();
+                $product->foto = 'produtos/' . $file->getClientFilename();
             } else {
                 // Se não houver novo arquivo de upload, manter o valor atual do campo foto
-                $product->unsetProperty('foto');
+                $product->foto = $product->foto;
             }
     
             // Limpar os valores antes de salvar
