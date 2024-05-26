@@ -83,11 +83,11 @@ class PayRecAccountsController extends AppController
             $payRecAccount->valor = $valorLimpo;
 
             if ($this->PayRecAccounts->save($payRecAccount)) {
-                $this->Flash->success(__('The pay rec account has been saved.'));
+                $this->Flash->success(__('Salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The pay rec account could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível salvar. Por favor, tente novamente.'));
         }
         $this->set(compact('payRecAccount'));
     }
@@ -106,11 +106,11 @@ class PayRecAccountsController extends AppController
             $payRecAccount->valor = $valorLimpo;
 
             if ($this->PayRecAccounts->save($payRecAccount)) {
-                $this->Flash->success(__('The pay rec account has been saved.'));
+                $this->Flash->success(__('Alterado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The pay rec account could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível alterar. Por favor, tente novamente.'));
         }
         $this->set(compact('payRecAccount'));
     }
@@ -120,9 +120,9 @@ class PayRecAccountsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $payRecAccount = $this->PayRecAccounts->get($id);
         if ($this->PayRecAccounts->delete($payRecAccount)) {
-            $this->Flash->success(__('The pay rec account has been deleted.'));
+            $this->Flash->success(__('Excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The pay rec account could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possível excluir. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

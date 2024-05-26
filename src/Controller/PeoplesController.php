@@ -5,12 +5,6 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 
-/**
- * Peoples Controller
- *
- * @property \App\Model\Table\PeoplesTable $Peoples
- * @method \App\Model\Entity\People[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class PeoplesController extends AppController
 {
     public function initialize(): void
@@ -71,11 +65,11 @@ class PeoplesController extends AppController
         if ($this->request->is('post')) {
             $people = $this->Peoples->patchEntity($people, $this->request->getData());
             if ($this->Peoples->save($people)) {
-                $this->Flash->success(__('The people has been saved.'));
+                $this->Flash->success(__('Salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The people could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel salvar. Por favor, tente novamente.'));
         }
         $this->set(compact('people'));
     }
@@ -90,11 +84,11 @@ class PeoplesController extends AppController
             $people = $this->Peoples->patchEntity($people, $this->request->getData());
 
             if ($this->Peoples->save($people)) {
-                $this->Flash->success(__('The people has been saved.'));
+                $this->Flash->success(__('Alterado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The people could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível alterar. Por favor, tente novamente.'));
         }
         $this->set(compact('people'));
     }
@@ -104,9 +98,9 @@ class PeoplesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $people = $this->Peoples->get($id);
         if ($this->Peoples->delete($people)) {
-            $this->Flash->success(__('The people has been deleted.'));
+            $this->Flash->success(__('Excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The people could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possível excluir. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

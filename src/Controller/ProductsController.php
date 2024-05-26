@@ -88,11 +88,11 @@ class ProductsController extends AppController
                 $this->request->getData('valor_locacao'));                                
     
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
+                $this->Flash->success(__('Salvo com sucesso.'));
     
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel salvar. Por favor, tente novamente.'));
         }
         $this->set(compact('product'));
     }
@@ -146,11 +146,11 @@ class ProductsController extends AppController
                 $this->request->getData('valor_locacao'));             
     
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
+                $this->Flash->success(__('Alterado com sucesso.'));
     
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível alterar. Por favor, tente novamente.'));
         }
         $this->set(compact('product'));
     }
@@ -170,18 +170,18 @@ class ProductsController extends AppController
         if (file_exists($filePath)) {
             // Tentar excluir o arquivo
             if (!unlink($filePath)) {
-                $this->Flash->error(__('The file could not be deleted. Please, try again.'));
+                $this->Flash->error(__('Não foi possivel excluir o arquivo. Por favor, tente novamente.'));
                 return $this->redirect(['action' => 'index']);
             }
         } else {
-            $this->Flash->error(__('The file does not exist.'));
+            $this->Flash->error(__('Arquivo não encontrado.'));
         }
         
         // Excluir o produto do banco de dados
         if ($this->Products->delete($product)) {
-            $this->Flash->success(__('The product has been deleted.'));
+            $this->Flash->success(__('Excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The product could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possível excluir. Por favor, tente novamente.'));
         }
         
         return $this->redirect(['action' => 'index']);

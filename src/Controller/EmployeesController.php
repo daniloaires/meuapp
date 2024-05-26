@@ -49,11 +49,11 @@ class EmployeesController extends AppController
         if ($this->request->is('post')) {
             $employee = $this->Employees->patchEntity($employee, $this->request->getData());
             if ($this->Employees->save($employee)) {
-                $this->Flash->success(__('The employee has been saved.'));
+                $this->Flash->success(__('Salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The employee could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel salvar. Por favor, tente novamente.'));
         }
         $sectors = $this->Employees->Sectors->find('list', ['limit' => 200])->all();
         $this->set(compact('employee', 'sectors'));
@@ -68,11 +68,11 @@ class EmployeesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $employee = $this->Employees->patchEntity($employee, $this->request->getData());
             if ($this->Employees->save($employee)) {
-                $this->Flash->success(__('The employee has been saved.'));
+                $this->Flash->success(__('Alterado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The employee could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel alterar. Por favor, tente novamente.'));
         }
         $sectors = $this->Employees->Sectors->find('list', ['limit' => 200])->all();
         $this->set(compact('employee', 'sectors'));
@@ -83,9 +83,9 @@ class EmployeesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $employee = $this->Employees->get($id);
         if ($this->Employees->delete($employee)) {
-            $this->Flash->success(__('The employee has been deleted.'));
+            $this->Flash->success(__('Excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The employee could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel excluir. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

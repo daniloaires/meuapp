@@ -3,12 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * Sectors Controller
- *
- * @property \App\Model\Table\SectorsTable $Sectors
- * @method \App\Model\Entity\Sector[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class SectorsController extends AppController
 {
     public function index()
@@ -54,11 +48,11 @@ class SectorsController extends AppController
         if ($this->request->is('post')) {
             $sector = $this->Sectors->patchEntity($sector, $this->request->getData());
             if ($this->Sectors->save($sector)) {
-                $this->Flash->success(__('The sector has been saved.'));
+                $this->Flash->success(__('Salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The sector could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel salvar. Por favor, tente novamente.'));
         }
         $this->set(compact('sector'));
     }
@@ -71,11 +65,11 @@ class SectorsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $sector = $this->Sectors->patchEntity($sector, $this->request->getData());
             if ($this->Sectors->save($sector)) {
-                $this->Flash->success(__('The sector has been saved.'));
+                $this->Flash->success(__('Alterado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The sector could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel alterar. Por favor, tente novamente.'));
         }
         $this->set(compact('sector'));
     }
@@ -85,9 +79,9 @@ class SectorsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $sector = $this->Sectors->get($id);
         if ($this->Sectors->delete($sector)) {
-            $this->Flash->success(__('The sector has been deleted.'));
+            $this->Flash->success(__('Excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The sector could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possivel excluir. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
