@@ -1,20 +1,27 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Product $product
- */
+
+
+
 ?>
+
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Product'), ['action' => 'edit', $product->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Product'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Products'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+    <aside class="col-md-3">
+        <div class="bg-light p-3 rounded">
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Alterar Produto'), ['action' => 'edit', $product->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
+            <?= $this->Form->postLink(
+                __('Excluir Produto'),
+                ['action' => 'delete', $product->id],
+                [
+                    'confirm' => __('Tem certeza de que deseja excluir # {0}?', $product->id),
+                    'class' => 'btn btn-danger btn-block mb-2'
+                ]
+            ) ?>
+            <?= $this->Html->link(__('Listar Produtos'), ['action' => 'index'], ['class' => 'btn btn-outline-primary btn-block mb-2']) ?>
+            <?= $this->Html->link(__('Novo produto'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-9">
         <div class="products view content">
             <h3><?= h($product->nome) ?></h3>
             <table>
@@ -61,10 +68,6 @@
                 <tr>
                     <th><?= __('Modified') ?></th>
                     <td><?= h($product->modified) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Deleted') ?></th>
-                    <td><?= h($product->deleted) ?></td>
                 </tr>
             </table>
             <div class="text">
