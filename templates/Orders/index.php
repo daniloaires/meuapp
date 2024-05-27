@@ -1,36 +1,86 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Order> $orders
- */
+
+
+
 ?>
+
+<!-- ThemifyIcons -->
+<?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
+
 <div class="orders index content">
-    <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Orders') ?></h3>
+<?= $this->Html->link(__('Novo Pedido'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
+    <h3><?= __('Listar Pedidos') ?></h3>
+    
+    <!-- Search Form -->
+    <div class="search-form">
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
+        <fieldset>
+        <legend><?= __('Pesquisar') ?></legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $this->Form->control('nome', [
+                        'label' => 'Numero do pedido', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('nome')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_from', [
+                        'label' => 'Criado a partir de', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_from')
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $this->Form->control('created_to', [
+                        'label' => 'Criado até', 
+                        'type' => 'date', 
+                        'class' => 'form-control', 
+                        'value' => $this->request->getQuery('created_to')
+                    ]) ?>
+                </div>
+
+            </div>
+        </fieldset>
+        <?= $this->Form->button(__('Pesquisar'), ['class' => 'btn btn-info']) ?>
+        <?= $this->Form->end() ?><hr />
+    </div>
+
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('nome') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('deleted') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nome', 'Numero') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($orders as $order): ?>
                 <tr>
-                    <td><?= $this->Number->format($order->id) ?></td>
-                    <td><?= h($order->nome) ?></td>
-                    <td><?= h($order->created) ?></td>
-                    <td><?= h($order->modified) ?></td>
-                    <td><?= h($order->deleted) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?>
+                    <td class='nowrap'><?= $this->Number->format($order->id) ?></td>
+                    <td class='nowrap'><?= h($order->nome) ?></td>
+                    <td class='nowrap'><?= h($order->created->format('d/m/Y')) ?></td>
+                    <td class="actions nowrap">
+                        <?= $this->Html->link(
+                            '<i class="ti-eye"></i> ', 
+                            ['action' => 'view', $order->id],
+                            ['escape' => false] 
+                        ) ?>
+                    
+                        <?= $this->Html->link(
+                            '<i class="ti-pencil"></i> ', 
+                            ['action' => 'edit', $order->id],
+                            ['escape' => false] 
+                        ) ?>
+
+                        <?= $this->Form->postLink(
+                            '<i class="ti-trash"></i> ',
+                            ['action' => 'delete', $order->id],
+                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $order->id), 'escapeTitle' => false, 'escape' => false]
+                        ) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -39,12 +89,12 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
+            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('próximo') . ' >') ?>
+            <?= $this->Paginator->last(__('último') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter(__('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
 </div>

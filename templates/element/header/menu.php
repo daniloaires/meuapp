@@ -23,7 +23,18 @@
         <?= $this->Html->link(__('Contas a pagar/receber'), '/PayRecAccounts', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link(__('Fluxo de Caixa'), '/CashFlows', ['class' => 'dropdown-item']) ?>
       </div>
-    </li>        
+    </li>    
+    
+    <!-- Operacional -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Operacional
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <?= $this->Html->link(__('Pedido de venda'), '/Orders', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Locação de produtos'), '#', ['class' => 'dropdown-item']) ?>
+      </div>
+    </li>      
 
     <!-- Configurações -->
     <li class="nav-item dropdown">
