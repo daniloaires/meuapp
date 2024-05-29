@@ -29,9 +29,9 @@ class ProductsFixture extends TestFixture
                 'estoque' => 1,
                 'unidade' => 1,
                 'foto' => 'Lorem ipsum dolor sit amet',
-                'created' => '2024-05-26 17:24:56',
-                'modified' => '2024-05-26 17:24:56',
-                'deleted' => '2024-05-26 17:24:56',
+                'created' => '2024-05-29 15:25:59',
+                'modified' => '2024-05-29 15:25:59',
+                'deleted' => '2024-05-29 15:25:59',
             ],
         ];
         parent::init();

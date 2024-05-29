@@ -5,6 +5,13 @@ namespace App\Controller;
 
 class OrdersController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->loadModel('Products');
+    }
+
     public function index()
     {
         $orders = $this->paginate($this->Orders);
@@ -80,4 +87,53 @@ class OrdersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function addOrderItem($orderId)
+    {
+        $this->request->allowMethod(['post']);
+    
+        $orderItem = $this->Orders->OrderItems->newEmptyEntity();
+        $orderItem = $this->Orders->OrderItems->patchEntity($orderItem, [
+            'order_id' => $orderId,
+            'product_id' => $this->request->getData('product_id'),
+            'qtde' => $this->request->getData('qtde'),
+            'valor' => $this->request->getData('valor')
+        ]);
+    
+        if ($this->Orders->OrderItems->save($orderItem)) {
+            $response = ['success' => true, 'orderItem' => $orderItem];
+        } else {
+            $response = ['success' => false];
+        }
+    
+        $this->set(compact('response'));
+        $this->viewBuilder()->setOption('serialize', 'response');
+    }
+
+    public function autocomplete()
+    {
+        $this->request->allowMethod('ajax');
+
+        $term = $this->request->getQuery('term');
+
+        $products = $this->Orders->Products->find('all', [
+            'conditions' => ['OR' => [
+                'Products.nome LIKE' => '%' . $term . '%',
+                'Products.descricao LIKE' => '%' . $term . '%',
+            ]],
+        ]);
+
+        $result = [];
+        foreach ($products as $product) {
+            $result[] = [
+                'id' => $product->id,
+                'nome' => $product->nome,
+                //'valor' => $product->valor
+            ];
+        }
+
+        $this->set(compact('result'));
+        $this->viewBuilder()->setOption('serialize', 'result');
+    }    
+
 }

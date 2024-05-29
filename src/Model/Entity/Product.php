@@ -5,6 +5,23 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
+/**
+ * Product Entity
+ *
+ * @property int $id
+ * @property string $nome
+ * @property string $descricao
+ * @property float $valor_compra
+ * @property float $valor_venda
+ * @property float $valor_locacao
+ * @property float $estoque_min
+ * @property float $estoque
+ * @property float $unidade
+ * @property string|null $foto
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime|null $modified
+ * @property \Cake\I18n\FrozenTime|null $deleted
+ */
 class Product extends Entity
 {
     const UNIDADE = 1;
