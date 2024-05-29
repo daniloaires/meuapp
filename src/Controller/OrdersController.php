@@ -90,6 +90,7 @@ class OrdersController extends AppController
 
     public function addOrderItem($orderId)
     {
+        $this->autoRender = false;
         $this->request->allowMethod(['post']);
     
         $orderItem = $this->Orders->OrderItems->newEmptyEntity();

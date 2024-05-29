@@ -77,5 +77,4 @@
 <?= $this->Html->script('orders/add') ?>
 
 <?= $this->Html->css(['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css']) ?>
-<?= $this->Html->script(['https://code.jquery.com/jquery-3.6.0.min.js']) ?>
 <?= $this->Html->script(['https://code.jquery.com/ui/1.12.1/jquery-ui.min.js']) ?>
