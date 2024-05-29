@@ -54,9 +54,18 @@ class OrdersController extends AppController
     {
         // Carrega o pedido específico junto com seus itens
         $order = $this->Orders->get($id, [
-            'contain' => ['OrderItems'],
+            'contain' => [
+                'OrderItems',
+                'OrderItems.Products',
+            ],
         ]);
-    
+
+        // Calcula a soma do valor dos itens do pedido
+        $valorTotal = 0;
+        foreach ($order->order_items as $orderItem) {
+            $valorTotal += $orderItem->valor * $orderItem->qtde;
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Atualiza a entidade Order com os dados do formulário
             $order = $this->Orders->patchEntity($order, $this->request->getData());
@@ -71,7 +80,7 @@ class OrdersController extends AppController
         }
     
         // Passa o pedido e os itens para a view
-        $this->set(compact('order'));
+        $this->set(compact('order', 'valorTotal'));
     }
     
 
@@ -88,33 +97,46 @@ class OrdersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function addOrderItem($orderId)
+    public function addOrderItem()
     {
         $this->autoRender = false;
-        $this->request->allowMethod(['post']);
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
     
-        $orderItem = $this->Orders->OrderItems->newEmptyEntity();
-        $orderItem = $this->Orders->OrderItems->patchEntity($orderItem, [
-            'order_id' => $orderId,
-            'product_id' => $this->request->getData('product_id'),
-            'qtde' => $this->request->getData('qtde'),
-            'valor' => $this->request->getData('valor')
-        ]);
+            // Verifica se o item do pedido já existe
+            $existingOrderItem = $this->Orders->OrderItems->find()
+                ->where([
+                    'order_id' => $data['order_id'],
+                    'product_id' => $data['product_id']
+                ])
+                ->first();
     
-        if ($this->Orders->OrderItems->save($orderItem)) {
-            $response = ['success' => true, 'orderItem' => $orderItem];
-        } else {
-            $response = ['success' => false];
+            if ($existingOrderItem) {
+                // Se o item do pedido já existir, atualize a quantidade
+                $existingOrderItem->qtde += $data['qtde'];
+                if ($this->Orders->OrderItems->save($existingOrderItem)) {
+                    $response = ['success' => true, 'orderItem' => $existingOrderItem];
+                } else {
+                    $response = ['success' => false];
+                }
+            } else {
+                // Se o item do pedido não existir, crie um novo
+                $orderItem = $this->Orders->OrderItems->newEmptyEntity();
+                $orderItem = $this->Orders->OrderItems->patchEntity($orderItem, $data);
+    
+                if ($this->Orders->OrderItems->save($orderItem)) {
+                    $response = ['success' => true, 'orderItem' => $orderItem];
+                } else {
+                    $response = ['success' => false];
+                }
+            }
+    
+            $this->response = $this->response->withType('application/json')
+                ->withStringBody(json_encode($response));
+            return $this->response;
         }
-    
-        // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
-        $this->response = $this->response->withStatus(200);
-    
-        // Retorna os dados e o código de status da resposta
-        $this->response = $this->response->withType('application/json')
-            ->withStringBody(json_encode($response));
-        return $this->response;
     }
+    
 
     public function autocomplete()
     {
@@ -144,8 +166,7 @@ class OrdersController extends AppController
         $data = $result;
     
         // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
-        $this->response = $this->response->withStatus(200);
-    
+        $this->response = $this->response->withStatus(200);    
         // Retorna os dados e o código de status da resposta
         $this->response = $this->response->withType('application/json')
             ->withStringBody(json_encode($data));

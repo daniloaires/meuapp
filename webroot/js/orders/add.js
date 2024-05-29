@@ -38,44 +38,29 @@ jQuery(function() {
         }
     });
 
-
-    // Evento ao clicar no botão "Adicionar Item"
     $('#add-item').on('click', function(e){
         e.preventDefault();
-
-        // Coleta os dados do formulário
+    
         var productId = $('#product-id').val();
         var qtde = $('#qtde').val();
         var valor = $('#product-valor').val();
+        var orderId = $('#order-id').val()
 
-        if (productId && qtde && valor) {
-            var total = qtde * valor;
-
+        if (productId && qtde && valor && orderId) {
             // Envia a requisição AJAX para adicionar o item
             $.ajax({
-                url: '/orders/addOrderItem',  // URL direta
+                url: '/orders/addOrderItem',
                 type: 'POST',
                 data: {
-                    order_id: $('#order-id').val(),  // Passa o order_id diretamente
+                    _csrfToken: $('input[name="_csrfToken"]').val(),
+                    order_id: orderId,
                     product_id: productId,
                     qtde: qtde,
-                    valor: total
+                    valor: valor
                 },
                 success: function(response) {
                     if (response.success) {
-                        // Adiciona o novo item na tabela
-                        $('#order-items-table').append(
-                            '<tr>' +
-                            '<td>' + response.orderItem.id + '</td>' +
-                            '<td>' + response.orderItem.product_id + '</td>' +
-                            '<td>' + response.orderItem.qtde + '</td>' +
-                            '</tr>'
-                        );
-
-                        // Limpa os campos do formulário
-                        $('#product-id').val('');
-                        $('#product-search').val('');
-                        $('#qtde').val('');
+                        location.reload();
                     } else {
                         alert('Erro ao adicionar item');
                     }
@@ -85,5 +70,5 @@ jQuery(function() {
             alert('Por favor, preencha todos os campos.');
         }
     });
-            
+
 });

@@ -1,3 +1,14 @@
+<?php
+
+
+
+?>
+
+<!-- ThemifyIcons -->
+<?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
+<!-- jQueryUI -->
+<?= $this->Html->css('CakeLte./AdminLTE/plugins/jquery-ui/jquery-ui.min') ?>
+
 <div class="row">
     <aside class="col-md-2">
         <div class="bg-light p-3 rounded">
@@ -16,13 +27,14 @@
                 <div class="col-md-8">
                     <label for="product-search"><?= __('Produto') ?></label>
                     <input type="text" id="product-search" class="form-control" placeholder="Digite o nome do produto">
+                    <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">                    
                     <input type="hidden" id="order-id" value="<?= $order->id ?>">
                     <input type="hidden" id="product-id">
                     <input type="hidden" id="product-valor">
                 </div>
                 <div class="col-md-2">
                 <label for="qtde"><?= __('Quantidade') ?></label>
-                    <input type="number" id="qtde" class="form-control" placeholder="Quantidade">
+                    <input type="number" id="qtde" min="0" class="form-control" placeholder="Quantidade">
                 </div>
 
                 <div class="col-md-2"><br />
@@ -38,8 +50,9 @@
                         <tr>
                             <th class='nowrap'><?= __('ID') ?></th>
                             <th class='nowrap'><?= __('Produto') ?></th>
+                            <th class='nowrap'><?= __('Valor') ?></th>                            
                             <th class='nowrap'><?= __('Quantidade') ?></th>
-                            <th class='nowrap'><?= __('Valor') ?></th>
+                            <th class='nowrap'><?= __('Total') ?></th>
                         </tr>
                     </thead>
                     <tbody id="order-items-table">
@@ -47,9 +60,10 @@
                             <?php foreach ($order->order_items as $orderItem): ?>
                                 <tr>
                                     <td class='nowrap'><?= h($orderItem->id) ?></td>
-                                    <td class='nowrap'><?= h($orderItem->product_id) ?></td>
-                                    <td class='nowrap'><?= h($orderItem->qtde) ?></td>
-                                    <td class='nowrap'><?= h($orderItem->valor) ?></td>
+                                    <td class='nowrap'><?= h($orderItem->product->nome) ?></td>
+                                    <td class='nowrap'><?= h($this->Number->currency($orderItem->valor, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
+                                    <td class='nowrap'><?= h($orderItem->qtde) ?></td>                                    
+                                    <td class='nowrap'><?= h($this->Number->currency($orderItem->valor * $orderItem->qtde, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
@@ -61,7 +75,10 @@
                 </table>
             </div>
 
-            <?= $this->Form->button(__('Salvar pedido'), ['class' => 'btn btn-success float-right']) ?>
+            <div class="sum-container float-right">
+                <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></h4>
+            </div>  
+            
             <?= $this->Form->end() ?>
         </div>
     </div>
@@ -73,8 +90,7 @@
 <?= $this->Html->script('../js/maskmoney.min.js') ?>
 <!-- inputMask -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/inputmask/jquery.inputmask.min') ?>
+<!-- jQueryUI -->
+<?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery-ui/jquery-ui.min') ?>
 <!-- paginaAtual -->
 <?= $this->Html->script('orders/add') ?>
-
-<?= $this->Html->css(['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css']) ?>
-<?= $this->Html->script(['https://code.jquery.com/ui/1.12.1/jquery-ui.min.js']) ?>
