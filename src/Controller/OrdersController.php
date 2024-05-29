@@ -106,34 +106,49 @@ class OrdersController extends AppController
             $response = ['success' => false];
         }
     
-        $this->set(compact('response'));
-        $this->viewBuilder()->setOption('serialize', 'response');
+        // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
+        $this->response = $this->response->withStatus(200);
+    
+        // Retorna os dados e o código de status da resposta
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode($response));
+        return $this->response;
     }
 
     public function autocomplete()
     {
+        $this->autoRender = false;
         $this->request->allowMethod('ajax');
-
+    
         $term = $this->request->getQuery('term');
-
+    
         $products = $this->Products->find('all', [
             'conditions' => ['OR' => [
                 'Products.nome LIKE' => '%' . $term . '%',
                 'Products.descricao LIKE' => '%' . $term . '%',
             ]],
+            'limit' => 10
         ]);
-
+    
         $result = [];
         foreach ($products as $product) {
             $result[] = [
                 'id' => $product->id,
                 'nome' => $product->nome,
-                //'valor' => $product->valor
+                'valor' => $product->valor_venda
             ];
         }
-
-        $this->set(compact('result'));
-        $this->viewBuilder()->setOption('serialize', 'result');
-    }    
+    
+        // Define os dados que serão enviados como resposta
+        $data = $result;
+    
+        // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
+        $this->response = $this->response->withStatus(200);
+    
+        // Retorna os dados e o código de status da resposta
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode($data));
+        return $this->response;
+    }
 
 }

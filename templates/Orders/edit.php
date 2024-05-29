@@ -16,7 +16,9 @@
                 <div class="col-md-8">
                     <label for="product-search"><?= __('Produto') ?></label>
                     <input type="text" id="product-search" class="form-control" placeholder="Digite o nome do produto">
+                    <input type="hidden" id="order-id" value="<?= $order->id ?>">
                     <input type="hidden" id="product-id">
+                    <input type="hidden" id="product-valor">
                 </div>
                 <div class="col-md-2">
                 <label for="qtde"><?= __('Quantidade') ?></label>
