@@ -116,7 +116,7 @@ class OrdersController extends AppController
 
         $term = $this->request->getQuery('term');
 
-        $products = $this->Orders->Products->find('all', [
+        $products = $this->Products->find('all', [
             'conditions' => ['OR' => [
                 'Products.nome LIKE' => '%' . $term . '%',
                 'Products.descricao LIKE' => '%' . $term . '%',
