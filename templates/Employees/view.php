@@ -5,7 +5,7 @@ use App\Model\Entity\Employee;
 ?>
 
 <div class="row">
-    <aside class="col-md-3">
+    <aside class="col-md-2">
         <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Ações') ?></h4>
             <?= $this->Html->link(__('Alterar Colaborador'), ['action' => 'edit', $employee->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
@@ -21,7 +21,7 @@ use App\Model\Entity\Employee;
             <?= $this->Html->link(__('Novo Colaborador'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="employees view content">
             <h3><?= h($employee->nome) ?></h3>
             <table class="table table-striped">

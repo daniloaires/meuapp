@@ -62,7 +62,7 @@
                 <tr>
                     <td class='nowrap'><?= $this->Number->format($order->id) ?></td>
                     <td class='nowrap'><?= h($order->nome) ?></td>
-                    <td class='nowrap'><?= h($order->created->format('d/m/Y')) ?></td>
+                    <td class='nowrap'><?= h($order->created->format('d/m/Y H:i:s')) ?></td>
                     <td class="actions nowrap">
                         <?= $this->Html->link(
                             '<i class="ti-eye"></i> ', 

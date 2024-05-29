@@ -5,7 +5,7 @@
 ?>
 
 <div class="row">
-    <aside class="col-md-3">
+    <aside class="col-md-2">
         <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Ações') ?></h4>
             <?= $this->Html->link(__('Alterar Produto'), ['action' => 'edit', $product->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
@@ -21,7 +21,7 @@
             <?= $this->Html->link(__('Novo produto'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="products view content">
             <h3><?= h($product->nome) ?></h3>
             <table>

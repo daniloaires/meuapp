@@ -1,8 +1,5 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\OrderItem> $orderItems
- */
+
 ?>
 <div class="orderItems index content">
     <?= $this->Html->link(__('New Order Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>

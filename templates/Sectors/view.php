@@ -9,7 +9,7 @@
 <?= $this->Html->css('../css-js/themify-icons/assets/themify-icons/themify-icons.css') ?>
 
 <div class="row">
-    <aside class="col-md-3">
+    <aside class="col-md-2">
         <div class="bg-light p-3 rounded">
             <h4 class="heading"><?= __('Ações') ?></h4>
             <?= $this->Html->link(__('Alterar Setor'), ['action' => 'edit', $sector->id], ['class' => 'btn btn-primary btn-block mb-2']) ?>
@@ -25,7 +25,7 @@
             <?= $this->Html->link(__('Novo Setor'), ['action' => 'add'], ['class' => 'btn btn-success btn-block mb-2']) ?>
         </div>
     </aside>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="sectors view content">
             <h3><?= h($sector->name) ?></h3>
             <table>
