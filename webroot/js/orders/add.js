@@ -100,8 +100,6 @@ jQuery(function() {
                 } else {
                     alert('Por favor, preencha os campos corretamente.');
                 }
-            } else {
-                alert('Por favor, preencha os campos corretamente.');
             }
         }
         addItem();
