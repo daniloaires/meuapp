@@ -154,18 +154,19 @@ class OrdersController extends AppController
     
     public function deleteOrderItem($id = null)
     {
-        $this->request->allowMethod(['delete']);
-        $orderItem = $this->Orders->OrderItems->get($id);
-    
-        if ($this->Orders->OrderItems->delete($orderItem)) {
-            $response = ['success' => true];
-        } else {
-            $response = ['success' => false];
+        if ($this->request->is('delete')) {
+            $orderItem = $this->Orders->OrderItems->get($id);
+        
+            if ($this->Orders->OrderItems->delete($orderItem)) {
+                $response = ['success' => true];
+            } else {
+                $response = ['success' => false];
+            }
+        
+            $this->response = $this->response->withType('application/json')
+                ->withStringBody(json_encode($response));
+            return $this->response;
         }
-    
-        $this->response = $this->response->withType('application/json')
-            ->withStringBody(json_encode($response));
-        return $this->response;
     }
     
 

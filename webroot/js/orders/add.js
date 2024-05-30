@@ -80,6 +80,8 @@ jQuery(function() {
     });
 
     $('.delete-item').on('click', function(e){
+        e.preventDefault();
+
         var itemId = $(this).data('id');
         var $row = $(this).closest('tr');
 
@@ -87,8 +89,12 @@ jQuery(function() {
             $.ajax({
                 url: '/orders/deleteOrderItem/' + itemId,
                 type: 'DELETE',
+                data: {
+                    _csrfToken: $('input[name="_csrfToken"]').val(),
+                },                
                 success: function(response) {
                     if (response.success) {
+                        $row.remove();
                         location.reload();
                     } else {
                         alert('Erro ao excluir item');
