@@ -156,6 +156,19 @@ class OrdersController extends AppController
             return $this->response;
         }
     }
+
+    public function getByCode()
+    {
+        $this->autoRender = false;
+        $code = $this->request->getQuery('code');
+        $product = $this->Products->find('all', [
+            'conditions' => ['Products.codigo' => $code]
+        ])->first();
+    
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode($product));
+        return $this->response;
+    }
     
     public function deleteOrderItem($id = null)
     {

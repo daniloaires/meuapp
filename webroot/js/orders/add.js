@@ -46,15 +46,16 @@ jQuery(function() {
         }
     });
 
+    // Evento ao clicar no botão "Adicionar Item"
     $('#add-item').on('click', function(e){
         e.preventDefault();
-    
+
         var productId = $('#product-id').val();
         var qtde = $('#qtde').val();
         var valor = $('#product-valor').val();
-        var orderId = $('#order-id').val()
+        var orderId = $('#order-id').val();
 
-        if (productId && qtde && valor && orderId && (qtde > 0) ) {
+        if (productId && qtde && valor && orderId && (qtde > 0)) {
             // Envia a requisição AJAX para adicionar o item
             $.ajax({
                 url: '/orders/addOrderItem',
@@ -75,7 +76,28 @@ jQuery(function() {
                 }
             });
         } else {
-            alert('Por favor, preencha os campos corretamente.');
+            // Tenta buscar o produto pelo código digitado
+            var productCode = $('#product-search').val();
+            if (productCode) {
+                $.ajax({
+                    url: '/products/getByCode',
+                    type: 'GET',
+                    data: {
+                        code: productCode
+                    },
+                    success: function(product) {
+                        if (product && product.id) {
+                            $('#product-id').val(product.id);
+                            $('#product-valor').val(product.valor);
+                            $('#add-item').click(); // Tenta adicionar novamente com os dados preenchidos
+                        } else {
+                            alert('Produto não encontrado.');
+                        }
+                    }
+                });
+            } else {
+                alert('Por favor, preencha os campos corretamente.');
+            }
         }
     });
 
