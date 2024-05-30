@@ -13,7 +13,12 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
         $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
         $builder->connect('/clientes', ['controller' => 'Clientes', 'action' => 'index']);
+        
         $builder->connect('/autocomplete', ['controller' => 'Orders', 'action' => 'autocomplete']);
+
+        $builder->connect('/orders/deleteOrderItem/:id', ['controller' => 'Orders', 'action' => 'deleteOrderItem'])
+        ->setPass(['id'])
+        ->setMethods(['DELETE']);        
 
         $builder->fallbacks();
     });

@@ -89,7 +89,7 @@ jQuery(function() {
                 type: 'DELETE',
                 success: function(response) {
                     if (response.success) {
-                        $row.remove();
+                        location.reload();
                     } else {
                         alert('Erro ao excluir item');
                     }
