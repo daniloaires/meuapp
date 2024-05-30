@@ -15,7 +15,7 @@ jQuery(function() {
                         // Processa os resultados e os passa para a função de resposta do autocomplete
                         response($.map(data, function(item) {
                             return {
-                                label: item.nome + ' :: ' + item.valor + ')',
+                                label: item.nome + ' (' + item.id + ')',
                                 value: item.nome,
                                 id: item.id,
                                 nome: item.nome,
