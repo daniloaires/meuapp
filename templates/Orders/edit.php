@@ -68,7 +68,7 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="4"><?= __('Nenhum item encontrado para este pedido.') ?></td>
+                                <td colspan="5"><?= __('Nenhum item encontrado para este pedido.') ?></td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
