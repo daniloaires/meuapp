@@ -65,17 +65,11 @@
                     <td class='nowrap'><?= h($order->created->format('d/m/Y H:i:s')) ?></td>
                     <td class="actions nowrap">
                         <?= $this->Html->link(
-                            '<i class="ti-eye"></i> ', 
-                            ['action' => 'view', $order->id],
-                            ['escape' => false] 
-                        ) ?>
-                    
-                        <?= $this->Html->link(
                             '<i class="ti-pencil"></i> ', 
                             ['action' => 'edit', $order->id],
                             ['escape' => false] 
                         ) ?>
-
+                        
                         <?= $this->Form->postLink(
                             '<i class="ti-trash"></i> ',
                             ['action' => 'delete', $order->id],
