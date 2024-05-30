@@ -30,9 +30,9 @@
                         placeholder="Digite o nome do produto">
                     <input type="hidden" name="_csrfToken" 
                         value="<?= $this->request->getAttribute('csrfToken') ?>">                    
-                    <input type="text" id="order-id" value="<?= $order->id ?>">
-                    <input type="text" id="product-id">
-                    <input type="text" id="product-valor">
+                    <input type="hidden" id="order-id" value="<?= $order->id ?>">
+                    <input type="hidden" id="product-id">
+                    <input type="hidden" id="product-valor">
                 </div>
                 <div class="col-md-2">
                 <label for="qtde"><?= __('Quantidade') ?></label>

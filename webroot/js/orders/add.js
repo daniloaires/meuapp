@@ -53,7 +53,6 @@ jQuery(function() {
         var qtde = $('#qtde').val();
         var valor = $('#product-valor').val();
         var orderId = $('#order-id').val();
-        var manualEntryAttempted = false; // Flag para evitar loop
 
         function addItem() {
             if (productId && qtde && valor && orderId && (qtde > 0)) {
@@ -76,8 +75,7 @@ jQuery(function() {
                         }
                     }
                 });
-            } else if (!manualEntryAttempted) {
-                manualEntryAttempted = true; // Marcar a tentativa manual para evitar loop
+            } else {
                 // Tenta buscar o produto pelo código digitado
                 var productCode = $('#product-search').val();
                 if (productCode) {
@@ -89,11 +87,18 @@ jQuery(function() {
                         },
                         success: function(product) {
                             if (product && product.id) {
+                                $('#produto-selecionado').empty();
+                                $('#produto-selecionado').append(
+                                    product.nome.toUpperCase() + ' :: ' + 
+                                        product.valor_venda.toLocaleString('pt-BR', { 
+                                            style: 'currency', currency: 'BRL' }) 
+                                );                                
                                 $('#product-id').val(product.id);
                                 $('#product-valor').val(product.valor_venda);
                                 addItem(); // Tenta adicionar novamente com os dados preenchidos
                             } else {
-                                alert('Produto não encontrado.');
+                                $('#produto-selecionado').empty();
+                                $('#produto-selecionado').append('Produto não encontrado');
                             }
                         }
                     });
