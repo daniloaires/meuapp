@@ -102,13 +102,18 @@ class OrdersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $order = $this->Orders->get($id);
+        
+        // Verifica se o pedido existe
+        $order = $this->Orders->get($id, [
+            'contain' => ['OrderItems'],
+        ]);
+    
         if ($this->Orders->delete($order)) {
-            $this->Flash->success(__('The order has been deleted.'));
+            $this->Flash->success(__('O pedido foi excluído.'));
         } else {
-            $this->Flash->error(__('The order could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O pedido não pôde ser excluído. Por favor, tente novamente.'));
         }
-
+    
         return $this->redirect(['action' => 'index']);
     }
 
