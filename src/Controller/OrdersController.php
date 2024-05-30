@@ -164,7 +164,7 @@ class OrdersController extends AppController
         $product = $this->Products->find('all', [
             'conditions' => ['Products.codigo' => $code]
         ])->first();
-    
+
         $this->response = $this->response->withType('application/json')
             ->withStringBody(json_encode($product));
         return $this->response;
