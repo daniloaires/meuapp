@@ -80,7 +80,7 @@ jQuery(function() {
             var productCode = $('#product-search').val();
             if (productCode) {
                 $.ajax({
-                    url: '/products/getByCode',
+                    url: '/orders/getByCode',
                     type: 'GET',
                     data: {
                         code: productCode
