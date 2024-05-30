@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Model\Entity\Order;
 
 ?>
 
@@ -53,7 +53,9 @@
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('nome', 'Numero') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>                    
+                    <th class='nowrap'><?= $this->Paginator->sort('valor', 'Valor') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('status', 'Status') ?></th>                    
                     <th class="actions nowrap"><?= __('Ações') .'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ?></th>
                 </tr>
             </thead>
@@ -62,16 +64,18 @@
                 <tr>
                     <td class='nowrap'><?= $this->Number->format($order->id) ?></td>
                     <td class='nowrap'><?= h($order->nome) ?></td>
-                    <td class='nowrap'><?= h($order->created->format('d/m/Y H:i:s')) ?></td>
+                    <td class='nowrap'><?= h($order->created->format('d/m/Y H:i:s')) ?></td>                    
+                    <td class='nowrap'><?= h($this->Number->currency($order->valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
+                    <td class='nowrap'><?= h(Order::LIST_STATUS_PEDIDO_STR[$order->status]) ?></td>                    
                     <td class="actions nowrap">
                         <?= $this->Html->link(
-                            '<i class="ti-pencil"></i> ', 
+                            '<i class="ti-pencil" style="color:green;"></i>&nbsp;Alterar', 
                             ['action' => 'edit', $order->id],
                             ['escape' => false] 
-                        ) ?>
-                        
+                        ) ?>&nbsp;&nbsp;&nbsp;
+
                         <?= $this->Form->postLink(
-                            '<i class="ti-trash"></i> ',
+                            '<i class="ti-trash" style="color:red;"></i>&nbsp;Excluir',
                             ['action' => 'delete', $order->id],
                             ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $order->id), 'escapeTitle' => false, 'escape' => false]
                         ) ?>

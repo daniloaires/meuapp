@@ -16,8 +16,20 @@ class OrdersController extends AppController
 
     public function index()
     {
+        // Carrega todos os pedidos junto com seus itens e produtos
+        $this->paginate = [
+            'contain' => ['OrderItems', 'OrderItems.Products'],
+        ];
         $orders = $this->paginate($this->Orders);
-
+    
+        // Calcula a soma do valor dos itens do pedido
+        foreach ($orders as $order) {
+            $order->valorTotal = 0;
+            foreach ($order->order_items as $orderItem) {
+                $order->valorTotal += $orderItem->valor * $orderItem->qtde;
+            }
+        }
+    
         $this->set(compact('orders'));
     }
 
