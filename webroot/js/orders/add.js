@@ -18,6 +18,7 @@ jQuery(function() {
                                 label: item.nome + ' (' + item.id + ')',
                                 value: item.nome,
                                 id: item.id,
+                                nome: item.nome,
                                 valor: item.valor
                             };
                         }));
@@ -34,6 +35,13 @@ jQuery(function() {
             $('#product-id').val(ui.item.id);
             $('#product-search').val(ui.item.value);
             $('#product-valor').val(ui.item.valor);
+            $('#qtde').val(1);
+            $('#produto-selecionado').empty();
+            $('#produto-selecionado').append(
+                ui.item.nome.toUpperCase() + ' :: ' + 
+                    ui.item.valor.toLocaleString('pt-BR', { 
+                        style: 'currency', currency: 'BRL' }) 
+            );
             return false;
         }
     });

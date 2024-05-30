@@ -41,7 +41,9 @@
                     <button id="add-item" class="btn btn-primary mb-2">
                         <?= __('Adicionar Item') ?></button>
                 </div>                
-            </div><hr />
+            </div>
+
+            <h1><a id="produto-selecionado" style="color:blue;"></a>&nbsp;</h1>
 
             <h6><?= __('Itens do Pedido') ?></h6>
             <div class="table-responsive">
@@ -50,29 +52,34 @@
                         <tr>
                             <th class='nowrap'><?= __('ID') ?></th>
                             <th class='nowrap'><?= __('Produto') ?></th>
-                            <th class='nowrap'><?= __('Valor') ?></th>                            
+                            <th class='nowrap'><?= __('Valor') ?></th>
                             <th class='nowrap'><?= __('Quantidade') ?></th>
                             <th class='nowrap'><?= __('Total') ?></th>
+                            <th class='nowrap'><?= __('Ações') ?></th>
                         </tr>
                     </thead>
                     <tbody id="order-items-table">
                         <?php if (!empty($order->order_items)): ?>
                             <?php foreach ($order->order_items as $orderItem): ?>
-                                <tr>
+                                <tr data-id="<?= $orderItem->id ?>">
                                     <td class='nowrap'><?= h($orderItem->id) ?></td>
                                     <td class='nowrap'><?= h($orderItem->product->nome) ?></td>
                                     <td class='nowrap'><?= h($this->Number->currency($orderItem->valor, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
-                                    <td class='nowrap'><?= h($orderItem->qtde) ?></td>                                    
+                                    <td class='nowrap'><?= h($orderItem->qtde) ?></td>
                                     <td class='nowrap'><?= h($this->Number->currency($orderItem->valor * $orderItem->qtde, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
+                                    <td class='nowrap'>
+                                        <button class="btn btn-danger btn-sm delete-item" data-id="<?= $orderItem->id ?>"><?= __('Excluir') ?></button>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5"><?= __('Nenhum item encontrado para este pedido.') ?></td>
+                                <td colspan="6"><?= __('Nenhum item encontrado para este pedido.') ?></td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
+
             </div>
 
             <div class="sum-container float-right">
