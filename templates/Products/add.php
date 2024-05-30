@@ -17,13 +17,20 @@ use App\Model\Entity\Product;
             <fieldset>
                 <legend><?= __('Adicionar Produto') ?></legend>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-4">
+                        <?= $this->Form->control('codigo', [
+                            'class' => 'form-control',
+                            'label' => 'Código do Produto',
+                            'placeholder' => 'Informe o Código',
+                        ]) ?>
+                    </div>
+                    <div class="col-md-8">
                         <?= $this->Form->control('nome', [
                             'class' => 'form-control',
                             'label' => 'Nome do Produto',
                             'placeholder' => 'Informe o Nome',
                         ]) ?>
-                    </div>
+                    </div>                    
                     <div class="col-md-12">
                         <?= $this->Form->control('descricao', [
                             'class' => 'form-control',

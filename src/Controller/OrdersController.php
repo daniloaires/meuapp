@@ -153,7 +153,7 @@ class OrdersController extends AppController
                 'Products.nome LIKE' => '%' . $term . '%',
                 'Products.descricao LIKE' => '%' . $term . '%',
             ]],
-            'limit' => 10
+            'limit' => 100
         ]);
     
         $result = [];
