@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\Order;
+
 class OrdersController extends AppController
 {
     public function initialize(): void
@@ -39,6 +41,7 @@ class OrdersController extends AppController
         // Preenche a entidade Order com o hash gerado
         $order = $this->Orders->patchEntity($order, [
             'nome' => $hash,
+            'status' => Order::STATUS_PEDIDO_NAO_PAGO,
         ]);
     
         if ($this->Orders->save($order)) {
