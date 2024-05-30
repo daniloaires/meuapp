@@ -20,7 +20,7 @@
         <div class="orders form content">
             <?= $this->Form->create($order) ?>
             <fieldset>
-                <legend><?= __('Pedido: ' . h($order->nome)) ?></legend>
+                <legend><?= __('Nº Pedido.: ' . h($order->nome)) ?></legend>
             </fieldset>
 
             <div class="row">
@@ -68,7 +68,8 @@
                                     <td class='nowrap'><?= h($orderItem->qtde) ?></td>
                                     <td class='nowrap'><?= h($this->Number->currency($orderItem->valor * $orderItem->qtde, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
                                     <td class='nowrap'>
-                                        <button class="btn btn-danger btn-sm delete-item" data-id="<?= $orderItem->id ?>"><?= __('Excluir') ?></button>
+                                        <button class="btn btn-danger btn-sm delete-item" style="padding: 1px;"
+                                            data-id="<?= $orderItem->id ?>"><?= __('Excluir') ?></button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

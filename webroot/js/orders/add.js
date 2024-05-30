@@ -15,7 +15,7 @@ jQuery(function() {
                         // Processa os resultados e os passa para a função de resposta do autocomplete
                         response($.map(data, function(item) {
                             return {
-                                label: item.nome + ' (' + item.id + ')',
+                                label: item.nome + ' :: ' + item.valor + ')',
                                 value: item.nome,
                                 id: item.id,
                                 nome: item.nome,
@@ -54,7 +54,7 @@ jQuery(function() {
         var valor = $('#product-valor').val();
         var orderId = $('#order-id').val()
 
-        if (productId && qtde && valor && orderId) {
+        if (productId && qtde && valor && orderId && (qtde > 0) ) {
             // Envia a requisição AJAX para adicionar o item
             $.ajax({
                 url: '/orders/addOrderItem',
@@ -75,7 +75,7 @@ jQuery(function() {
                 }
             });
         } else {
-            alert('Por favor, preencha todos os campos.');
+            alert('Por favor, preencha os campos corretamente.');
         }
     });
 
