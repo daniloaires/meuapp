@@ -79,4 +79,26 @@ jQuery(function() {
         }
     });
 
+    $('.delete-item').on('click', function(e){
+        var itemId = $(this).data('id');
+        var $row = $(this).closest('tr');
+
+        if (confirm('Tem certeza de que deseja excluir este item?')) {
+            $.ajax({
+                url: '/orders/deleteOrderItem/' + itemId,
+                type: 'DELETE',
+                success: function(response) {
+                    if (response.success) {
+                        $row.remove();
+                    } else {
+                        alert('Erro ao excluir item');
+                    }
+                },
+                error: function() {
+                    alert('Erro ao excluir item');
+                }
+            });
+        }
+    });    
+
 });
