@@ -26,15 +26,18 @@
             <div class="row">
                 <div class="col-md-8">
                     <label for="product-search"><?= __('Produto') ?></label>
-                    <input type="text" id="product-search" class="form-control" placeholder="Digite o nome do produto">
-                    <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">                    
-                    <input type="hidden" id="order-id" value="<?= $order->id ?>">
-                    <input type="hidden" id="product-id">
-                    <input type="hidden" id="product-valor">
+                    <input type="text" id="product-search" class="form-control" 
+                        placeholder="Digite o nome do produto">
+                    <input type="hidden" name="_csrfToken" 
+                        value="<?= $this->request->getAttribute('csrfToken') ?>">                    
+                    <input type="text" id="order-id" value="<?= $order->id ?>">
+                    <input type="text" id="product-id">
+                    <input type="text" id="product-valor">
                 </div>
                 <div class="col-md-2">
                 <label for="qtde"><?= __('Quantidade') ?></label>
-                    <input type="number" id="qtde" min="0" class="form-control" placeholder="Quantidade">
+                    <input type="number" id="qtde" min="0" class="form-control" 
+                        placeholder="Quantidade" value="1">
                 </div>
 
                 <div class="col-md-2"><br />

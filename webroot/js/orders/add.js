@@ -35,7 +35,6 @@ jQuery(function() {
             $('#product-id').val(ui.item.id);
             $('#product-search').val(ui.item.value);
             $('#product-valor').val(ui.item.valor);
-            $('#qtde').val(1);
             $('#produto-selecionado').empty();
             $('#produto-selecionado').append(
                 ui.item.nome.toUpperCase() + ' :: ' + 
