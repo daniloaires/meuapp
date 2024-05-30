@@ -21,9 +21,10 @@ class OrdersFixture extends TestFixture
             [
                 'id' => 1,
                 'nome' => 'Lorem ipsum dolor sit amet',
-                'created' => '2024-05-27 15:42:30',
-                'modified' => '2024-05-27 15:42:30',
-                'deleted' => '2024-05-27 15:42:30',
+                'status' => 1,
+                'created' => '2024-05-30 19:02:55',
+                'modified' => '2024-05-30 19:02:55',
+                'deleted' => '2024-05-30 19:02:55',
             ],
         ];
         parent::init();

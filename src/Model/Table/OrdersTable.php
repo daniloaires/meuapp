@@ -67,6 +67,11 @@ class OrdersTable extends Table
             ->notEmptyString('nome');
 
         $validator
+            ->integer('status')
+            ->requirePresence('status', 'create')
+            ->notEmptyString('status');
+
+        $validator
             ->dateTime('deleted')
             ->allowEmptyDateTime('deleted');
 

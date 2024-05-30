@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * Product Entity
  *
  * @property int $id
+ * @property string|null $codigo
  * @property string $nome
  * @property string $descricao
  * @property float $valor_compra
@@ -21,6 +22,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
  * @property \Cake\I18n\FrozenTime|null $deleted
+ *
+ * @property \App\Model\Entity\OrderItem[] $order_items
  */
 class Product extends Entity
 {
@@ -89,6 +92,7 @@ class Product extends Entity
     ];
 
     protected $_accessible = [
+        'codigo' => true,
         'nome' => true,
         'descricao' => true,
         'valor_compra' => true,
@@ -101,5 +105,6 @@ class Product extends Entity
         'created' => true,
         'modified' => true,
         'deleted' => true,
+        'order_items' => true,
     ];
 }

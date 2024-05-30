@@ -10,10 +10,15 @@ class CreateOrders extends AbstractMigration
         $table = $this->table('orders');
         $table
             ->addColumn('nome', 'string', [
-                'limit' => '512',
+                'limit' => 512,
                 'default' => null,
                 'null' => false,
             ])
+            ->addColumn('status', 'integer', [
+                'limit' => 2,
+                'default' => null,
+                'null' => false,
+            ])            
             ->addColumn('created', 'datetime', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'null' => false,
@@ -27,6 +32,7 @@ class CreateOrders extends AbstractMigration
                 'null' => true,
             ])            
             ->addIndex('nome')
+            ->addIndex('status')
             ->addIndex('created')
             ->addIndex('modified')
             ->addIndex('deleted')            

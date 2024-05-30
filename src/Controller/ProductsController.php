@@ -77,7 +77,10 @@ class ProductsController extends AppController
                 
                 // Salvar o caminho relativo do arquivo no banco de dados
                 $product->foto = 'produtos/' . $file->getClientFilename();
-            }
+            } else {
+                // Se não houver novo arquivo de upload, manter o valor atual do campo foto
+                $product->foto = '';
+            }            
 
             // Limpar o valor antes de salvar
             $product->valor_compra = str_replace(['R$', '.', ','], ['', '', '.'], 

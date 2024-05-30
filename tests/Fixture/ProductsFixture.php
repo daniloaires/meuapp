@@ -20,6 +20,7 @@ class ProductsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
+                'codigo' => 'Lorem ipsum dolor sit amet',
                 'nome' => 'Lorem ipsum dolor sit amet',
                 'descricao' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'valor_compra' => 1,
@@ -29,9 +30,9 @@ class ProductsFixture extends TestFixture
                 'estoque' => 1,
                 'unidade' => 1,
                 'foto' => 'Lorem ipsum dolor sit amet',
-                'created' => '2024-05-29 15:25:59',
-                'modified' => '2024-05-29 15:25:59',
-                'deleted' => '2024-05-29 15:25:59',
+                'created' => '2024-05-30 19:02:47',
+                'modified' => '2024-05-30 19:02:47',
+                'deleted' => '2024-05-30 19:02:47',
             ],
         ];
         parent::init();

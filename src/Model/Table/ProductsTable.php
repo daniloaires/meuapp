@@ -8,6 +8,27 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
+/**
+ * Products Model
+ *
+ * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
+ *
+ * @method \App\Model\Entity\Product newEmptyEntity()
+ * @method \App\Model\Entity\Product newEntity(array $data, array $options = [])
+ * @method \App\Model\Entity\Product[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Product get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Product findOrCreate($search, ?callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Product patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Product[] patchEntities(iterable $entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Product|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Product saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ */
 class ProductsTable extends Table
 {
     /**
@@ -39,6 +60,11 @@ class ProductsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
+        $validator
+            ->scalar('codigo')
+            ->maxLength('codigo', 255)
+            ->allowEmptyString('codigo');
+
         $validator
             ->scalar('nome')
             ->maxLength('nome', 255)

@@ -9,11 +9,16 @@ class CreateProducts extends AbstractMigration
     {
         $table = $this->table('products');
         $table
+            ->addColumn('codigo', 'string', [
+                'limit' => 255,
+                'null' => true,
+                'default' => null,
+            ])
             ->addColumn('nome', 'string', [
                 'limit' => 255,
                 'null' => false,
                 'default' => null,
-            ])        
+            ])
             ->addColumn('descricao', 'text', [
                 'null' => false,
                 'default' => null,
@@ -59,7 +64,8 @@ class CreateProducts extends AbstractMigration
                 'null' => true,
                 'default' => null,
             ])
-            ->addIndex(['nome'])
+            ->addIndex(['codigo'])
+            ->addIndex(['nome'])            
             ->addIndex(['valor_compra'])
             ->addIndex(['valor_venda'])
             ->addIndex(['valor_locacao'])

@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nome
+ * @property int $status
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
  * @property \Cake\I18n\FrozenTime|null $deleted
@@ -29,6 +30,7 @@ class Order extends Entity
      */
     protected $_accessible = [
         'nome' => true,
+        'status' => true,
         'created' => true,
         'modified' => true,
         'deleted' => true,
