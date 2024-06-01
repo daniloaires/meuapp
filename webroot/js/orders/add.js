@@ -165,6 +165,7 @@ jQuery(function() {
                 },                
                 success: function(response) {
                     if (response.success) {
+                        alert('Pedido finalizado com sucesso');
                         location.reload();
                     } else {
                         alert('Não foi possível finalizar');
