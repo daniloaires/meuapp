@@ -154,8 +154,8 @@ jQuery(function() {
         // Abre o modal para selecionar a forma de pagamento
         $('#paymentModal').modal('show');
 
-        // Evento ao clicar no botão "Confirmar Pagamento" no modal
-        $('#confirm-payment').on('click', function() {
+        // Remove qualquer evento click anterior e anexa um novo evento
+        $('#confirm-payment').off('click').on('click', function() {
             let forma_pagto = $('#forma-pagto').val();
 
             $.ajax({

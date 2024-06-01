@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Entity\CashFlow;
 use App\Model\Entity\Order;
 
 ?>
@@ -122,11 +123,9 @@ use App\Model\Entity\Order;
       </div>
       <div class="modal-body">
         <select id="forma-pagto" class="form-control">
-          <option value="1">Cartão de Crédito</option>
-          <option value="2">Cartão de Débito</option>
-          <option value="3">Dinheiro</option>
-          <option value="4">Pix</option>
-          <option value="5">Boleto</option>
+          <?php foreach (CashFlow::LIST_FORMA_PAGTO_STR as $value => $label): ?>
+            <option value="<?= h($value) ?>"><?= h($label) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
       <div class="modal-footer">
