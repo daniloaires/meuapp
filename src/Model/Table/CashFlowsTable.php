@@ -3,38 +3,16 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\CashFlow;
+use Cake\I18n\Date;
+use Cake\I18n\FrozenTime;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * CashFlows Model
- *
- * @method \App\Model\Entity\CashFlow newEmptyEntity()
- * @method \App\Model\Entity\CashFlow newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\CashFlow[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\CashFlow get($primaryKey, $options = [])
- * @method \App\Model\Entity\CashFlow findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\CashFlow patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\CashFlow[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\CashFlow|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\CashFlow saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\CashFlow[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\CashFlow[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\CashFlow[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\CashFlow[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
 class CashFlowsTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
     public function initialize(array $config): void
     {
         parent::initialize($config);
@@ -46,12 +24,6 @@ class CashFlowsTable extends Table
         $this->addBehavior('Timestamp');
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator): Validator
     {
         $validator
@@ -86,4 +58,32 @@ class CashFlowsTable extends Table
 
         return $validator;
     }
+
+    public function movimentacaoCaixa($descricao = null, $valor = null, $tipo = null, $forma_pagto = null) {
+        // Verifica se os parâmetros foram fornecidos
+        if ($valor === null || $descricao === null || $tipo === null || $forma_pagto === null) {
+            return false;
+        }
+
+        if ($tipo === CashFlow::TIPO_CAIXA_SAIDA) {
+            $valor = -$valor;
+        }
+    
+        // Cria uma nova entidade
+        $cashFlow = $this->newEntity([
+            'descricao' => $descricao,
+            'valor' => $valor,
+            'tipo' => $tipo,
+            'forma_pagto' => $forma_pagto,
+            'data' => FrozenTime::now() // Define a data atual
+        ]);
+
+        // Tenta salvar a entidade
+        if ($this->save($cashFlow)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }

@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Model\Entity\Order;
 
 ?>
 
@@ -84,11 +84,21 @@
                     </tbody>
                 </table>
 
-            </div>
-
             <div class="sum-container float-right">
                 <h4>Valor total: <?= $this->Number->currency($valorTotal, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00']) ?></h4>
-            </div>  
+            </div>                  
+
+            </div>
+
+            <?php
+                if ($order->status === Order::STATUS_PEDIDO_ABERTO) {
+                    echo $this->Form->button(__('Finalizar Pedido'), [
+                        'class' => 'btn btn-success float-right',
+                        'id' => 'fechar-pedido',
+                        'data-valor' => $valorTotal,
+                    ]);
+                }
+            ?>
             
             <?= $this->Form->end() ?>
         </div>

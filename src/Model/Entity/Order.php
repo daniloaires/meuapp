@@ -7,17 +7,17 @@ use Cake\ORM\Entity;
 
 class Order extends Entity
 {
-    const STATUS_PEDIDO_NAO_PAGO = 1;
-    const STATUS_PEDIDO_PAGO = 2;
+    const STATUS_PEDIDO_ABERTO = 1;
+    const STATUS_PEDIDO_FECHADO = 2;
 
     const LIST_PEDIDO_CONTA = [
-        self::STATUS_PEDIDO_NAO_PAGO,
-        self::STATUS_PEDIDO_PAGO,
+        self::STATUS_PEDIDO_ABERTO,
+        self::STATUS_PEDIDO_FECHADO,
     ];    
 
     const LIST_STATUS_PEDIDO_STR = [
-        self::STATUS_PEDIDO_NAO_PAGO => 'Não Pago',
-        self::STATUS_PEDIDO_PAGO => 'Pago',
+        self::STATUS_PEDIDO_ABERTO => 'Aberto',
+        self::STATUS_PEDIDO_FECHADO => 'Fechado',
     ];  
 
     protected $_accessible = [

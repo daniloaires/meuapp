@@ -3,19 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * OrderItems Controller
- *
- * @property \App\Model\Table\OrderItemsTable $OrderItems
- * @method \App\Model\Entity\OrderItem[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class OrderItemsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function index()
     {
         $this->paginate = [
@@ -26,13 +15,6 @@ class OrderItemsController extends AppController
         $this->set(compact('orderItems'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Order Item id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $orderItem = $this->OrderItems->get($id, [
@@ -42,11 +24,6 @@ class OrderItemsController extends AppController
         $this->set(compact('orderItem'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $orderItem = $this->OrderItems->newEmptyEntity();
@@ -64,13 +41,6 @@ class OrderItemsController extends AppController
         $this->set(compact('orderItem', 'orders', 'products'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Order Item id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $orderItem = $this->OrderItems->get($id, [
@@ -90,13 +60,6 @@ class OrderItemsController extends AppController
         $this->set(compact('orderItem', 'orders', 'products'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Order Item id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

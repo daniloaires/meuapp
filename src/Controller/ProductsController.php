@@ -189,4 +189,52 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function getByCode()
+    {
+        $this->autoRender = false;
+        $code = $this->request->getQuery('code');
+        $product = $this->Products->find('all', [
+            'conditions' => ['Products.codigo' => $code]
+        ])->first();
+
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode($product));
+        return $this->response;
+    } 
+    
+    public function autocomplete()
+    {
+        $this->autoRender = false;
+        $this->request->allowMethod('ajax');
+    
+        $term = $this->request->getQuery('term');
+    
+        $products = $this->Products->find('all', [
+            'conditions' => ['OR' => [
+                'Products.nome LIKE' => '%' . $term . '%',
+                'Products.descricao LIKE' => '%' . $term . '%',
+            ]],
+            'limit' => 100
+        ]);
+    
+        $result = [];
+        foreach ($products as $product) {
+            $result[] = [
+                'id' => $product->id,
+                'nome' => $product->nome,
+                'valor' => $product->valor_venda
+            ];
+        }
+    
+        // Define os dados que serão enviados como resposta
+        $data = $result;
+    
+        // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
+        $this->response = $this->response->withStatus(200);    
+        // Retorna os dados e o código de status da resposta
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode($data));
+        return $this->response;
+    }    
+
 }

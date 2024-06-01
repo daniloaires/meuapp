@@ -4,7 +4,7 @@ jQuery(function() {
     $('#product-search').autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: '/orders/autocomplete',
+                url: '/products/autocomplete',
                 dataType: 'json',
                 data: {
                     term: request.term
@@ -53,10 +53,10 @@ jQuery(function() {
         var qtde = $('#qtde').val();
         var valor = $('#product-valor').val();
         var orderId = $('#order-id').val();
+        var manualEntryAttempted = false;
 
         function addItem() {
             if (productId && qtde && valor && orderId && (qtde > 0)) {
-                // Envia a requisição AJAX para adicionar o item
                 $.ajax({
                     url: '/orders/addOrderItem',
                     type: 'POST',
@@ -75,12 +75,12 @@ jQuery(function() {
                         }
                     }
                 });
-            } else {
-                // Tenta buscar o produto pelo código digitado
+            } else if (!manualEntryAttempted) {
+                manualEntryAttempted = true;
                 var productCode = $('#product-search').val();
                 if (productCode) {
                     $.ajax({
-                        url: '/orders/getByCode',
+                        url: '/products/getByCode',
                         type: 'GET',
                         data: {
                             code: productCode
@@ -92,10 +92,10 @@ jQuery(function() {
                                     product.nome.toUpperCase() + ' :: ' + 
                                         product.valor_venda.toLocaleString('pt-BR', { 
                                             style: 'currency', currency: 'BRL' }) 
-                                );                                
+                                );
                                 $('#product-id').val(product.id);
                                 $('#product-valor').val(product.valor_venda);
-                                addItem(); // Tenta adicionar novamente com os dados preenchidos
+                                addItem();
                             } else {
                                 $('#produto-selecionado').empty();
                                 $('#produto-selecionado').append('Produto não encontrado');
@@ -105,6 +105,8 @@ jQuery(function() {
                 } else {
                     alert('Por favor, preencha os campos corretamente.');
                 }
+            } else {
+                //alert('Por favor, preencha os campos corretamente.');
             }
         }
         addItem();
@@ -113,8 +115,7 @@ jQuery(function() {
     $('.delete-item').on('click', function(e){
         e.preventDefault();
 
-        var itemId = $(this).data('id');
-        var $row = $(this).closest('tr');
+        let itemId = $(this).data('id');
 
         if (confirm('Tem certeza de que deseja excluir este item?')) {
             $.ajax({
@@ -136,5 +137,45 @@ jQuery(function() {
             });
         }
     });    
+
+    // Evento ao clicar no botão "Finalizar Pedido"
+    $('#fechar-pedido').on('click', function(e){    
+        e.preventDefault();
+
+        let orderId = $('#order-id').val();
+        let valor = ($(this).data('valor'));
+        let tipo = 1;
+        let forma_pagto = 1; //alterar para selecionado pelo usuário em modal
+
+        if (valor === 0) {
+            alert('Impossível finalizar um pedido vazio!');
+            return
+        }
+
+        if (confirm('Tem certeza de que deseja finalizar o pedido?')) {
+            $.ajax({
+                url: '/orders/finalizarPedido',
+                type: 'POST',
+                data: {
+                    _csrfToken: $('input[name="_csrfToken"]').val(),
+                    orderId: orderId,
+                    valor: valor,
+                    tipo: tipo,
+                    forma_pagto: forma_pagto,
+                },                
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert('Não foi possível finalizar');
+                    }
+                },
+                error: function() {
+                    alert('Erro ao finalizar o pedido');
+                }
+            });
+        }
+
+    });
 
 });

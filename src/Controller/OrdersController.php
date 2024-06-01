@@ -12,6 +12,7 @@ class OrdersController extends AppController
         parent::initialize();
 
         $this->loadModel('Products');
+        $this->loadModel('CashFlows');
     }
 
     public function index()
@@ -53,7 +54,7 @@ class OrdersController extends AppController
         // Preenche a entidade Order com o hash gerado
         $order = $this->Orders->patchEntity($order, [
             'nome' => $hash,
-            'status' => Order::STATUS_PEDIDO_NAO_PAGO,
+            'status' => Order::STATUS_PEDIDO_ABERTO,
         ]);
     
         if ($this->Orders->save($order)) {
@@ -157,19 +158,6 @@ class OrdersController extends AppController
         }
     }
 
-    public function getByCode()
-    {
-        $this->autoRender = false;
-        $code = $this->request->getQuery('code');
-        $product = $this->Products->find('all', [
-            'conditions' => ['Products.codigo' => $code]
-        ])->first();
-
-        $this->response = $this->response->withType('application/json')
-            ->withStringBody(json_encode($product));
-        return $this->response;
-    }        
-
     public function deleteOrderItem($id = null)
     {
         if ($this->request->is('delete')) {
@@ -186,41 +174,34 @@ class OrdersController extends AppController
             return $this->response;
         }
     }
-    
 
-    public function autocomplete()
+    public function finalizarPedido()
     {
         $this->autoRender = false;
-        $this->request->allowMethod('ajax');
-    
-        $term = $this->request->getQuery('term');
-    
-        $products = $this->Products->find('all', [
-            'conditions' => ['OR' => [
-                'Products.nome LIKE' => '%' . $term . '%',
-                'Products.descricao LIKE' => '%' . $term . '%',
-            ]],
-            'limit' => 100
-        ]);
-    
-        $result = [];
-        foreach ($products as $product) {
-            $result[] = [
-                'id' => $product->id,
-                'nome' => $product->nome,
-                'valor' => $product->valor_venda
-            ];
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+
+            $order = $this->Orders->get($data['orderId']);
+            $order->status = Order::STATUS_PEDIDO_FECHADO;
+
+            $movimentacaoCaixa = $this->CashFlows->movimentacaoCaixa('Pagamento Pedido ' .
+                $data['orderId'], $data['valor'], $data['tipo'], $data['forma_pagto']);            
+
+            if ($this->Orders->save($order)) {
+                if ($movimentacaoCaixa) {
+                    $response = ['success' => true];
+                }
+                else {
+                    $response = ['success' => false];
+                }
+            } else {
+                $response = ['success' => false];
+            }
+
+            $this->response = $this->response->withType('application/json')
+                ->withStringBody(json_encode($response));
+            return $this->response;
         }
-    
-        // Define os dados que serão enviados como resposta
-        $data = $result;
-    
-        // Define o código de status HTTP da resposta (por exemplo, 200 para sucesso)
-        $this->response = $this->response->withStatus(200);    
-        // Retorna os dados e o código de status da resposta
-        $this->response = $this->response->withType('application/json')
-            ->withStringBody(json_encode($data));
-        return $this->response;
-    }
+    }    
 
 }
