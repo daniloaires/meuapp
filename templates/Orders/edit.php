@@ -20,7 +20,7 @@ use App\Model\Entity\Order;
         <div class="orders form content">
             <?= $this->Form->create($order) ?>
             <fieldset>
-                <legend><?= __('Nº Pedido.: ' . h($order->nome)) ?></legend>
+                <legend><?= __('Nº. Pedido.: ' . h($order->id . ' de ' . $order->created->format('d/m/Y'))) ?></legend>
             </fieldset>
 
             <div class="row">
@@ -41,8 +41,11 @@ use App\Model\Entity\Order;
                 </div>
 
                 <div class="col-md-2"><br />
-                    <button id="add-item" class="btn btn-primary mb-2">
-                        <?= __('Adicionar Item') ?></button>
+                <?php
+                    if ($order->status === Order::STATUS_PEDIDO_ABERTO) : ?>                
+                        <button id="add-item" class="btn btn-primary mb-2">
+                            <?= __('Adicionar Item') ?></button>
+                <?php endif; ?>
                 </div>                
             </div>
 
@@ -70,9 +73,11 @@ use App\Model\Entity\Order;
                                     <td class='nowrap'><?= h($this->Number->currency($orderItem->valor, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
                                     <td class='nowrap'><?= h($orderItem->qtde) ?></td>
                                     <td class='nowrap'><?= h($this->Number->currency($orderItem->valor * $orderItem->qtde, 'BRL', ['locale' => 'pt_BR', 'pattern' => '¤ #,##0.00'])) ?></td>
-                                    <td class='nowrap'>
-                                        <button class="btn btn-danger btn-sm delete-item" style="padding: 1px;"
-                                            data-id="<?= $orderItem->id ?>"><?= __('Excluir') ?></button>
+                                    <td class='nowrap'><?php
+                                        if ($order->status === Order::STATUS_PEDIDO_ABERTO) : ?>
+                                            <button class="btn btn-danger btn-sm delete-item" style="padding: 1px;"
+                                                data-id="<?= $orderItem->id ?>"><?= __('Excluir') ?></button>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

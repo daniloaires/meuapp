@@ -69,16 +69,20 @@ use App\Model\Entity\Order;
                     <td class='nowrap'><?= h(Order::LIST_STATUS_PEDIDO_STR[$order->status]) ?></td>                    
                     <td class="actions nowrap">
                         <?= $this->Html->link(
-                            '<i class="ti-pencil" style="color:green;"></i>&nbsp;Alterar', 
-                            ['action' => 'edit', $order->id],
-                            ['escape' => false] 
+                            ($order->status === Order::STATUS_PEDIDO_ABERTO) ? 
+                                    '<i class="ti-pencil" style="color:green;"></i>&nbsp;Alterar'
+                                    : '<i class="ti-eye" style="color:green;"></i> &nbsp;Visualizar Pedido', 
+                                    ['action' => 'edit', $order->id],['escape' => false] 
                         ) ?>&nbsp;&nbsp;&nbsp;
 
-                        <?= $this->Form->postLink(
-                            '<i class="ti-trash" style="color:red;"></i>&nbsp;Excluir',
-                            ['action' => 'delete', $order->id],
-                            ['confirm' => __('Tem certeza de que deseja excluir # {0}?', $order->id), 'escapeTitle' => false, 'escape' => false]
-                        ) ?>
+                        <?php 
+                        if ($order->status === Order::STATUS_PEDIDO_ABERTO) :
+                            echo $this->Form->postLink(
+                                '<i class="ti-trash" style="color:red;"></i>&nbsp;Excluir',
+                                ['action' => 'delete', $order->id],
+                                ['confirm' => __('Tem certeza de que deseja excluir # {0}?',
+                                    $order->id), 'escapeTitle' => false, 'escape' => false]);
+                        endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
