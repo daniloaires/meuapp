@@ -52,7 +52,7 @@ use App\Model\Entity\Order;
             <thead>
                 <tr>
                     <th class='nowrap'><?= $this->Paginator->sort('id', 'ID') ?></th>
-                    <th class='nowrap'><?= $this->Paginator->sort('nome', 'Numero') ?></th>
+                    <th class='nowrap'><?= $this->Paginator->sort('nome', 'Hash Pedido') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('created', 'Criado em') ?></th>                    
                     <th class='nowrap'><?= $this->Paginator->sort('valor', 'Valor') ?></th>
                     <th class='nowrap'><?= $this->Paginator->sort('status', 'Status') ?></th>                    

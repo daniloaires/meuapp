@@ -139,20 +139,25 @@ jQuery(function() {
     });    
 
     // Evento ao clicar no botão "Finalizar Pedido"
-    $('#fechar-pedido').on('click', function(e){    
+    $('#fechar-pedido').on('click', function(e) {
         e.preventDefault();
 
         let orderId = $('#order-id').val();
-        let valor = ($(this).data('valor'));
+        let valor = $(this).data('valor');
         let tipo = 1;
-        let forma_pagto = 1; //alterar para selecionado pelo usuário em modal
 
         if (valor === 0) {
             alert('Impossível finalizar um pedido vazio!');
-            return
+            return;
         }
 
-        if (confirm('Tem certeza de que deseja finalizar o pedido?')) {
+        // Abre o modal para selecionar a forma de pagamento
+        $('#paymentModal').modal('show');
+
+        // Evento ao clicar no botão "Confirmar Pagamento" no modal
+        $('#confirm-payment').on('click', function() {
+            let forma_pagto = $('#forma-pagto').val();
+
             $.ajax({
                 url: '/orders/finalizarPedido',
                 type: 'POST',
@@ -161,8 +166,8 @@ jQuery(function() {
                     orderId: orderId,
                     valor: valor,
                     tipo: tipo,
-                    forma_pagto: forma_pagto,
-                },                
+                    forma_pagto: forma_pagto
+                },
                 success: function(response) {
                     if (response.success) {
                         alert('Pedido finalizado com sucesso');
@@ -175,8 +180,10 @@ jQuery(function() {
                     alert('Erro ao finalizar o pedido');
                 }
             });
-        }
 
+            // Fecha o modal após a confirmação
+            $('#paymentModal').modal('hide');
+        });
     });
 
 });

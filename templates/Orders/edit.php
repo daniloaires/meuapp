@@ -110,6 +110,34 @@ use App\Model\Entity\Order;
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Escolha a Forma de Pagamento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <select id="forma-pagto" class="form-control">
+          <option value="1">Cartão de Crédito</option>
+          <option value="2">Cartão de Débito</option>
+          <option value="3">Dinheiro</option>
+          <option value="4">Pix</option>
+          <option value="5">Boleto</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="confirm-payment" class="btn btn-primary">Confirmar Pagamento</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- jQuery -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min') ?>
 <!-- maskMoney -->
