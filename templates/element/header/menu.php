@@ -32,7 +32,6 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <?= $this->Html->link(__('Pedido de venda'), '/Orders', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link(__('Locação de produtos'), '#', ['class' => 'dropdown-item']) ?>
       </div>
     </li>      
 
